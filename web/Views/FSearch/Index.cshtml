@@ -1,0 +1,51 @@
+﻿@model List<Tuple<string, string>>
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<style>
+    .link {
+        display: block;
+        text-decoration: none;
+        color: #666;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 5px 0 5px 20px;
+        background: url(/images/bullet.png) no-repeat left center;
+        transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+        -moz-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+        -webkit-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+        -o-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+        float: left;
+    }
+</style>
+
+<div id="containerInner">
+    <div id="content">
+        <div class="fullSection">
+            <h1>@SharedRess.SharedStrings.searchresult.ToUpper()</h1>
+        </div>
+        <div class="article">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li style="overflow:hidden"><a class="link" href="@item.Item2">@item.Item1.ToUpper()</a></li>
+                    <li style="margin-left: 21px; margin-bottom: 10px; color: #ed1c24; font-size: 12px;">http://www.venueistanbul.com.tr@(item.Item2)</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery.highlight.js" charset="windows-1254"></script>
+<script>
+    $(document).ready(function () {
+        //alert(html_entity_decode("@ViewBag.SearchTextUpper"));
+        $(".biz").highlight("@ViewBag.SearchTextLower");
+        $(".biz").highlight(html_entity_decode("@ViewBag.SearchTextUpper"));
+
+        function html_entity_decode(str) {
+            var ta = str.replace("&#220;", "Ü").replace("&#214;", "Ö").replace("&#199;", "Ç");
+            return ta;
+        }
+    });
+</script>
