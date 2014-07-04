@@ -236,6 +236,7 @@
     <Compile Include="Controllers\FSearchController.cs" />
     <Compile Include="Controllers\FServicesController.cs" />
     <Compile Include="Controllers\FSharedController.cs" />
+    <Compile Include="Controllers\FSiteMapController.cs" />
     <Compile Include="Controllers\FSolutionPartnerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -2431,6 +2432,7 @@
     <Content Include="Content\Images\ferforje_kapi_sistemleri.png" />
     <Content Include="Content\Images\fileli_mozaik.jpg" />
     <Content Include="Content\Images\fileli_patlatma_mozaik_dogaltaslar.jpg" />
+    <Content Include="Content\Images\Front\error.png" />
     <Content Include="Content\Images\Front\noimage.jpeg" />
     <Content Include="Content\Images\Front\success.png" />
     <Content Include="Content\Images\Google-Plus-icon.png" />
@@ -2592,6 +2594,7 @@
     <Content Include="Content\Images\userfiles\f7de557f-8700-420c-bc02-dea0a479c6dd.jpg" />
     <Content Include="Content\Images\userfiles\ferforje_kapi_sistemleri.png" />
     <Content Include="Content\Images\userfiles\fileli_patlatma_mozaik_dogaltaslar.jpg" />
+    <Content Include="Content\Images\userfiles\humanresources\12_16843348.png" />
     <Content Include="Content\Images\userfiles\nakliye_31945116.png" />
     <Content Include="Content\Images\userfiles\nakliye_69125651.png" />
     <Content Include="Content\Images\userfiles\nakliye_73059085.png" />
@@ -3154,6 +3157,7 @@
     <Content Include="Views\FHumanResources\Index.cshtml" />
     <Content Include="Views\Shared\Partial\_footeraddress.cshtml" />
     <Content Include="Views\FServices\Index.cshtml" />
+    <Content Include="Views\FSiteMap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

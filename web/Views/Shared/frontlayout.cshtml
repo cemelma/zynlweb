@@ -56,7 +56,7 @@
       <div class="col-md-12 col-md-pull-0 noPadding">
         <ul class="nav nav-pills topMenu">
           <li class="first"><a href="/iletisim">Bize Ulaşın</a></li>
-          <li class="last"><a href="siteharitasi.html">Site Haritası</a></li>
+          <li class="last"><a href="/siteharita">Site Haritası</a></li>
         </ul> 
         <ul class="nav nav-pills socialMenu">
           <li class="first"><a href="#"><img src="/Content/Images/Facebook-icon.png" border="0"/></a></li>
@@ -75,10 +75,9 @@
     <div class="col-md-12 noPadding sectionforPage">
     @RenderSection("breadcrumb",false)
 
-    <div class="col-md-3 search">
-      <input type="text"  placeholder="Arama" />
-      <input type="button" />
-    </div>
+        @{ Html.RenderAction("_search", "FSearch"); }
+
+    
   </div>
 </div>
 <div class="contentBody">

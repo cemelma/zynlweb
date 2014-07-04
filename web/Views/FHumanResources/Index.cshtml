@@ -40,24 +40,30 @@
                <p>
                    @Html.Raw(item.Content)
                </p>
-                  <input type="button" class="btn btn-warning col-md-offset-4" value="CV GÖNDER" id="btncvgonder_@item.Id" />
-              </div>
+                  @using (Html.BeginForm("Index", "FHumanResources", FormMethod.Post, new { enctype = "multipart/form-data", id = "cvform" }))
+                  {
+                      <hr />
+                    <input type="file" name="uploadfile" id="uploadfile" style="width:210px; float:left;" class="validate[required]"/>
+                    <input type="submit" class="btn btn-warning col-md-offset-1" value="CV GÖNDER" id="btncvgonder_@item.Id" />
+                  }
+                </div>
             </div>
             }
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-    $(function () {
+
+<script src="~/Content/Scripts/jquery.validationEngine-tr.js"></script>
+<script src="~/Content/Scripts/jquery.maskedinput-1.3.min.js"></script>
+<script src="~/Content/Scripts/jquery.validationEngine.js"></script>
+<link href="~/Content/Styles/validationEngine.jquery.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
         $("#pulpositions li:first").addClass("active");
         $("#positioncontent .tab-pane:first").addClass("active");
-
-       
-
+        jQuery("#cvform").validationEngine();
     });
-
 </script>

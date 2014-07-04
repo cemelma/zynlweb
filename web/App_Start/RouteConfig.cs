@@ -22,6 +22,8 @@ namespace web
             routes.MapRoute("referanslar", "referanslar", new { action = "Index", Controller = "FReferences" });
             routes.MapRoute("referansdetay", "referansdetay/{id}", new { action = "Detail", Controller = "FReferences" });
             routes.MapRoute("insankaynaklari", "insankaynaklari", new { action = "Index", Controller = "FHumanResources" });
+            routes.MapRoute("arama", "arama", new { action = "Index", Controller = "FSearch" });
+            routes.MapRoute("sitemap", "siteharita", new { action = "Index", Controller = "FSiteMap" });
 
             routes.MapRoute("hizmetler", "hizmetler/{id}/{page}", new { action = "Index", Controller = "FServices" });
 

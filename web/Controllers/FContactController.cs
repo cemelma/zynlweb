@@ -100,26 +100,26 @@ namespace web.Controllers
 
                 using (var client = new SmtpClient(mset.ServerHost, mset.Port))
                 {
-                    client.EnableSsl = true;//burası düzeltilecek
+                    client.EnableSsl = mset.Security;//true;//burası düzeltilecek
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.UseDefaultCredentials = false;
+                    client.UseDefaultCredentials = true;
                     client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
                     
                     var mail = new MailMessage();
-                    mail.From = new MailAddress(mset.ServerMail);
+                    mail.From = new MailAddress(mset.ServerMail,"Zeynel Yayla");
+                    //mail.Attachments.Add(new Attachment(@"C:\Sonuc.pptx"));
                     foreach (var item in msend)
                         mail.To.Add(item.MailAddress);
                     mail.Subject = subject;
                     mail.IsBodyHtml = true;
-                    mail.Body = "<h4>Gönderen:" + namesurname + " - " + email + "</h4>" +
+                    mail.Body = "<h3>Gönderen:" + namesurname + " - " + email + "</h3>" +
                         "<b>Tel: </b>" + phone + 
                         "<br><b>Şehir: </b>" + city +
-                        "<br><b>Mesaj:</b><p>" + body + "</p>";
+                        "<br><h3>Mesaj:</h3><p>" + body + "</p>";
 
                     if (mail.To.Count > 0) client.Send(mail);
                 }
                 TempData["sent"] = "true";
-                //return RedirectToAction("Index");
             }
             catch (Exception ex)
             {

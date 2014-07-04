@@ -178,6 +178,9 @@ namespace web.Areas.Admin.Controllers
                         newmodel.ServiceId = nid;
                         ViewBag.ProcessMessage = ServiceManager.EditService(newmodel);
 
+                        Service editrecord = ServiceManager.GetServiceById(nid);
+                        var photos = PhotoManager.GetList(5, nid);
+                        ViewBag.Photos = photos;
 
                         foreach (var item in attachments)
                         {
