@@ -7,26 +7,11 @@
         MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
     $("#tabs").tabs();
-
-    $("#Hardware").attr("checked",false);
-    $('.pprice').css("display", "none");
+    $("#tabs").tabs({ disabled: [1] });
+  
+   
 
    
-    $('#txtPrice').numeric();
- 
-
-    $('#Hardware').click(function() {
-        var stat = $('#Hardware:checked').val();
-        if (stat == "True" || stat == "true") {
-            $('.pprice').css("display", "block");
-            $('#txtHardWarePrice').addClass("required");
-            $('#txtHardWarePrice').numeric();
-        }
-        else {
-            $('.pprice').css("display", "none");
-            $('#txtHardWarePrice').removeClass("required");
-        }
-    });
 
 
     var selval = $("#Language option:selected").val();

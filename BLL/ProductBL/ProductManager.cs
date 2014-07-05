@@ -493,7 +493,7 @@ namespace BLL.ProductBL
             using (MainContext db = new MainContext())
             {
                 db.Product.Include("ProductGroup").ToList();
-                var list = db.Product.Where(d => d.Deleted == false && d.Language == lang).OrderBy(d => d.SortNumber).ToList();
+                var list = db.Product.Where(d => d.Deleted == false ).OrderBy(d => d.SortNumber).ToList();
                 return list;
             }
         }
@@ -507,7 +507,7 @@ namespace BLL.ProductBL
                             Include("ProductSubGroup").
                             Include("ProductSubbestGroup").
                             Where(d => d.Deleted == false && 
-                                  d.Language == lang && 
+                                //  d.Language == lang && 
                                   d.Online==true).
                             OrderByDescending(d=>d.TimeCreated).
                             OrderBy(d => d.SortNumber).
@@ -550,8 +550,8 @@ namespace BLL.ProductBL
                             Include("ProductGroup").
                             Include("ProductSubGroup").
                             Where(d => d.Deleted == false &&
-                                        d.Online == true &&
-                                        d.ProductSubGroupId == sgid).
+                                        d.Online == true ).
+                                        //1d.ProductSubGroupId == sgid).
                             OrderByDescending(d => d.TimeCreated).
                             OrderBy(d => d.SortNumber).
                             ToList();
@@ -562,7 +562,7 @@ namespace BLL.ProductBL
         {
             using (MainContext db = new MainContext())
             {
-                var list = db.Product.Include("ProductGroup").Include("ProductSubGroup").Where(d => d.Deleted == false && d.ProductSubGroupId == sgid).OrderByDescending(d => d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
+                var list = db.Product.Include("ProductGroup").Include("ProductSubGroup").Where(d => d.Deleted == false ).OrderByDescending(d => d.TimeCreated).OrderBy(d => d.SortNumber).ToList();
                 return list;
             }
         }
@@ -613,38 +613,9 @@ namespace BLL.ProductBL
                         record.Name = data.Name;
                         record.Content = data.Content;
                         record.PageSlug = data.PageSlug;
-                        record.Language = data.Language;
-                        record.Hardware = data.Hardware;
-                        record.HardwarePrice = data.HardwarePrice;
-                        record.Price = data.Price;
-                        record.Code = data.Code;
-                        record.Brand = data.Brand;
-                        record.Year = data.Year;
+                     
                         record.ProductGroupId = data.ProductGroupId;
-                        record.ProductSubGroupId = data.ProductSubGroupId;
                        
-
-                        if (!string.IsNullOrEmpty(data.ProductImage))
-                        {
-                            record.ProductImageThumb = data.ProductImageThumb;
-                            record.ProductImage = data.ProductImage;
-                        }
-                        if (!string.IsNullOrEmpty(data.filexperiment))
-                        {
-                            record.filexperiment = data.filexperiment;
-                        }
-                        if (!string.IsNullOrEmpty(data.filetechnical))
-                        {
-                            record.filetechnical = data.filetechnical;
-                        }
-                        if (!string.IsNullOrEmpty(data.filetraining))
-                        {
-                            record.filetraining = data.filetraining;
-                        }
-                        if (!string.IsNullOrEmpty(data.filevideo))
-                        {
-                            record.filevideo = data.filevideo;
-                        }
                        
                         db.SaveChanges();
 
@@ -785,7 +756,7 @@ namespace BLL.ProductBL
                     Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
                     if (record != null)
                     {
-                        record.filetechnical = null;
+                       // record.filetechnical = null;
                         db.SaveChanges();
                         return true;
                     }
@@ -809,7 +780,7 @@ namespace BLL.ProductBL
                     Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
                     if (record != null)
                     {
-                        record.filetraining = null;
+                    //    record.filetraining = null;
                         db.SaveChanges();
                         return true;
                     }
@@ -833,7 +804,7 @@ namespace BLL.ProductBL
                     Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
                     if (record != null)
                     {
-                        record.filexperiment = null;
+                        //record.filexperiment = null;
                         db.SaveChanges();
                         return true;
                     }
@@ -857,7 +828,7 @@ namespace BLL.ProductBL
                     Product record = db.Product.Where(d => d.ProductId == id && d.Deleted == false).SingleOrDefault();
                     if (record != null)
                     {
-                        record.filevideo = null;
+                  //      record.filevideo = null;
                         db.SaveChanges();
                         return true;
                     }

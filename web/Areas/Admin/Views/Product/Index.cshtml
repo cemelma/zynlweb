@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DAL.Entities.Product>
+﻿@*@model IEnumerable<DAL.Entities.Product>*@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
@@ -17,7 +17,7 @@
        <h2>ÜRÜN BİLGİLERİ</h2>
     </div>  
     <section class="grid_12 form">
-    <div class="box-header" ><h1>Ürün Listesi
+  @*  <div class="box-header" ><h1>Ürün Listesi
         &nbsp;&nbsp;|&nbsp;&nbsp;
              @Html.DropDownList("LanguageList")
         &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -112,7 +112,7 @@
                 </tr>
             }
         </tbody>
-    </table>
+    </table>*@
 </section>
  <br class="cl" />
 <div id="info"></div>
