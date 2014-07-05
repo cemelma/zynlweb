@@ -221,6 +221,7 @@
     <Compile Include="Areas\Admin\Helpers\Utility.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Admin\Models\VMProductGroupModel.cs" />
+    <Compile Include="Controllers\FProductController.cs" />
     <Compile Include="Controllers\FEstatesController.cs" />
     <Compile Include="Controllers\FHumanResourcesController.cs" />
     <Compile Include="Controllers\FOurTeamController.cs" />
@@ -3160,6 +3161,7 @@
     <Content Include="Views\FSiteMap\Index.cshtml" />
     <Content Include="Views\Shared\_submenusitemap.cshtml" />
     <Content Include="Views\Shared\_submenu.cshtml" />
+    <Content Include="Views\FProduct\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

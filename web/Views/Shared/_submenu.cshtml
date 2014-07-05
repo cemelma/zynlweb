@@ -10,8 +10,6 @@
     foreach (var item in Model.ProductGroup.Where(d => d.TopProductId == productGroupId))
     {
         
-        
-    
             if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
             {
                 <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.GroupName</a>
@@ -35,7 +33,7 @@
                             }
                             else
                             {
-                                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">@itemsub.GroupName</a></li>
+                                <li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@itemsub.GroupName</a></li>
                             }
                         }
                     </ul>
@@ -43,7 +41,7 @@
             }
             else
             {
-                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.GroupName</a></li>
+                <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@item.GroupName</a></li>
             }
         
     }
@@ -65,7 +63,7 @@ else
             }
             else
             {
-                 <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.GroupName</a></li>   
+                 <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@item.GroupName</a></li>   
             }
                 
     }

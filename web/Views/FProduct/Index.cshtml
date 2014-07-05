@@ -1,0 +1,53 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Ürünler";
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+    List < DAL.Entities.References > referanslar = ViewData["referanslar"] as List < DAL.Entities.References > ;
+        
+}
+
+@section breadcrumb{
+    <div class="col-md-8 breadcrumb">
+        <ul>
+            <li><a href="/">Anasayfa</a></li>
+            <li>Ürünler </li>
+        </ul>
+    </div>
+}
+
+<div id="container" class="container">
+    <div class="col-md-12 shadow section noPadding">
+        <div class="col-md-12 sectionContent page">
+            <h2 class="pageTitle">ÜRÜNLER</h2>
+             İÇERİK GELECEK
+        </div>
+    </div>
+
+
+    <div class="col-md-12 shadow references section noPadding">
+        <div class="col-md-12 sectionTitle">
+            <div class="col-md-6">
+                <h5>REFERANSLAR</h5>
+            </div>
+            <div class="col-md-6 allContent"><a href="/referanslar">[ TÜM REFERANSLAR ]</a> </div>
+        </div>
+        <div class="col-md-12 sectionContent">
+            <ul class="referenceSlider">
+                @foreach (var item in referanslar)
+                {
+                    if(item.Logo!=null)
+                    {
+                    <li><img src="@item.Logo" style="width:169px;height:62px;" /></li>
+                    }
+                    else
+                    {
+                        <li><img src="/Content/Images/Front/noimage.jpeg" style="width:169px;height:62px;" /></li>
+                    }
+                }
+        
+            </ul>
+        </div>
+
+    </div>
+
+</div>

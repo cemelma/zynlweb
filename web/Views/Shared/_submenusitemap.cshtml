@@ -3,64 +3,92 @@
     int productGroupId = 0;
 }
 
+            <div class="col-md-3 noPadding">
+            <h3>Altyapı Elemanları</h3>
+            <ul>
+              <li><a href="#">Beton Borular</a>
+                <ul>
+                  <li><a href="#">Muflu Beton Boru Grubu</a></li>
+                  <li><a href="#">Muflu Betonarme Boru Grubu</a></li>
+                  <li><a href="#">Lamba Zıvana Betornarme Boru Grubu</a></li>
+                  <li><a href="#">Sürme Betonarme Boru Grubu</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Baca Konik Kapak Taban</a>
+                <ul>
+                  <li><a href="#">Prefabrik Baca Tabanları</a></li>
+                  <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatısız)</a></li>
+                  <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatılı)</a></li>
+                  <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatılı)</a></li>
+                  <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatısız)</a>          </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+
 @if(Model.SelectedProductGroup!=null)
 {
     productGroupId = Model.SelectedProductGroup.ProductGroupId;
+    
     foreach (var item in Model.ProductGroup.Where(d => d.TopProductId == productGroupId))
     {
-        <text><li class="dd-item dd3-item" data-id="@item.ProductGroupId"></text>
-            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">
-                @item.GroupName
-                <a href="?topProductGroupId=@item.ProductGroupId"><img src="~/Areas/Admin/Content/images/add.png" class="submenubtnnew" /></a>
-                @if(item.Online==true)
-                {
-                    <img src="~/Areas/Admin/Content/images/icons/online.png" class="submenubtnonline" title="Offline Yap" id="img_online_@item.ProductGroupId" onclick="SetOnlineStatus('/ProductGroup/GroupEditStatus',@item.ProductGroupId)" />
-                }
-                else
-                {
-                    <img src="~/Areas/Admin/Content/images/icons/offline.png" class="submenubtnonline" title="Online Yap" id="img_online_@item.ProductGroupId" onclick="SetOnlineStatus('/ProductGroup/GroupEditStatus',@item.ProductGroupId)" />
-                }
-                <img src="~/Areas/Admin/Content/images/icons/16/delete.png" class="submenubtndelete" id="DeleteImage_@item.ProductGroupId" onclick="DeleteRecord('/ProductGroup/DeleteRecord',@item.ProductGroupId)" />
-            </div> 
+        
             if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
-            { 
-                <ol class="dd-list">
-                    @{
-                        Model.SelectedProductGroup = item;
-                        Html.RenderPartial("_submenu", Model);
-                    }
-                </ol>
+            {
+                <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.GroupName</a>
+                    <ul class="dropdown-menu">
+                        @foreach (var itemsub in Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId))
+                        {
+
+                            if (Model.ProductGroup.Where(d => d.TopProductId == itemsub.ProductGroupId).Any())
+                            {
+                                 
+                                 <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@itemsub.GroupName</a>
+                                    <ul class="dropdown-menu">
+                       
+                                    @{
+                                        Model.SelectedProductGroup = itemsub;
+                                        Html.RenderPartial("_submenu", Model);
+                                    }
+
+                                    </ul>
+                                 </li>
+                            }
+                            else
+                            {
+                                <li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@itemsub.GroupName</a></li>
+                            }
+                        }
+                    </ul>
+                </li>
             }
-        <text><li /></text>
+            else
+            {
+                <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@item.GroupName</a></li>
+            }
+        
     }
 }
 else
 {
     foreach (var item in Model.ProductGroup.Where(d=>d.TopProductId == 1))
     {
-        <text><li class="dd-item dd3-item" data-id="@item.ProductGroupId"></text>
-            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">
-                @item.GroupName 
-                <a href="?topProductGroupId=@item.ProductGroupId"><img src="~/Areas/Admin/Content/images/add.png" class="submenubtnnew" /></a>
-                @if(item.Online==true)
-                {
-                    <img src="~/Areas/Admin/Content/images/icons/online.png" class="submenubtnonline" title="Offline Yap" id="img_online_@item.ProductGroupId" onclick="SetOnlineStatus('/ProductGroup/GroupEditStatus',@item.ProductGroupId)" />
-                }
-                else
-                {
-                    <img src="~/Areas/Admin/Content/images/icons/offline.png" class="submenubtnonline" title="Online Yap" id="img_online_@item.ProductGroupId" onclick="SetOnlineStatus('/ProductGroup/GroupEditStatus',@item.ProductGroupId)" />
-                }
-                <img src="~/Areas/Admin/Content/images/icons/16/delete.png" class="submenubtndelete" id="DeleteImage_@item.ProductGroupId" onclick="DeleteRecord('/ProductGroup/DeleteRecord',@item.ProductGroupId)" />
-            </div> 
             if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
             { 
-                <ol class="dd-list">
-                    @{
-                        Model.SelectedProductGroup = item;
-                        Html.RenderPartial("_submenu", Model);
-                    }
-                </ol>
+                <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.GroupName</a>
+                    <ul class="dropdown-menu">
+                        @{
+                            Model.SelectedProductGroup = item;
+                            Html.RenderPartial("_submenu", Model);
+                        }
+                    </ul>
+                </li>
             }
-        <text><li /></text>
+            else
+            {
+                 <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@item.GroupName</a></li>   
+            }
+                
     }
 }
