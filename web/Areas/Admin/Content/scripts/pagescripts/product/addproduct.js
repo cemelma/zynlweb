@@ -7,7 +7,7 @@
         MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
     $("#tabs").tabs();
-    $("#tabs").tabs({ disabled: [1] });
+  //  $("#tabs").tabs({ disabled: [1] });
   
    
 

@@ -44,47 +44,32 @@
                         @Html.TextAreaFor(m => m.Content, new { id = "txtcontent", @class = "required" })
                         @Html.ValidationMessageFor(m => m.Content)
                     </p>
-                  @*  <p>
-                        @Html.LabelFor(m => m.Brand)
-                        @Html.TextBoxFor(m => m.Brand, new { @class = "textwidth50" })
-                        @Html.ValidationMessageFor(m => m.Brand)
-                    </p>
-                    <p>
-                        @Html.LabelFor(m => m.Year)
-                        @Html.TextBoxFor(m => m.Year, new { @class = "textwidth50" })
-                        @Html.ValidationMessageFor(m => m.Year)
-                    </p>
-                    <p style="display: none">
-                        @Html.LabelFor(m => m.Price)
-                        @Html.TextBox("txtPrice", null, new { @class = "textwidth10" })
-
-                        @Html.ValidationMessage("1212")
-                    </p>*@
-                   @* <p>
-                        <label for="txtname" class="label2">Ürün Döküman</label>
-                        <input type="file" name="uploadtechfile" id="uploadtechfile" />
-                    </p>
-                    <p>
-                        <label for="txtname">Ürün Video</label>
-                        <input type="file" name="uploadvideo" id="uploadvideo" />
-                    </p>
-                    <fieldset>
-                        <legend>Ürün Resmi</legend>
-                        <div id="uploadPartial">
-                            @Html.Partial("_imageUploadAndCrop")
-                        </div>
-                    </fieldset>*@
+                
                     <p style="float: left; margin-right: 4px !important;">
                         <label>Ürün Fotoğrafları</label>
                     </p>
                     <div style="width: 249px; width: 25%; float: left">
-                        <input type="file" style="width: 99%" name="attachments" class="multi" />
+                        <input type="file" style="width: 99%" name="attachments" class="multi" maxlength="2"  />
+                        <span>En fazla  adet fortoğfraf ekleyebilirsiniz</span>
+                    </div>
+                    <div style="height: 40px; clear: both;"></div>
+                    
+                      <p style="float: left; margin-right: 4px !important;">
+                        <label>Uygulama Fotoğrafları</label>
+                    </p>
+                    <div style="width: 249px; width: 25%; float: left">
+                        <input type="file" style="width: 99%" name="attachmentsproduct" class="multi" />
                     </div>
                     <div style="height: 40px; clear: both;"></div>
                 </div>
 
                 <div id="tabs-2">
-                   
+                   @* <p>
+                        @Html.LabelFor(m => m.Code)
+                        @Html.TextBoxFor(m => m.Code, new { @class = "textwidth50", Rows = "5" })
+                        @Html.ValidationMessageFor(m => m.Code)
+                    </p>*@
+                  
                 </div>
             </div>
         

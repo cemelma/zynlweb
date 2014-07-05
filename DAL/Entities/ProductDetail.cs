@@ -9,6 +9,7 @@ namespace DAL.Entities
 {
     public class ProductDetail
     {
+        [Key]
         public int DetailId{get;set;}
         public int ProductId { get; set; }
 

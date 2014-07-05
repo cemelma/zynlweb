@@ -59,6 +59,7 @@ namespace DAL.Context
         public DbSet<Town> Town { get; set; }
         public DbSet<District> District { get; set; }
         public DbSet<Tags> Tags { get; set; }
+        public DbSet<ProductDetail> ProductDetail { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -109,7 +110,8 @@ namespace DAL.Context
             modelBuilder.Entity<Tags>().ToTable("Tags");
 
             modelBuilder.Entity<User>().ToTable("User");
-            modelBuilder.Entity<Slider>().ToTable("Slider"); 
+            modelBuilder.Entity<Slider>().ToTable("Slider");
+            modelBuilder.Entity<ProductDetail>().ToTable("ProductDetail"); 
          
         }
     }
