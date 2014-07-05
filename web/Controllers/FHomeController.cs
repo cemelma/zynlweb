@@ -48,8 +48,11 @@ namespace web.Controllers
         [ChildActionOnly]
         public PartialViewResult GetTopMenu()
         {
+            web.Areas.Admin.Models.VMProductGroupModel grouplist = new web.Areas.Admin.Models.VMProductGroupModel();
+            grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
+
             ViewBag.Services = ServiceManager.GetServiceListForFront("tr");
-            return PartialView("Partial/_topmenu");
+            return PartialView("Partial/_topmenu", grouplist);
         }
 
 

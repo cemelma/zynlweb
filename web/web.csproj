@@ -3158,6 +3158,8 @@
     <Content Include="Views\Shared\Partial\_footeraddress.cshtml" />
     <Content Include="Views\FServices\Index.cshtml" />
     <Content Include="Views\FSiteMap\Index.cshtml" />
+    <Content Include="Views\Shared\_submenusitemap.cshtml" />
+    <Content Include="Views\Shared\_submenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

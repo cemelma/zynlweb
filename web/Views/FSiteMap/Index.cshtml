@@ -1,4 +1,5 @@
-﻿@model DAL.Entities.Institutional
+﻿@model web.Areas.Admin.Models.VMProductGroupModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/frontlayout.cshtml";
@@ -35,8 +36,6 @@
         </ul>
       </div>
 
-
-
       <div class="col-md-3 noPadding">
         <h3>Fiyat Listesi</h3>
 		<ul>
@@ -49,49 +48,59 @@
 
 
 
+
+@*        <div class="dd" id="nestable">
+        <ol class="dd-list">
+            @{Html.RenderPartial("_submenu", Model);}
+        </ol>
+    </div>*@
+
+
       <div class="col-md-12 noPadding">
-      <div class="col-md-12 noPadding">
-      <h4>Ürünler</h4>
-      </div>
-      <div class="col-md-3 noPadding">
-        <h3>Altyapı Elemanları</h3>
-        <ul>
-          <li><a href="#">Beton Borular</a>
+
+
+          <div class="col-md-12 noPadding"><h4>Ürünler</h4></div>
+         @* @{Html.RenderPartial("_submenusitemap", Model);}*@
+
+          <div class="col-md-3 noPadding">
+            <h3>Altyapı Elemanları</h3>
             <ul>
-              <li><a href="#">Muflu Beton Boru Grubu</a></li>
-              <li><a href="#">Muflu Betonarme Boru Grubu</a></li>
-              <li><a href="#">Lamba Zıvana Betornarme Boru Grubu</a></li>
-              <li><a href="#">Sürme Betonarme Boru Grubu</a></li>
+              <li><a href="#">Beton Borular</a>
+                <ul>
+                  <li><a href="#">Muflu Beton Boru Grubu</a></li>
+                  <li><a href="#">Muflu Betonarme Boru Grubu</a></li>
+                  <li><a href="#">Lamba Zıvana Betornarme Boru Grubu</a></li>
+                  <li><a href="#">Sürme Betonarme Boru Grubu</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Baca Konik Kapak Taban</a>
+                <ul>
+                  <li><a href="#">Prefabrik Baca Tabanları</a></li>
+                  <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatısız)</a></li>
+                  <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatılı)</a></li>
+                  <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatılı)</a></li>
+                  <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatısız)</a>          </li>
+                </ul>
+              </li>
             </ul>
-          </li>
-          <li><a href="#">Baca Konik Kapak Taban</a>
+          </div>
+
+          <div class="col-md-3 noPadding">
+            <h3>Kent Mobilyaları</h3>
+          </div>
+
+
+          <div class="col-md-3 noPadding">
+            <h3>Çevre Güvenlik Sistemleri</h3>
+          </div>
+
+
+           <div class="col-md-3 noPadding">
+            <h3>Doğal Taşlar</h3>
             <ul>
-              <li><a href="#">Prefabrik Baca Tabanları</a></li>
-              <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatısız)</a></li>
-              <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatılı)</a></li>
-              <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatılı)</a></li>
-              <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatısız)</a>          </li>
+              <li><a href="#">Doğal Taşlar</a></li>
             </ul>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-md-3 noPadding">
-        <h3>Kent Mobilyaları</h3>
-      </div>
-
-
-      <div class="col-md-3 noPadding">
-        <h3>Çevre Güvenlik Sistemleri</h3>
-      </div>
-
-
-       <div class="col-md-3 noPadding">
-        <h3>Doğal Taşlar</h3>
-        <ul>
-          <li><a href="#">Doğal Taşlar</a></li>
-        </ul>
-      </div>
+          </div>
 
 
     </div>
