@@ -3,71 +3,43 @@
     int productGroupId = 0;
 }
 
-            <div class="col-md-3 noPadding">
-            <h3>Altyapı Elemanları</h3>
-            <ul>
-              <li><a href="#">Beton Borular</a>
-                <ul>
-                  <li><a href="#">Muflu Beton Boru Grubu</a></li>
-                  <li><a href="#">Muflu Betonarme Boru Grubu</a></li>
-                  <li><a href="#">Lamba Zıvana Betornarme Boru Grubu</a></li>
-                  <li><a href="#">Sürme Betonarme Boru Grubu</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Baca Konik Kapak Taban</a>
-                <ul>
-                  <li><a href="#">Prefabrik Baca Tabanları</a></li>
-                  <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatısız)</a></li>
-                  <li><a href="#">Prefabrik Baca Gövdeleri - Konikler (Donatılı)</a></li>
-                  <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatılı)</a></li>
-                  <li><a href="#">Prefabrik Baca Yardımcı Elemanları (Donatısız)</a>          </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-
 @if(Model.SelectedProductGroup!=null)
 {
     productGroupId = Model.SelectedProductGroup.ProductGroupId;
-    
     foreach (var item in Model.ProductGroup.Where(d => d.TopProductId == productGroupId))
     {
         
             if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
             {
-                <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.GroupName</a>
-                    <ul class="dropdown-menu">
-                        @foreach (var itemsub in Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId))
+                    <li><a href="#">@item.GroupName</a>
+                        <ul>
+                
+                    @foreach (var itemsub in Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId))
+                    {
+                        
+                        if (Model.ProductGroup.Where(d => d.TopProductId == itemsub.ProductGroupId).Any())
                         {
-
-                            if (Model.ProductGroup.Where(d => d.TopProductId == itemsub.ProductGroupId).Any())
-                            {
-                                 
-                                 <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@itemsub.GroupName</a>
-                                    <ul class="dropdown-menu">
-                       
-                                    @{
-                                        Model.SelectedProductGroup = itemsub;
-                                        Html.RenderPartial("_submenu", Model);
-                                    }
-
-                                    </ul>
-                                 </li>
-                            }
-                            else
-                            {
-                                <li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@itemsub.GroupName</a></li>
-                            }
+                            <li><a href="#">@itemsub.GroupName</a></li>
+                            <ul>
+                                @{
+                                    Model.SelectedProductGroup = itemsub;
+                                    Html.RenderPartial("_submenusitemap", Model);
+                                }
+                             </ul>
                         }
-                    </ul>
-                </li>
+                        else
+                        {
+                            <li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug">@itemsub.GroupName</a></li>
+                        }
+                    }
+                        </ul>
+                    </li>            
             }
             else
             {
-                <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@item.GroupName</a></li>
+                <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug">@item.GroupName</a></li>  
             }
-        
+         
     }
 }
 else
@@ -76,18 +48,21 @@ else
     {
             if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
             { 
-                <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.GroupName</a>
-                    <ul class="dropdown-menu">
+                 <div class="col-md-3 noPadding">
+                    <h3>@item.GroupName</h3>
+                     <ul>
                         @{
                             Model.SelectedProductGroup = item;
-                            Html.RenderPartial("_submenu", Model);
+                            Html.RenderPartial("_submenusitemap", Model);
                         }
                     </ul>
-                </li>
+                </div>
             }
             else
             {
-                 <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@item.GroupName</a></li>   
+                <div class="col-md-3 noPadding">
+                    <h3>@item.GroupName</h3>
+                </div>
             }
                 
     }
