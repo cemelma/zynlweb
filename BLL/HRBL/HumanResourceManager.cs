@@ -38,7 +38,7 @@ namespace BLL.HRBL
             using (MainContext db = new MainContext())
             {
                 HumanResource editrecord = db.HumanResource.SingleOrDefault();
-        
+
                 if (editrecord == null)
                 {
                     editrecord = new HumanResource();
@@ -70,7 +70,7 @@ namespace BLL.HRBL
         {
             using (MainContext db = new MainContext())
             {
-                var list = db.HumanResource.Where(d=>d.Online==true).OrderBy(d => d.SortOrder).ToList();
+                var list = db.HumanResource.Where(d => d.Online == true).OrderBy(d => d.SortOrder).ToList();
                 return list;
             }
         }
@@ -92,7 +92,7 @@ namespace BLL.HRBL
                 {
                     if (!record.TimeCreated.HasValue)
                         record.TimeCreated = DateTime.Now;
-                   
+
                     record.Online = true;
                     db.HumanResource.Add(record);
                     db.SaveChanges();
@@ -195,14 +195,14 @@ namespace BLL.HRBL
             {
                 try
                 {
-                    HumanResource record = db.HumanResource.Where(d => d.Id == HumanResourcePositionmodel.Id ).SingleOrDefault();
+                    HumanResource record = db.HumanResource.Where(d => d.Id == HumanResourcePositionmodel.Id).SingleOrDefault();
                     if (record != null)
                     {
                         record.Content = HumanResourcePositionmodel.Content;
                         record.PositionName = HumanResourcePositionmodel.PositionName;
-                       
-                       
-                       
+
+
+
                         db.SaveChanges();
 
                         LogtrackManager logkeeper = new LogtrackManager();
@@ -253,6 +253,72 @@ namespace BLL.HRBL
                 }
             }
         }
+
+        public static bool AddHumanResourceCv(HumanResourceCv record)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    record.TimeCreated = DateTime.Now;
+                    record.Deleted = false;
+                    db.HumanResourceCv.Add(record);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static List<HumanResourceCv> GetHumanResourceCV()
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.HumanResourceCv.Where(d => d.Deleted == false).OrderByDescending(d => d.TimeCreated).ToList();
+                return list;
+            }
+        }
+
+        public static List<HumanResourceCv> GetHumanResourceCV(int positionId)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.HumanResourceCv.Where(d => d.HumanResourcePositionId == positionId && d.Deleted == false).OrderByDescending(d => d.TimeCreated).ToList();
+                return list;
+            }
+        }
+
+        public static bool DeleteCV(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    var record = db.HumanResourceCv.FirstOrDefault(d => d.HumanResourceCvId == id);
+                    record.Deleted = true;
+
+                    db.SaveChanges();
+
+                    LogtrackManager logkeeper = new LogtrackManager();
+                    logkeeper.LogDate = DateTime.Now;
+                    logkeeper.LogProcess = EnumLogType.InsanKaynaklari.ToString();
+                    logkeeper.Message = LogMessages.HumanResourcePositionCVDeleted;
+                    logkeeper.User = HttpContext.Current.User.Identity.Name;
+                    logkeeper.Data = record.FileUrl;
+                    logkeeper.AddInfoLog(logger);
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
 
     }
 }

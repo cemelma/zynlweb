@@ -234,6 +234,8 @@ namespace web.Areas.Admin
             context.MapRoute("ik_positionaddx", "yonetim/insankaynaklari/pozisyonekle", new { action = "AddHumanResourcePosition", Controller = "HumanResource" });
             context.MapRoute("ik_positioneditx", "yonetim/insankaynaklari/pozisyonduzenle/{id}", new { action = "EditHumanResourcePosition", Controller = "HumanResource" });
             context.MapRoute("ik_indexx", "yonetim/insankaynaklari", new { action = "Index", Controller = "HumanResource" });
+            context.MapRoute("ik_cv", "yonetim/insankaynaklari/cvListesi", new { action = "ListCV", Controller = "HumanResource" });
+            context.MapRoute("ik_cvdetail", "yonetim/insankaynaklari/cvListesi/{id}", new { action = "ListCV", Controller = "HumanResource" });
             context.MapRoute("ik_index2", "yonetim/insankaynaklari/{lang}", new { action = "Index", Controller = "HumanResource" });
 
             //KULLANICILAR
