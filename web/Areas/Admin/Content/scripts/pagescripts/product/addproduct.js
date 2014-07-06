@@ -12,7 +12,7 @@
     $("#tabs").tabs();
 
     if (result == "False" || result == "false") {
-           $("#tabs").tabs({ disabled: [1] });
+           $("#tabs").tabs({ disabled: [1,2] });
     }
     else {
         $('#tabs').tabs({ selected: 1 });

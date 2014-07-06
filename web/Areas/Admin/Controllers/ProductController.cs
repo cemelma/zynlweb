@@ -14,6 +14,7 @@ using DAL.Entities;
 using System.Drawing;
 using BLL.PhotoBL;
 using DAL.Context;
+using web.Areas.Admin.Models;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -31,7 +32,13 @@ namespace web.Areas.Admin.Controllers
             {
                 ViewBag.SaveResult = false;
             }
-            return View();
+            
+            web.Areas.Admin.Models.VMProductGroupModel grouplist = new Models.VMProductGroupModel();
+            grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
+            ProductAddModel model = new ProductAddModel();
+            model.VMProductGroupModel = grouplist;
+      //      ViewBag.Groups = grouplist;
+            return View(model);
         }
 
         [HttpPost]
@@ -42,6 +49,36 @@ namespace web.Areas.Admin.Controllers
             {
                 model.PageSlug = Utility.SetPagePlug(model.Name);
                 model.ProductGroupId = 1;
+               
+
+                if (prd1 != null)
+                {
+                    //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+                    Random random = new Random();
+                    int rand = random.Next(1000, 99999999);
+                    string path = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+                    new ImageHelper(1020, 768).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
+                    model.Image1 = "/Content/images/userfiles/"+path;
+                }
+                else
+                {
+                    model.Image1 = "/Content/images/front/noimage.jpeg";
+                }
+
+                if (prd2 != null)
+                {
+                    //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+                    Random random = new Random();
+                    int rand = random.Next(1000, 99999999);
+                    string path = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+                    new ImageHelper(1020, 768).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
+                    model.Image2 = "/Content/images/userfiles/" + path;
+                }
+                else
+                {
+                    model.Image2 = "/Content/images/front/noimage.jpeg";
+                }
+
                 ProductManager.AddProduct(model);
 
                 foreach (var item in attachments)
@@ -75,7 +112,7 @@ namespace web.Areas.Admin.Controllers
 
                         //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
                         Photo p = new Photo();
-                        p.CategoryId = (int)PhotoType.Product;
+                        p.CategoryId = (int)PhotoType.ProductUygulama;
                         p.ItemId = model.ProductId;
                         p.Path = "/Content/images/userfiles/" + path;
                         p.Thumbnail = "/Content/images/userfiles/" + thumbnail;
@@ -195,6 +232,19 @@ namespace web.Areas.Admin.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public void SaveCategory(int id, int prdId)
+        {
+            using (MainContext db = new MainContext())
+            {
+                Product prd = db.Product.Where(x => x.ProductId == prdId).SingleOrDefault();
+                if (prd != null)
+                {
+                    prd.ProductGroupId = id;
+                    db.SaveChanges();
+                }
+            }
         }
        
     }

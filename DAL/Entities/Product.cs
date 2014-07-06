@@ -28,6 +28,8 @@ namespace DAL.Entities
         [Required(ErrorMessage = "İçerik Giriniz.")]
         public string Content { get; set; }
 
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
         //[Display(Name = "Galeri GrupId")]
         //[Required(ErrorMessage = "Galeri Seçiniz.")]
         //public string GalleryId { get; set; }

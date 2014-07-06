@@ -220,6 +220,7 @@
     <Compile Include="Areas\Admin\Helpers\PhotoType.cs" />
     <Compile Include="Areas\Admin\Helpers\Utility.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductAddModel.cs" />
     <Compile Include="Areas\Admin\Models\VMProductGroupModel.cs" />
     <Compile Include="Controllers\FProductController.cs" />
     <Compile Include="Controllers\FEstatesController.cs" />
@@ -2961,6 +2962,7 @@
     <Content Include="Areas\Admin\Views\Shared\_imageUploadAndCrop.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_submenu.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_detailtable1.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_categorychoise.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />
