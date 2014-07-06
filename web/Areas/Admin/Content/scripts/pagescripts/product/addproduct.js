@@ -29,17 +29,13 @@
         var birim = $("#txtbirim").val();
         var renk = $("#txtrenk").val();
 
-        
-       
-
-        $.ajax({
+         $.ajax({
             type: 'POST',
             url: '/Product/SaveDetail',
             data: '{code:"' + code + '",malzeme:"' + malzeme + '",birim:"' + birim + '",ebat:"' + ebat + '",agirlik:"' + agirlik + '",ton:"' + ton + '",fiyat:"' + fiyat + '",renk:"' + renk + '",prId:"' + prId + '"}',
             contentType: "application/json; charset=utf-8",
             dataType: 'html',
             success: function (result) {
-                alert(result);
                 $("#resultTable").html(result);
                 //$("#ProductSubGroupId").empty().append($("<option></option>").val("").html("Ürün Alt Grubunu Seçiniz..."));
                 //$("#g1").css("display", "block");

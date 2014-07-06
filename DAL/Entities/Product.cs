@@ -14,8 +14,7 @@ namespace DAL.Entities
         public int ProductId { get; set; }
 
           [Display(Name = "Ürün Grubu")]
-        [Required(ErrorMessage = "Ürün Grubunu Seçiniz.")]
-        public int ProductGroupId { get; set; }
+          public int ProductGroupId { get; set; }
       
 
         [Display(Name = "Ürün Adı")]
