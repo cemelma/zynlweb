@@ -1,7 +1,7 @@
 ﻿@model DAL.Entities.Contact
-
-
-
+@{
+    List<DAL.Entities.ProductGroup> pglst = ViewData["pgList"] as List<DAL.Entities.ProductGroup>;
+}
 
 <div id="footer">
   <div class="container">
@@ -24,10 +24,10 @@
         <div class="col-md-3">
           <h6>ÜRÜNLER</h6>
           <ul>
-            <li><a href="kilitparketaslari.html">Kilitli Parke Taşları</a></li>
-            <li><a href="bordurtaslari.html">Bordür Taşları</a></li>
-            <li><a href="drenajtaslari.html">Drenaj Taşları</a></li>
-            <li><a href="sevvecicekler.html">Şev ve Çiçekler</a></li>
+            @foreach (var item in pglst.Where(d=>d.TopProductId == 1).Take(5))
+            {
+                <li><a href="/fiyatlar/@item.ProductGroupId/@item.PageSlug">@item.GroupName</a></li>   
+            }
           </ul>
         </div>
         <div class="col-md-3">

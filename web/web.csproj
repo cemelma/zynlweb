@@ -3164,6 +3164,7 @@
     <Content Include="Views\Shared\_submenusitemap.cshtml" />
     <Content Include="Views\Shared\_submenu.cshtml" />
     <Content Include="Views\FProduct\Index.cshtml" />
+    <Content Include="Views\FProduct\Prices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

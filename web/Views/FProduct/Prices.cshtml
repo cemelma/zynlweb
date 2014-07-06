@@ -1,0 +1,134 @@
+﻿@model IEnumerable<DAL.Entities.Product> 
+@{
+    ViewBag.Title = "Fiyatlar";
+    Layout = "~/Views/Shared/frontlayout.cshtml";        
+}
+
+@section breadcrumb{
+    <div class="col-md-8 breadcrumb">
+        <ul>
+            <li><a href="/">Anasayfa</a></li>
+            <li><a href="/urunler/@ViewBag.ProductGroup.ProductGroupId/@ViewBag.ProductGroup.PageSlug">@ViewBag.ProductGroup.GroupName</a> </li>
+            <li>Fiyatlar </li>
+        </ul>
+    </div>
+}
+
+<div id="container" class="container">
+  <div class="col-md-12 shadow section noPadding noMarginTop">
+    <div class="col-md-12 sectionContent page newsPage">
+      <h2 class="pageTitle">FİYAT LİSTESİ</h2>
+      <a href="uyelik.html" class="print"><img src="/content/images/print.png" border="0"/></a>
+      <div class="pageContent">
+        <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
+        <!-- Ürün Fiyat Başlangıç -->
+          <tr>
+            <td colspan="8" class="urunAd">Aşık Taşı - <a href="#">Ürün Detay</a></td>
+          </tr>
+          <tr class="fiyatTabloTitle">
+            <td>KOD</td>
+            <td>MALZEME</td>
+            <td>BİRİM</td>
+            <td>EBAT</td>
+            <td>AĞIRLIK (KG)</td>
+            <td>ARAÇ (20 TON)</td>
+            <td>B.RENGİ TL/M²</td>
+            <td>KIRMIZI TL/M²</td>
+          </tr>
+          <tr>
+            <td>1100-1105</td>
+            <td>Aşık Taşı</td>
+            <td>m²</td>
+            <td>19,8*16,3*6</td>
+            <td>140</td>
+            <td>140 m²</td>
+            <td>10,00</td>
+            <td>10,50</td>
+          </tr>
+          <tr>
+            <td>1100-1105</td>
+            <td>Aşık Taşı</td>
+            <td>m²</td>
+            <td>19,8*16,3*6</td>
+            <td>140</td>
+            <td>140 m²</td>
+            <td>10,00</td>
+            <td>10,50</td>
+          </tr>
+          <!-- Ürün Fiyat Bitiş -->
+                  <!-- Ürün Fiyat Başlangıç -->
+          <tr>
+            <td colspan="8" class="urunAd">Aşık Taşı - <a href="#">Ürün Detay</a></td>
+          </tr>
+          <tr class="fiyatTabloTitle">
+            <td>KOD</td>
+            <td>MALZEME</td>
+            <td>BİRİM</td>
+            <td>EBAT</td>
+            <td>AĞIRLIK (KG)</td>
+            <td>ARAÇ (20 TON)</td>
+            <td>B.RENGİ TL/M²</td>
+            <td>KIRMIZI TL/M²</td>
+          </tr>
+          <tr>
+            <td>1100-1105</td>
+            <td>Aşık Taşı</td>
+            <td>m²</td>
+            <td>19,8*16,3*6</td>
+            <td>140</td>
+            <td>140 m²</td>
+            <td>10,00</td>
+            <td>10,50</td>
+          </tr>
+          <tr>
+            <td>1100-1105</td>
+            <td>Aşık Taşı</td>
+            <td>m²</td>
+            <td>19,8*16,3*6</td>
+            <td>140</td>
+            <td>140 m²</td>
+            <td>10,00</td>
+            <td>10,50</td>
+          </tr>
+          <!-- Ürün Fiyat Bitiş -->
+                  <!-- Ürün Fiyat Başlangıç -->
+          <tr>
+            <td colspan="8" class="urunAd">Aşık Taşı - <a href="#">Ürün Detay</a></td>
+          </tr>
+          <tr class="fiyatTabloTitle">
+            <td>KOD</td>
+            <td>MALZEME</td>
+            <td>BİRİM</td>
+            <td>EBAT</td>
+            <td>AĞIRLIK (KG)</td>
+            <td>ARAÇ (20 TON)</td>
+            <td>B.RENGİ TL/M²</td>
+            <td>KIRMIZI TL/M²</td>
+          </tr>
+          <tr>
+            <td>1100-1105</td>
+            <td>Aşık Taşı</td>
+            <td>m²</td>
+            <td>19,8*16,3*6</td>
+            <td>140</td>
+            <td>140 m²</td>
+            <td>10,00</td>
+            <td>10,50</td>
+          </tr>
+          <tr>
+            <td>1100-1105</td>
+            <td>Aşık Taşı</td>
+            <td>m²</td>
+            <td>19,8*16,3*6</td>
+            <td>140</td>
+            <td>140 m²</td>
+            <td>10,00</td>
+            <td>10,50</td>
+          </tr>
+          <!-- Ürün Fiyat Bitiş --> 
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
