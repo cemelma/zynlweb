@@ -11,6 +11,7 @@ using BLL.LanguageBL;
 using BLL.ProductBL;
 //using BLL.ProductBL;
 using DAL.Entities;
+using Newtonsoft.Json;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -132,10 +133,21 @@ namespace web.Areas.Admin.Controllers
 
         public JsonResult SortRecords(string list)
         {
-            JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
-            string[] idsList = psl.list;
-            bool issorted = ProductManager.SortRecords(idsList);
-            return Json(issorted);
+            JavaScriptSerializer Serializer = new JavaScriptSerializer();
+            dynamic dynamicResult = Serializer.Deserialize<dynamic>(list);
+            foreach (var item in dynamicResult)
+            {
+                
+            }
+            //var jsonResponse = JsonConvert.DeserializeAnonymousType(json, list);
+            //dynamic jsonResponse = JsonConvert.Deserialize(list);
+
+            //var dynamicObject = Json.Decode(jsonString);
+
+            //JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
+            //string[] idsList = psl.list;
+            //bool issorted = ProductManager.SortRecords(idsList);
+            return Json(true);
 
 
         }
