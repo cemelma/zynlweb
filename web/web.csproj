@@ -2894,10 +2894,10 @@
     <Content Include="Areas\Admin\Views\Banner\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\leftbar.cshtml" />
-    <Content Include="Areas\Admin\Views\SectorGroup\AddSectorGroup.cshtml" />
-    <Content Include="Areas\Admin\Views\SectorGroup\EditSectorGroup.cshtml" />
-    <Content Include="Areas\Admin\Views\SectorGroup\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\SectorGroup\sectorgroup_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\SectorGroup\AddSectorGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\SectorGroup\EditSectorGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\SectorGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\SectorGroup\sectorgroup_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Sector\AddSector.cshtml" />
     <Content Include="Areas\Admin\Views\Sector\EditSector.cshtml" />
     <Content Include="Areas\Admin\Views\Sector\Index.cshtml" />
@@ -2960,6 +2960,7 @@
     <Content Include="Areas\Admin\Views\Tags\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_imageUploadAndCrop.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_submenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_detailtable1.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />

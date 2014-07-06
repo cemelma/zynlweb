@@ -1,0 +1,30 @@
+﻿<table class="table no-border tablesorter">
+    <thead>
+        <tr>
+            <th>Kod</th>
+            <th>Malzeme</th>
+            <th>Birim</th>
+            <th>Ebat</th>
+            <th>Ağırlık</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.Details != null)
+        {
+            foreach (var item in ViewBag.Details)
+            {
+            <tr>
+                <td>@item.Code</td>
+                <td>@item.Material</td>
+                <td>@item.Unit</td>
+                <td>@item.Dimension</td>
+                <td>@item.Weight</td>
+            </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="5">Kayıt Bulunamadı</td></tr>
+        }
+    </tbody>
+</table>

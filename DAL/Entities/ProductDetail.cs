@@ -37,12 +37,12 @@ namespace DAL.Entities
         [Required(ErrorMessage = "Araç(Ton) Giriniz.")]
         public string VehicleTon { get; set; }
 
-        [Display(Name = "B.Rengi TL/M2")]
-        [Required(ErrorMessage = "B.Rengi Giriniz.")]
+        [Display(Name = "B.Rengi ")]
+      
         public string ColorWhite { get; set; }
 
         [Display(Name = "Kırmızı TL/M2")]
-        [Required(ErrorMessage = "Kırmızı Giriniz.")]
-        public string ColorRed { get; set; }
+      
+        public string Price { get; set; }
     }
 }

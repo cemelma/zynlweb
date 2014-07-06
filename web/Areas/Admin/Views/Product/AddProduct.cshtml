@@ -8,6 +8,7 @@
 <link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.MultiFile.js"></script>
 
+<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
 @Html.Partial("product_leftbar")
 
 <div id="page-content" class="container_12">
@@ -16,16 +17,21 @@
     </div>
     <section class="grid_12 form">
         @Html.Hidden("ProcessMessage", (object)@ViewBag.ProcessMessage)
+        @Html.Hidden("hdsaveResult",(object)@ViewBag.SaveResult)
+       @Html.Hidden("hdProductId",(object)@ViewBag.ProductId)
+        
+     
         @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+           
             @Html.Hidden("hdfieldcategory")
             @Html.Hidden("hdfieldtaglist")
             @Html.ValidationSummary(true)
-            <input type="submit" value="Kaydet" id="btnsave" />
+         
             <div id="tabs">
                 <ul>
                     <li><a href="#tabs-1">Ürün Bilgileri</a></li>
-                    <li><a href="#tabs-2">Ürün Açıklaması</a></li>
+                    <li><a href="#tabs-2">Ürün Özellikleri/Detayları</a></li>
                 </ul>
                 <div id="tabs-1">
                   @*  <p>
@@ -49,8 +55,8 @@
                         <label>Ürün Fotoğrafları</label>
                     </p>
                     <div style="width: 249px; width: 25%; float: left">
-                        <input type="file" style="width: 99%" name="attachments" class="multi" maxlength="2"  />
-                        <span>En fazla  adet fortoğfraf ekleyebilirsiniz</span>
+                        <input type="file" style="width: 99%" name="prd1"   />
+                        <input type="file" style="width: 99%" name="prd2"   />
                     </div>
                     <div style="height: 40px; clear: both;"></div>
                     
@@ -58,18 +64,55 @@
                         <label>Uygulama Fotoğrafları</label>
                     </p>
                     <div style="width: 249px; width: 25%; float: left">
-                        <input type="file" style="width: 99%" name="attachmentsproduct" class="multi" />
+                        <input type="file" style="width: 99%" name="attachments" id="fileproductdetail" class="multi" />
                     </div>
                     <div style="height: 40px; clear: both;"></div>
+                       <input type="submit" value="Kaydet" id="btnsave" />
                 </div>
 
                 <div id="tabs-2">
-                   @* <p>
-                        @Html.LabelFor(m => m.Code)
-                        @Html.TextBoxFor(m => m.Code, new { @class = "textwidth50", Rows = "5" })
-                        @Html.ValidationMessageFor(m => m.Code)
+                    <p>
+                        @Html.Label("Kod")
+                        <input type="text" name="txtcode" id="txtcode"  />
+                    </p>
+                     <p>
+                        @Html.Label("Malzeme")
+                        <input type="text" name="txtmalzeme" id="txtmalzeme" />
+                    </p>
+                     <p>
+                        @Html.Label("Birim")
+                        <input type="text" name="txtbirim" id="txtbirim" />
+                    </p>
+                     <p>
+                        @Html.Label("Ebat")
+                        <input type="text" name="txtebat" id="txtebat" />
+                    </p>
+                     <p>
+                        @Html.Label("Ağırlık")
+                        <input type="text" name="txtagirlik"  id="txtagirlik" />
+                    </p>
+                       <p>
+                        @Html.Label("Araç/Ton")
+                        <input type="text" name="txtton" id="txtton" />
+                    </p>
+                      <p>
+                        @Html.Label("Renk")
+                        <input type="text" name="txtrenk" id="txtrenk" />
+                    </p>
+                       <p>
+                        @Html.Label("TL/M2")
+                        <input type="text" name="txtfiyat" id="txtfiyat" />
+                    </p>
+                   @*    <p>
+                        @Html.Label("Kırmızı TL/M2")
+                        <input type="text" name="txtkirmizi" />
                     </p>*@
-                  
+                    <p>
+                         <input type="button" value="Kaydet" id="btnsaveProp" />
+                    </p>
+                <div id="resultTable">
+                    @*@Html.Partial("_detailtable1",null)*@
+                </div>
                 </div>
             </div>
         

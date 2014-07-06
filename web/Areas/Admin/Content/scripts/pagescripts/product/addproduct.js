@@ -1,5 +1,8 @@
 ﻿$(function () {
     var status = $("#ProcessMessage").val();
+    var result = $("#hdsaveResult").val();
+    var prId = $("#hdProductId").val();
+    
     $("#imgloader").css("display", "none");
     if (status == "True" || status == "true")
         MessageBox("İşlem Başarıyla Tamamlandı", "info");
@@ -7,8 +10,51 @@
         MessageBox("İşlem Sırasında Bir Hata Oluştu.", "alert");
 
     $("#tabs").tabs();
-  //  $("#tabs").tabs({ disabled: [1] });
+
+    if (result == "False" || result == "false") {
+           $("#tabs").tabs({ disabled: [1] });
+    }
+    else {
+        $('#tabs').tabs({ selected: 1 });
+
+    }
   
+    $("#btnsaveProp").click(function () {
+        var code = $("#txtcode").val();
+        var malzeme = $("#txtmalzeme").val();
+        var ebat = $("#txtebat").val();
+        var agirlik = $("#txtagirlik").val();
+        var ton = $("#txtton").val();
+        var fiyat = $("#txtfiyat").val();
+        var birim = $("#txtbirim").val();
+        var renk = $("#txtrenk").val();
+
+        
+       
+
+        $.ajax({
+            type: 'POST',
+            url: '/Product/SaveDetail',
+            data: '{code:"' + code + '",malzeme:"' + malzeme + '",birim:"' + birim + '",ebat:"' + ebat + '",agirlik:"' + agirlik + '",ton:"' + ton + '",fiyat:"' + fiyat + '",renk:"' + renk + '",prId:"' + prId + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'html',
+            success: function (result) {
+                alert(result);
+                $("#resultTable").html(result);
+                //$("#ProductSubGroupId").empty().append($("<option></option>").val("").html("Ürün Alt Grubunu Seçiniz..."));
+                //$("#g1").css("display", "block");
+                //$.each(result, function (i, item) {
+                //    $("#ProductSubGroupId").append($("<option></option>").val(item.Value).html(item.Text));
+                //});
+                //$("#ProductSubGroupId").removeAttr("disabled");
+                //$("#imgloader2").css("display", "none");
+            },
+            error: function () {
+
+            }
+        });
+
+    });
    
 
    
@@ -21,37 +67,7 @@
         $("#ProductGroupId").empty().append($("<option></option>").val("").html("Ürün Grubunu Seçiniz..."));
     }
 
-    $("#Language").change(function () {
-        
-        var val = $("#Language option:selected").val();
-        if (val == "") { $("#ProductGroupId").attr("disabled", true); }
-        else {
-            $("#imgloader").css("display", "inline-block");
-            $.ajax({
-                type: 'POST',
-                url: '/Product/LoadGroup',
-                data: '{lang:"' + val + '"}',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'json',
-                success: function (result) {
-                    $("#ProductGroupId").empty().append($("<option></option>").val("").html("Ürün Grubunu Seçiniz..."));
-
-                    $.each(result, function (i, item) {
-                        $("#ProductGroupId").append($("<option></option>").val(item.Value).html(item.Text));
-                    });
-                    $("#ProductGroupId").removeAttr("disabled");
-                    $("#imgloader").css("display", "none");
-                },
-                error: function () {
-
-                }
-            });
-
-
-        }
-             
-      
-    });
+   
 
     $("#ProductGroupId").change(function () {
         var val = $("#ProductGroupId option:selected").val();

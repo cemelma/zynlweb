@@ -12,6 +12,7 @@ namespace web.Areas.Admin.Helpers
         Estate=2,
         News=3,
         Reference = 4,
-        Service = 5
+        Service = 5,
+        ProductUygulama = 11,
     }
 }
