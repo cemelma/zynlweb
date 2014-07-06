@@ -26,7 +26,22 @@ namespace web.Controllers
             {
                 int pId = Convert.ToInt32(RouteData.Values["id"]);
                 ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
+                if (Session["userlogin"] != null)
+                    ViewBag.userloginemail = Session["userlogin"];
+                else ViewBag.userloginemail = "";
             }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult UserLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UserLogin(FormCollection frm)
+        {
             return View();
         }
 

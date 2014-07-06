@@ -3168,6 +3168,8 @@
     <Content Include="Views\Shared\_submenu.cshtml" />
     <Content Include="Views\FProduct\Index.cshtml" />
     <Content Include="Views\FProduct\Prices.cshtml" />
+    <Content Include="Views\FProduct\UserLoginPopup.cshtml" />
+    <Content Include="Views\FProduct\UserLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

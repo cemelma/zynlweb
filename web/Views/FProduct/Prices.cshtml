@@ -18,7 +18,20 @@
   <div class="col-md-12 shadow section noPadding noMarginTop">
     <div class="col-md-12 sectionContent page newsPage">
       <h2 class="pageTitle">FİYAT LİSTESİ</h2>
-      <a href="uyelik.html" class="print"><img src="/content/images/print.png" border="0"/></a>
+        @if (ViewBag.userloginemail == "")
+        { 
+            <a href="/giris" class="print"><img src="/content/images/print.png" border="0"></a>
+        }
+        else
+        {
+             <a href="javascript:void(0);" class="print"><img src="/content/images/print.png" border="0"></a>
+        }
+      
+        @*
+        <a href="/giris" class="print"><img src="/content/images/print.png" border="0"/></a>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        
+        </div>*@
       <div class="pageContent">
         <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
         <!-- Ürün Fiyat Başlangıç -->
@@ -132,3 +145,19 @@
   </div>
 
 </div>
+
+
+<script>
+    $('.print').click(function () {
+
+        $("#myModal").load("/FProduct/UserLogin", function (responseTxt, statusTxt, xhr) {
+            if (statusTxt == "success") {
+                $('#myModal').modal('show');
+                //alert("Başarılı giriş yaptınız");
+            }
+            //if (statusTxt == "error") alert("Hata: " + xhr.status + ": " + xhr.statusText);
+        });
+
+        
+    });
+</script>

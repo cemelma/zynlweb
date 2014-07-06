@@ -26,6 +26,7 @@ namespace web
             routes.MapRoute("sitemap", "siteharita", new { action = "Index", Controller = "FSiteMap" });
             routes.MapRoute("urunler", "urunler/{id}/{pageslug}", new { action = "Index", Controller = "FProduct" });
             routes.MapRoute("fiyatlar", "fiyatlar/{id}/{pageslug}", new { action = "Prices", Controller = "FProduct" });
+            routes.MapRoute("giris", "giris", new { action = "UserLogin", Controller = "FProduct" });
 
             routes.MapRoute("hizmetler", "hizmetler/{id}/{page}", new { action = "Index", Controller = "FServices" });
 

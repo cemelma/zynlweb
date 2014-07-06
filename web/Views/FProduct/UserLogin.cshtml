@@ -1,0 +1,112 @@
+﻿@model  DAL.Entities.User
+@{
+    ViewBag.Title = "Giriş";
+    Layout = "~/Views/Shared/frontlayout.cshtml";        
+}
+
+@section breadcrumb{
+    <div class="col-md-8 breadcrumb">
+        <ul>
+            <li><a href="/">Anasayfa</a></li>
+            <li>Giriş </li>
+        </ul>
+    </div>
+}
+
+ @using (Html.BeginForm("Prices", "FProduct", FormMethod.Post))
+            {
+     
+<div id="container" class="container">
+    <div class="col-md-12 shadow section noPadding noMarginTop">
+        <div class="col-md-12 sectionContent page uyelikPage">
+            <h2 class="pageTitle">ÜYELİK</h2>
+            <div class="pageContent">
+                <div class="col-md-5">
+                    <h3>Giriş Yapın</h3>
+                    <div class="col-md-4">
+                        E-Posta Adresi:
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text">
+                    </div>
+                    <div class="col-md-4">
+                        Şifre:
+                    </div>
+                    <div class="col-md-8">
+                        <input type="password">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-8">
+                        <input type="submit" value="Giriş">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h3>Ya da Üye Olun</h3>
+                    <div class="col-md-3">
+                        Ad-Soyad:
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text">
+                    </div>
+                    <div class="col-md-3">
+                        Şirket:
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text">
+                    </div>
+                    <div class="col-md-3">
+                        Adres:
+                    </div>
+                    <div class="col-md-9">
+                        <textarea style="margin: 0px 0px 10px; width: 287px; height: 68px;"></textarea>
+                    </div>
+                    <div class="col-md-3">
+                        Telefon:
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text">
+                    </div>
+                    <div class="col-md-3">
+                        Cep Telefonu:
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text">
+                    </div>
+                    <div class="col-md-3">
+                        Fax:
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text">
+                    </div>
+                    <div class="col-md-3">
+                        E-Posta Adresi:
+                    </div>
+                    <div class="col-md-9">
+                        <input type="password">
+                    </div>
+                    <div class="col-md-3">
+                        Şifre:
+                    </div>
+                    <div class="col-md-9">
+                        <input type="password">
+                    </div>
+                    <div class="col-md-3">
+                        Şifre(Tekrar):
+                    </div>
+                    <div class="col-md-9">
+                        <input type="password">
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9">
+                        <input type="submit" value="Üye Ol">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+ }
