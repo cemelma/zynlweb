@@ -22,12 +22,8 @@
           <ul class="nav nav-tabs" id="pulpositions">
             @foreach (var item in Model)
             {
-                    <li class=""><a href="#pozisyon_@item.Id" data-toggle="tab">@item.PositionName</a></li>
+                    <li class=""><a href="#pozisyon_@item.Id" data-toggle="tab" data-id="@item.Id" class="positiontabclick">@item.PositionName</a></li>
             }
-            @*  <li class="active"><a href="#pozisyon1" data-toggle="tab">Pozisyon Adı Alanı 1</a></li>
-            <li><a href="#pozisyon2" data-toggle="tab">Pozisyon Adı Alanı 2</a></li>
-            <li><a href="#pozisyon3" data-toggle="tab">Pozisyon Adı Alanı 3</a></li>
-            <li class="lastChild"><a href="#pozisyon4" data-toggle="tab">Pozisyon Adı Alanı 4</a></li>*@
           </ul>
         </div>
         <div class="col-md-9">
@@ -42,7 +38,10 @@
                </p>
                   @using (Html.BeginForm("Index", "FHumanResources", FormMethod.Post, new { enctype = "multipart/form-data", id = "cvform" }))
                   {
-                      <hr />
+                    <hr />
+                      <input type="hidden" value="@Model.FirstOrDefault().Id" id="posid" name="positionId" />
+                      <input type="hidden" value="@Model.FirstOrDefault().PositionName" id="posname" name="positionname" />
+                      
                     <input type="file" name="uploadfile" id="uploadfile" style="width:210px; float:left;" class="validate[required]"/>
                     <input type="submit" class="btn btn-warning col-md-offset-1" value="CV GÖNDER" id="btncvgonder_@item.Id" />
                   }
@@ -65,5 +64,9 @@
         $("#pulpositions li:first").addClass("active");
         $("#positioncontent .tab-pane:first").addClass("active");
         jQuery("#cvform").validationEngine();
+        $('.positiontabclick').click(function () {
+            $('#posid').val($(this).attr('data-id'));
+            $('#posname').val($(this).text());
+        });
     });
 </script>

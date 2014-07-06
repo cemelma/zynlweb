@@ -175,5 +175,47 @@ namespace web.Areas.Admin.Controllers
             ViewBag.LanguageList = list;
             return lang;
         }
+
+
+
+        public ActionResult ListCV()
+        {
+            if (RouteData.Values["id"] != null)
+            {
+                int posId = Convert.ToInt32(RouteData.Values["id"].ToString());
+                List<HumanResource> positionList = HumanResourceManager.GetHumanResourcePositionList();
+                List<SelectListItem> obj = new List<SelectListItem>();
+                obj.Add(new SelectListItem { Text = "Tümü", Value = "0" });
+                foreach (var item in positionList)
+                {
+                    if (posId != item.Id)
+                        obj.Add(new SelectListItem { Text = item.PositionName, Value = Convert.ToString(item.Id) });
+                    else obj.Add(new SelectListItem { Text = item.PositionName, Value = Convert.ToString(item.Id), Selected = true });
+                }
+                ViewData["position"] = obj;
+                return View(HumanResourceManager.GetHumanResourceCV(posId));
+            }
+            else
+            {
+                List<HumanResource> positionList = HumanResourceManager.GetHumanResourcePositionList();
+                List<SelectListItem> obj = new List<SelectListItem>();
+                obj.Add(new SelectListItem { Text = "Tümü", Value = "0" });
+                foreach (var item in positionList)
+                {
+                    obj.Add(new SelectListItem { Text = item.PositionName, Value = Convert.ToString(item.Id) });
+                }
+                ViewData["position"] = obj;
+                return View(HumanResourceManager.GetHumanResourceCV());
+            }
+        }
+
+        public JsonResult DeleteHumanPositionCv(int id)
+        {
+            bool isdelete = HumanResourceManager.DeleteCV(id);
+            //if (isdelete)
+            return Json(isdelete);
+            //  else return false;
+        }
+
     }
 }

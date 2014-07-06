@@ -14,8 +14,19 @@ namespace web.Controllers
         {
             //web.Areas.Admin.Models.VMProductGroupModel grouplist = new web.Areas.Admin.Models.VMProductGroupModel();
             //grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
-            
+            int pId = Convert.ToInt32(RouteData.Values["id"]);
+            ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
             ViewData["referanslar"] = ReferenceManager.GetReferenceListForFront("tr");
+            return View();
+        }
+
+        public ActionResult Prices()
+        {
+            if (RouteData.Values["id"] != null)
+            {
+                int pId = Convert.ToInt32(RouteData.Values["id"]);
+                ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
+            }
             return View();
         }
 

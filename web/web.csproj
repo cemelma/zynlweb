@@ -1589,6 +1589,7 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\estate\addestate.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\estate\editestate.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\estate\estatelist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\humanresourceposition\humancv.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\whyus.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\ourteam\addOurTeam.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\ourteam\editOurTeam.js" />
@@ -2963,6 +2964,7 @@
     <Content Include="Areas\Admin\Views\Shared\_submenu.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_detailtable1.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_categorychoise.cshtml" />
+    <Content Include="Areas\Admin\Views\HumanResource\ListCV.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />
@@ -3165,6 +3167,7 @@
     <Content Include="Views\Shared\_submenusitemap.cshtml" />
     <Content Include="Views\Shared\_submenu.cshtml" />
     <Content Include="Views\FProduct\Index.cshtml" />
+    <Content Include="Views\FProduct\Prices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

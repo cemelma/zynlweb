@@ -1,5 +1,6 @@
 ﻿using BLL.HRBL;
 using BLL.MailBL;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,13 +21,18 @@ namespace web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase uploadfile)
+        public ActionResult Index(HttpPostedFileBase uploadfile,string positionname, int positionId)
         {
             Random random = new Random();
             int rand = random.Next(1000, 99999999);
             string targetFolder = Server.MapPath("~/Content/images/userfiles/humanresources");
             string targetPath = Path.Combine(targetFolder, rand + "_" + uploadfile.FileName);
             uploadfile.SaveAs(targetPath);
+
+            HumanResourceCv hrcv = new HumanResourceCv();
+            hrcv.FileUrl = "/Content/images/userfiles/humanresources/" + rand + "_" + uploadfile.FileName;
+            hrcv.HumanResourcePositionId = positionId;
+            HumanResourceManager.AddHumanResourceCv(hrcv);
 
             var mset = MailManager.GetMailSettings();
             var msend = MailManager.GetMailUsersList(0);
@@ -47,7 +53,7 @@ namespace web.Controllers
                     mail.To.Add(item.MailAddress);
                 mail.Subject = "Yeni CV";
                 mail.IsBodyHtml = true;
-                mail.Body = "<p> Merhaba \"Zeyne Yayla\" üzerinden Yeni bir CV gönderildi. <br> CV'yi mail ekinde bulabilirsiniz..</p>";
+                mail.Body = "<p> Merhaba \"Zeyne Yayla\" üzerinden " + positionname + " pozisyonu için yeni bir CV gönderildi. <br> CV'yi mail ekinde bulabilirsiniz..</p>";
 
                 if (mail.To.Count > 0) client.Send(mail);
             }

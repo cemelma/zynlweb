@@ -245,6 +245,15 @@ namespace BLL.ProductBL
             }
         }
 
+        public static ProductGroup GetProductGroupItem(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.ProductGroup.FirstOrDefault(d => d.Deleted == false && d.ProductGroupId == id);
+                return list;
+            }
+        }
+
         public static List<ProductGroup> GetProductGroupListForFront(string language)
         {
             using (MainContext db = new MainContext())

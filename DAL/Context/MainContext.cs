@@ -60,6 +60,7 @@ namespace DAL.Context
         public DbSet<District> District { get; set; }
         public DbSet<Tags> Tags { get; set; }
         public DbSet<ProductDetail> ProductDetail { get; set; }
+        public DbSet<HumanResourceCv> HumanResourceCv { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -111,8 +112,10 @@ namespace DAL.Context
 
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Slider>().ToTable("Slider");
-            modelBuilder.Entity<ProductDetail>().ToTable("ProductDetail"); 
-         
+            modelBuilder.Entity<ProductDetail>().ToTable("ProductDetail");
+
+            modelBuilder.Entity<HumanResourceCv>().ToTable("HumanResourceCv"); 
+
         }
     }
 }

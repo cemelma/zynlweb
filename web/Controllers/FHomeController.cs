@@ -40,8 +40,12 @@ namespace web.Controllers
         [ChildActionOnly]
         public PartialViewResult GetAddress()
         {
+            web.Areas.Admin.Models.VMProductGroupModel grouplist = new web.Areas.Admin.Models.VMProductGroupModel();
+            List<ProductGroup> pgList = ProductManager.GetProductGroupList("tr");
+            ViewData["pgList"] = pgList;
+
             Contact cont=ContactManager.GetContact();
-           ViewBag.Services = ServiceManager.GetServiceListForFront("tr").Take(3);
+            ViewBag.Services = ServiceManager.GetServiceListForFront("tr").Take(3);
             return PartialView("Partial/_footeraddress",cont);
         }
 
@@ -78,6 +82,7 @@ namespace web.Controllers
                 JsonRequestBehavior.AllowGet
                 );
         }
+
         public ActionResult ChangeCulture(string lang,string returnUrl)
         {
             Session["culture"] = lang;
@@ -85,5 +90,6 @@ namespace web.Controllers
                 return Redirect("/en/homepage");
             return Redirect("/tr/anasayfa");
         }
+
     }
 }
