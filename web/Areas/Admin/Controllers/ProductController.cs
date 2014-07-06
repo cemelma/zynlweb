@@ -43,26 +43,26 @@ namespace web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddProduct(Product model, IEnumerable<HttpPostedFileBase> attachments, HttpPostedFileBase prd1, HttpPostedFileBase prd2)
+        public ActionResult AddProduct(ProductAddModel model, IEnumerable<HttpPostedFileBase> attachments, HttpPostedFileBase prd1, HttpPostedFileBase prd2)
         {
             try
             {
-                model.PageSlug = Utility.SetPagePlug(model.Name);
-                model.ProductGroupId = 1;
-               
+                model.Product.PageSlug = Utility.SetPagePlug(model.Product.Name);
+
+                model.Product.ProductGroupId = 1;
 
                 if (prd1 != null)
                 {
                     //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    string path = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
                     new ImageHelper(1020, 768).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
-                    model.Image1 = "/Content/images/userfiles/"+path;
+                    model.Product.Image1 = "/Content/images/userfiles/" + path;
                 }
                 else
                 {
-                    model.Image1 = "/Content/images/front/noimage.jpeg";
+                //    model.Product.Image1 = "/Content/images/front/noimage.jpeg";
                 }
 
                 if (prd2 != null)
@@ -70,16 +70,16 @@ namespace web.Areas.Admin.Controllers
                     //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    string path = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
                     new ImageHelper(1020, 768).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
-                    model.Image2 = "/Content/images/userfiles/" + path;
+                    model.Product.Image2 = "/Content/images/userfiles/" + path;
                 }
                 else
                 {
-                    model.Image2 = "/Content/images/front/noimage.jpeg";
+                 //   model.Product.Image2 = "/Content/images/front/noimage.jpeg";
                 }
 
-                ProductManager.AddProduct(model);
+                ProductManager.AddProduct(model.Product);
 
                 foreach (var item in attachments)
                 {
@@ -88,11 +88,11 @@ namespace web.Areas.Admin.Controllers
                         item.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                         Random random = new Random();
                         int rand = random.Next(1000, 99999999);
-                        string path = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                        string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(item.FileName);
                         new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
 
                         rand = random.Next(1000, 99999999);
-                        string thumbnail = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                        string thumbnail = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(item.FileName);
                         Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
 
                         Bitmap bmp2 = new Bitmap(bmp);
@@ -113,63 +113,20 @@ namespace web.Areas.Admin.Controllers
                         //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
                         Photo p = new Photo();
                         p.CategoryId = (int)PhotoType.ProductUygulama;
-                        p.ItemId = model.ProductId;
+                        p.ItemId = model.Product.ProductId;
                         p.Path = "/Content/images/userfiles/" + path;
                         p.Thumbnail = "/Content/images/userfiles/" + thumbnail;
                         p.Online = true;
                         p.SortOrder = 9999;
                         p.Language = "tr";
                         p.TimeCreated = DateTime.Now;
-                        p.Title = model.Name;
+                        p.Title = model.Product.Name;
                         PhotoManager.Save(p);
                        
                     }
                 }
 
-                //foreach (var item in attachmentsproduct)
-                //{
-                //    if (item != null && item.ContentLength > 0)
-                //    {
-                //        item.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
-                //        Random random = new Random();
-                //        int rand = random.Next(1000, 99999999);
-                //        string path = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                //        new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
-
-                //        rand = random.Next(1000, 99999999);
-                //        string thumbnail = Utility.SetPagePlug(model.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                //        Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
-
-                //        Bitmap bmp2 = new Bitmap(bmp);
-
-                //        using (Bitmap Orgbmp = bmp2)
-                //        {
-
-                //            int sabit = 90;
-                //            Size Boyut = new Size(210, 125);
-                //            Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
-                //            ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/") + thumbnail);
-                //            bmp.Dispose();
-                //            bmp2.Dispose();
-                //            Orgbmp.Dispose();
-                //            GC.Collect();
-                //        }
-
-                //        //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
-                //        Photo p = new Photo();
-                //        p.CategoryId = (int)PhotoType.ProductUygulama;
-                //        p.ItemId = model.ProductId;
-                //        p.Path = "/Content/images/userfiles/" + path;
-                //        p.Thumbnail = "/Content/images/userfiles/" + thumbnail;
-                //        p.Online = true;
-                //        p.SortOrder = 9999;
-                //        p.Language = "tr";
-                //        p.TimeCreated = DateTime.Now;
-                //        p.Title = model.Name;
-                //        PhotoManager.Save(p);
-                        
-                //    }
-                //}
+             
                 ViewBag.SaveResult = true;
             }
             catch (Exception ex)
@@ -178,20 +135,8 @@ namespace web.Areas.Admin.Controllers
             }
 
 
-            //if (ModelState.IsValid)
-            //{
-            //    //ProductGroup model = new ProductGroup();
-            //    //model.GroupName = txtname;
-            //    //model.Language = "tr";
-            //    //model.PageSlug = Utility.SetPagePlug(txtname);
-            //    //model.TopProductId = topProductGroupId;
-            //    //ViewBag.ProcessMessage = ProductManager.AddProductGroup(model);
-            //    //web.Areas.Admin.Models.VMProductGroupModel grouplist = new Models.VMProductGroupModel();
-            //    //grouplist.ProductGroup = ProductManager.GetProductGroupList(lang);
-            //    //return View(grouplist);
-            //}
-            //return RedirectToAction("AddProduct", "Product", model.ProductId);
-           return Redirect("/yonetim/urunekle/"+model.ProductId);
+
+            return Redirect("/yonetim/urunekle/" + model.Product.ProductId);
             //return View();
         }
 
