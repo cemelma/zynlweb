@@ -41,6 +41,26 @@ namespace web.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult EditProduct(int id = 0)
+        {
+            if (RouteData.Values["id"] != null)
+            {
+                ViewBag.SaveResult = true;
+                ViewBag.ProductId = id;
+            }
+            else
+            {
+                ViewBag.SaveResult = false;
+            }
+
+            web.Areas.Admin.Models.VMProductGroupModel grouplist = new Models.VMProductGroupModel();
+            grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
+            ProductAddModel model = new ProductAddModel();
+            model.VMProductGroupModel = grouplist;
+            //      ViewBag.Groups = grouplist;
+            return View(model);
+        }
+
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult AddProduct(ProductAddModel model, IEnumerable<HttpPostedFileBase> attachments, HttpPostedFileBase prd1, HttpPostedFileBase prd2)
