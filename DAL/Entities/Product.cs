@@ -59,7 +59,7 @@ namespace DAL.Entities
         [Display(Name = "Ürün Açıklaması")]
         public string PageSlug { get; set; }
 
-      
+        public ProductGroup ProductGroup { get; set; }
         
     }
 }

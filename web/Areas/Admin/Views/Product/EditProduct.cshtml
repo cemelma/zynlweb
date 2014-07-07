@@ -22,7 +22,7 @@
         @Html.Hidden("hdProductId", (object)@ViewBag.ProductId)
 
 
-        @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
            
             @Html.Hidden("hdfieldcategory")
@@ -36,13 +36,7 @@
                     <li><a href="#tabs-3">Ürün Kategorisi</a></li>
                 </ul>
                 <div id="tabs-1">
-                    @*  <p>
-                        @Html.Label("Ürün Grubu")
-                        @Html.DropDownListFor(m => m.ProductGroupId, (IEnumerable<SelectListItem>)ViewBag.grouplist, "Ürün Grubu Seçiniz...", new { @class = "required" })
-                        @Html.ValidationMessageFor(m => m.ProductGroupId)
-                        <img src="/Areas/Admin/Content/images/icons/16/loader.gif" id="imgloader" class="imgloader" />
-                    </p>
-                  *@
+                 
                     <p>
                         @Html.LabelFor(m => m.Product.Name)
                         @Html.TextBoxFor(m => m.Product.Name, new { @class = "textwidth50", Rows = "5" })
@@ -69,6 +63,64 @@
                         <input type="file" style="width: 99%" name="attachments" id="fileproductdetail" class="multi" />
                     </div>
                     <div style="height: 40px; clear: both;"></div>
+
+                    <div>
+                         <div class="box-header" >
+        <h1>Mevcut Resimler
+        </h1>
+
+    </div>
+    <table id="tblcategory" class="table no-border tablesorter">
+        <thead>
+            <tr>
+                <th class="width5">Sırala</th>
+                <th class="width5 center">Resim</th>
+                <th class="width60">Başlık</th>
+               
+                <th class="center witdh10">Eklenme Tarihi</th>
+                <th class="center witdh10">İşlem</th>
+            </tr>
+        </thead>
+         <tbody id="item-list">
+            @foreach (var item in ViewBag.Photos)
+            {
+                <tr id="listItem_@item.PhotoId"  class="handle">
+                    <td class="center">
+                        <img src="/Areas/Admin/Content/images/icons/tablesorter/arrow2.png" alt="move" border="0" class="handle sortimg" align="middle" />
+                    </td>
+                    <td>
+                        <center>
+                            <a href="@item.Path" onclick="return false;"
+                                class="preview">
+                                <img src="@item.Path" alt="image" with="48" height="48" /></a></center>
+                    </td>
+                    <td>
+                        <span id="spanitem_@item.PhotoId">@item.Title</span>
+                    </td>
+                  @*  <td class="center">
+                        @if (item.Online == true)
+                        {<img   id="img_online_@item.PhotoId" src="/Areas/Admin/Content/images/icons/online.png" class="cursorpointer" title="Offline yap" onclick="SetOnlineStatus('/Banner/PhotoEditStatus',@item.PhotoId)" />}
+                        else{<img id="img_online_@item.PhotoId" src="/Areas/Admin/Content/images/icons/offline.png" class="cursorpointer" title="Online yap" onclick="SetOnlineStatus('/Banner/PhotoEditStatus',@item.PhotoId)" />}
+                    </td>*@
+                    <td class="center">@item.TimeCreated</td>
+                    <td class="center">
+                     @*  <a href="/yonetim/bannerduzenle/@item.PhotoId">
+                        <img id="btn_update_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" >
+                       </a>
+                        <img id="btn_save_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.PhotoId)">
+                        <img id="btn_cancel_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.PhotoId)">*@
+                       <img id="DeleteImage_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/Reference/DeletePhoto',@item.PhotoId)">
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+                    </div>
+
+
+
                     <input type="submit" value="Kaydet" id="btnsave" />
                 </div>
 
