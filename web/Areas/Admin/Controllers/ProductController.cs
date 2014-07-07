@@ -176,7 +176,12 @@ namespace web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            using (MainContext db = new MainContext())
+            {
+                var prd = db.Product.Where(x => x.Deleted==false).ToList();
+                return View(prd);
+            }
+          
         }
 
         public void SaveCategory(int id, int prdId)
@@ -191,6 +196,60 @@ namespace web.Areas.Admin.Controllers
                 }
             }
         }
-       
+
+        [AllowAnonymous]
+        public JsonResult DeleteProduct(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    var record = db.Product.FirstOrDefault(d => d.ProductId == id);
+                    db.Product.Remove(record);
+                    db.SaveChanges();
+                    return Json(true);
+                }
+                catch (Exception)
+                {
+                    return Json(false);
+                }
+            }
+        }
+
+
+        public JsonResult SortRecords(string list)
+        {
+            JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
+            string[] idsList = psl.list;
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+
+                    int row = 0;
+                    foreach (string id in idsList)
+                    {
+                        int mid = Convert.ToInt32(id);
+                        Product sortingrecord = db.Product.SingleOrDefault(d => d.ProductId == mid);
+                        sortingrecord.SortNumber = Convert.ToInt32(row);
+                        db.SaveChanges();
+                        row++;
+                    }
+                    return Json(true);
+                }
+                catch (Exception)
+                {
+                    return Json(false);
+                }
+            }
+
+
+
+        }
+
+        public class JsonList
+        {
+            public string[] list { get; set; }
+        }
     }
 }
