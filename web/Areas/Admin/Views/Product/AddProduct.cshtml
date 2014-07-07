@@ -9,6 +9,7 @@
 <script src="~/Areas/Admin/Content/scripts/plugins/jquery.MultiFile.js"></script>
 <link href="~/Areas/Admin/Content/styles/nestedsortable.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/colpick.css" rel="stylesheet" />
 @Html.Partial("product_leftbar")
 
 <div id="page-content" class="container_12">
@@ -74,41 +75,43 @@
                 <div id="tabs-2">
                     <p>
                         @Html.Label("Kod")
-                        <input type="text" name="txtcode" id="txtcode" />
+                        <input type="text" name="txtcode" id="txtcode" style="width:100px"/>
                     </p>
                     <p>
                         @Html.Label("Malzeme")
-                        <input type="text" name="txtmalzeme" id="txtmalzeme" />
+                        <input type="text" name="txtmalzeme" id="txtmalzeme" style="width:250px"/>
                     </p>
                     <p>
                         @Html.Label("Birim")
-                        <input type="text" name="txtbirim" id="txtbirim" />
+                        <input type="text" name="txtbirim" id="txtbirim" style="width:100px"/>
                     </p>
                     <p>
                         @Html.Label("Ebat")
-                        <input type="text" name="txtebat" id="txtebat" />
+                        <input type="text" name="txtebat" id="txtebat" style="width:100px"/>
                     </p>
                     <p>
                         @Html.Label("Ağırlık")
-                        <input type="text" name="txtagirlik" id="txtagirlik" />
+                        <input type="text" name="txtagirlik" id="txtagirlik" style="width:100px" />
                     </p>
                     <p>
                         @Html.Label("Araç/Ton")
-                        <input type="text" name="txtton" id="txtton" />
+                        <input type="text" name="txtton" id="txtton" style="width:100px"/>
                     </p>
                     <p>
                         @Html.Label("Renk")
-                        <input type="text" name="txtrenk" id="txtrenk" />
+                         
+                        <input type="text" name="txtrenk" id="txtrenk" style="width:80px;"/>
                     </p>
                     <p>
                         @Html.Label("TL/M2")
-                        <input type="text" name="txtfiyat" id="txtfiyat" />
+                        <input type="text" name="txtfiyat" id="txtfiyat" style="width:60px"/>
                     </p>
                     @*    <p>
                         @Html.Label("Kırmızı TL/M2")
                         <input type="text" name="txtkirmizi" />
                     </p>*@
                     <p>
+                        <input type="button" value="Temizle" id="btnclear" />
                         <input type="button" value="Kaydet" id="btnsaveProp" />
                     </p>
                     <div id="resultTable">
@@ -150,9 +153,22 @@
     <script src="~/Areas/Admin/Content/CKEditor/ckfinder/ckfinder.js"></script>
     <script src="~/Areas/Admin/Content/scripts/myscripts/CKEditorCreate.js"></script>
     <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/jquery.nestable.js"></script>
+    <script src="~/Areas/Admin/Content/scripts/plugins/colpick.js"></script>
+    <script src="~/Areas/Admin/Content/scripts/plugins/blockui.js"></script>
+
     <script  type="text/javascript">
         $(document).ready(function () {
 
+          
+            $('#txtrenk').colpick({
+                colorScheme: 'dark',
+                layout: 'rgbhex',
+                color: 'ff8800',
+                onSubmit: function (hsb, hex, rgb, el) {
+                    $(el).css('background-color', '#' + hex);
+                    $(el).colpickHide();
+                }
+            })
             var updateOutput = function (e) {
                 var list = e.length ? e : $(e.target),
                     output = list.data('output');

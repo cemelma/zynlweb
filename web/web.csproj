@@ -1657,6 +1657,8 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\solutionpartner\solutionpartnerlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\teklif\teklif.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\autoNumeric.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\blockui.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\colpick.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\easyUI\changelog.txt" />
     <Content Include="Areas\Admin\Content\scripts\plugins\easyUI\demo\accordion\actions.html" />
     <Content Include="Areas\Admin\Content\scripts\plugins\easyUI\demo\accordion\ajax.html" />
@@ -2357,6 +2359,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\_references.js" />
     <Content Include="Areas\Admin\Content\styles\base.css" />
     <Content Include="Areas\Admin\Content\styles\calendar.css" />
+    <Content Include="Areas\Admin\Content\styles\colpick.css" />
     <Content Include="Areas\Admin\Content\styles\extensions.css" />
     <Content Include="Areas\Admin\Content\styles\extras.css" />
     <Content Include="Areas\Admin\Content\styles\forms.css" />

@@ -12,13 +12,25 @@
     $("#tabs").tabs();
 
     if (result == "False" || result == "false") {
-           $("#tabs").tabs({ disabled: [1,2] });
+        $("#tabs").tabs({ disabled: [1,2] });
     }
     else {
         $('#tabs').tabs({ selected: 1 });
 
     }
   
+    $("#btnclear").click(function () {
+        $("#txtcode").val("");
+        $("#txtmalzeme").val("");
+        $("#txtebat").val("");
+        $("#txtagirlik").val("");
+        $("#txtton").val("");
+        $("#txtfiyat").val("");
+        $("#txtbirim").val("");
+        $("#txtrenk").css("background-color","white");
+
+    });
+
     $("#btnsaveProp").click(function () {
         var code = $("#txtcode").val();
         var malzeme = $("#txtmalzeme").val();
@@ -27,8 +39,16 @@
         var ton = $("#txtton").val();
         var fiyat = $("#txtfiyat").val();
         var birim = $("#txtbirim").val();
-        var renk = $("#txtrenk").val();
+        var renk = $("#txtrenk").css("background-color");
 
+        if (code == "" || malzeme == "" || fiyat == "" || ebat=="" || agirlik=="" || ton=="" || birim=="" || renk=="" ) {
+            alert("Kayıt eklemek için tüm alanları doldurmalısınız");
+            return false;
+        }
+        $.blockUI({
+            css: { backgroundColor: 'transparent',border:'none'},
+            message: "<div id='circleG'><div id='circleG_1' class='circleG'></div><div id='circleG_2' class='circleG'></div><div id='circleG_3' class='circleG'></div></div> "
+        });
          $.ajax({
             type: 'POST',
             url: '/Product/SaveDetail',
@@ -36,7 +56,9 @@
             contentType: "application/json; charset=utf-8",
             dataType: 'html',
             success: function (result) {
+                $.unblockUI();
                 $("#resultTable").html(result);
+
                 //$("#ProductSubGroupId").empty().append($("<option></option>").val("").html("Ürün Alt Grubunu Seçiniz..."));
                 //$("#g1").css("display", "block");
                 //$.each(result, function (i, item) {
@@ -46,7 +68,7 @@
                 //$("#imgloader2").css("display", "none");
             },
             error: function () {
-
+                $.unblockUI();
             }
         });
 
