@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using web.Models;
 
 namespace web.Controllers
 {
@@ -40,8 +41,40 @@ namespace web.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserLogin(FormCollection frm)
+        public ActionResult UserLogin(UserModel user,string submit)
         {
+            if (submit == "Giriş")
+            {
+                if (ProductManager.GetLoginControl(user.Login.Email, user.Login.Password))
+                {
+                    Session["userlogin"] = user.Login.Email;
+                    return RedirectToAction("Index", "FHome");
+                }
+                else TempData["login"] = "false";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    if (ProductManager.GetMailControl(user.Login.Email))
+                    {
+                        if (user.NewUser.Password == user.RePassword)
+                        {
+                            if (ProductManager.AddUser(user.NewUser))
+                            {
+                                Session["userlogin"] = user.NewUser.Email;
+                                return RedirectToAction("Index", "FHome");
+                            }
+                            else TempData["usernew"] = "false";
+                        }
+                        else TempData["pass"] = "false";
+                    }
+                    else TempData["mailisuse"] = "false";
+                }
+                else TempData["usernewvalid"] = "false"; 
+            }
+
+
             return View();
         }
 

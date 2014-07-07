@@ -12,34 +12,35 @@ namespace DAL.Entities
         [Key]
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "Lütfen Adınızı Giriniz")]
-        [Display(Name = "Ad-Soyad")]
+        [Required(ErrorMessage = "Lütfen adınızı giriniz")]
+        [Display(Name = "Ad-Soyad:")]
         public string FullName { get; set; }
 
-        [Display(Name = "Şirket")]
+        [Display(Name = "Şirket:")]
         public string Company { get; set; }
 
-        [Display(Name = "Adres")]
+        [Display(Name = "Adres:")]
         public string Address { get; set; }
 
-        [Display(Name = "Telefon")]
+        [Display(Name = "Telefon:")]
         public string Tel { get; set; }
 
-        [Display(Name = "Cep")]
+        [Display(Name = "Cep:")]
         public string Cep { get; set; }
 
-        [Display(Name = "Fax")]
+        [Display(Name = "Fax:")]
         public string Fax { get; set; }
 
-        [Required(ErrorMessage = "Lütfen Emailinizi Giriniz")]
-        [Display(Name = "E-Posta Adresi")]
+        [Required(ErrorMessage = "Lütfen e-mailinizi giriniz")]
+        [Display(Name = "E-Posta Adresi:")]
+        [EmailAddress(ErrorMessage = "Mail Adresi Doğru Formatta Değil.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Lütfen Şifrenizi Giriniz")]
-        [Display(Name = "Şifre")]
+        [Required(ErrorMessage = "Lütfen şifrenizi giriniz")]
+        [Display(Name = "Şifre:")]
         public string Password { get; set; }
 
-        [Display(Name = "Eklenme Tarihi")]
+        [Display(Name = "Son Giriş Tarihi:")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime TimeUpdated { get; set; }

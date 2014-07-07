@@ -892,8 +892,64 @@ namespace BLL.ProductBL
             }
         }
 
+        public static bool GetLoginControl(string mail, string pass)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    User record = db.User.FirstOrDefault(d => d.Email == mail && d.Password == pass && d.Deleted == false && d.Online == true);
+                    if (record != null)
+                        return true;
+                    else return false;
 
-       
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static bool AddUser(User record)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    record.TimeUpdated = DateTime.Now;
+                    record.Deleted = false;
+                    record.Online = true;
+                    db.User.Add(record);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+
+        }
+
+        public static bool GetMailControl(string mail)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    User record = db.User.FirstOrDefault(d => d.Email == mail && d.Deleted == false);
+                    if (record == null)
+                        return true;
+                    else return false;
+
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
         
     }
 }
