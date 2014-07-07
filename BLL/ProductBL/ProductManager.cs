@@ -624,7 +624,10 @@ namespace BLL.ProductBL
                         record.PageSlug = data.PageSlug;
                      
                         record.ProductGroupId = data.ProductGroupId;
-                       
+                       if(!string.IsNullOrEmpty(data.Image1))
+                           record.Image1 = data.Image1;
+                       if (!string.IsNullOrEmpty(data.Image2))
+                           record.Image2 = data.Image2;
                        
                         db.SaveChanges();
 

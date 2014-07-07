@@ -73,7 +73,7 @@
     <table id="tblcategory" class="table no-border tablesorter">
         <thead>
             <tr>
-                <th class="width5">Sırala</th>
+               
                 <th class="width5 center">Resim</th>
                 <th class="width60">Başlık</th>
                
@@ -85,9 +85,9 @@
             @foreach (var item in ViewBag.Photos)
             {
                 <tr id="listItem_@item.PhotoId"  class="handle">
-                    <td class="center">
+                  @*  <td class="center">
                         <img src="/Areas/Admin/Content/images/icons/tablesorter/arrow2.png" alt="move" border="0" class="handle sortimg" align="middle" />
-                    </td>
+                    </td>*@
                     <td>
                         <center>
                             <a href="@item.Path" onclick="return false;"
@@ -109,7 +109,7 @@
                        </a>
                         <img id="btn_save_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.PhotoId)">
                         <img id="btn_cancel_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.PhotoId)">*@
-                       <img id="DeleteImage_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/Reference/DeletePhoto',@item.PhotoId)">
+                       <img id="DeleteImage_@item.PhotoId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/Product/DeletePhoto',@item.PhotoId)">
                     </td>
                 </tr>
             }
@@ -167,7 +167,7 @@
                         <input type="button" value="Kaydet" id="btnsaveProp" />
                     </p>
                     <div id="resultTable">
-                        @*@Html.Partial("_detailtable1",null)*@
+                      
                     </div>
                 </div>
                 <div id="tabs-3">
@@ -200,7 +200,8 @@
     <script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>
     <script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.js"></script>
     <script src="~/Areas/Admin/Content/scripts/plugins/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Areas/Admin/Content/scripts/pagescripts/product/addProduct.js"></script>
+    <script src="~/Areas/Admin/Content/scripts/myscripts/DeleteRecordTable.js"></script>
+    <script src="~/Areas/Admin/Content/scripts/pagescripts/product/editProduct.js"></script>
     <script src="~/Areas/Admin/Content/CKEditor/ckeditor/ckeditor.js"></script>
     <script src="~/Areas/Admin/Content/CKEditor/ckfinder/ckfinder.js"></script>
     <script src="~/Areas/Admin/Content/scripts/myscripts/CKEditorCreate.js"></script>
