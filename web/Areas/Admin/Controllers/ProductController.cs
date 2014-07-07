@@ -188,7 +188,7 @@ namespace web.Areas.Admin.Controllers
                 }
                 else
                 {
-                        model.Product.Image1 = "/Content/images/front/noimage.jpeg";
+                        //model.Product.Image1 = "/Content/images/front/noimage.jpeg";
                 }
 
                 if (prd2 != null)
@@ -202,7 +202,7 @@ namespace web.Areas.Admin.Controllers
                 }
                 else
                 {
-                       model.Product.Image2 = "/Content/images/front/noimage.jpeg";
+                       //model.Product.Image2 = "/Content/images/front/noimage.jpeg";
                 }
 
                 ProductManager.EditProduct(model.Product);
@@ -362,6 +362,24 @@ namespace web.Areas.Admin.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public JsonResult DeleteDetail(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    var record = db.ProductDetail.FirstOrDefault(d => d.DetailId == id);
+                    db.ProductDetail.Remove(record);
+                    db.SaveChanges();
+                    return Json(true);
+                }
+                catch (Exception)
+                {
+                    return Json(false);
+                }
+            }
+        }
 
         public JsonResult SortRecords(string list)
         {
@@ -402,6 +420,32 @@ namespace web.Areas.Admin.Controllers
         {
             bool isdelete = PhotoManager.Delete(id);
             return Json(isdelete);
+        }
+
+
+        public JsonResult EditStatus(int id)
+        {
+            string NowState;
+            using (MainContext db = new MainContext())
+            {
+                var list = db.Product.SingleOrDefault(d => d.ProductId == id);
+                try
+                {
+
+                    if (list != null)
+                    {
+                        list.Online = list.Online == true ? false : true;
+                        db.SaveChanges();
+
+                    }
+                    return Json(list.Online);
+
+                }
+                catch (Exception)
+                {
+                    return Json(list.Online);
+                }
+            }
         }
     }
 }

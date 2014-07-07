@@ -6,6 +6,7 @@
             <th>Birim</th>
             <th>Ebat</th>
             <th>Ağırlık</th>
+            <th>İşlem</th>
         </tr>
     </thead>
     <tbody>
@@ -13,18 +14,21 @@
         {
             foreach (var item in ViewBag.Details)
             {
-            <tr>
+             <tr id="listItem_@item.DetailId"  class="handle">
                 <td>@item.Code</td>
                 <td>@item.Material</td>
                 <td>@item.Unit</td>
                 <td>@item.Dimension</td>
                 <td>@item.Weight</td>
+                 <td class="center">
+                      <img id="DeleteImage_@item.DetailId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/Product/DeleteDetail',@item.DetailId)">
+                    </td>>
             </tr>
             }
         }
         else
         {
-            <tr><td colspan="5">Kayıt Bulunamadı</td></tr>
+            <tr><td colspan="6">Kayıt Bulunamadı</td></tr>
         }
     </tbody>
 </table>

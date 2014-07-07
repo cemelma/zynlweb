@@ -533,7 +533,17 @@ namespace BLL.ProductBL
                 return list;
             }
         }
+
+        public static List<Product> GetProductList(int [] gid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.Product.Where(x => gid.Contains(x.ProductGroupId)).ToList();
+                return list;
+            }
+        }
         
+
         public static List<Product> GetProductListForFront(int gid)
         {
             using (MainContext db = new MainContext())

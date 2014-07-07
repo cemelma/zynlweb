@@ -52,8 +52,14 @@ namespace web.Controllers
         [ChildActionOnly]
         public PartialViewResult GetTopMenu()
         {
-            web.Areas.Admin.Models.VMProductGroupModel grouplist = new web.Areas.Admin.Models.VMProductGroupModel();
+            VMProductGroupModel grouplist = new VMProductGroupModel();
             grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
+
+            int[] ids = grouplist.ProductGroup.Select(x => x.ProductGroupId).ToArray();
+            grouplist.Products = ProductManager.GetProductList(ids);
+
+
+          
 
             ViewBag.Services = ServiceManager.GetServiceListForFront("tr");
             return PartialView("Partial/_topmenu", grouplist);

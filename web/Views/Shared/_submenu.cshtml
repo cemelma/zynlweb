@@ -1,4 +1,4 @@
-﻿@model web.Areas.Admin.Models.VMProductGroupModel
+﻿@model web.Models.VMProductGroupModel
 @{
     int productGroupId = 0;
 }
@@ -32,7 +32,12 @@
                             }
                             else
                             {
-                                <li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@itemsub.GroupName</a></li>
+                                 foreach (var prd in Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId))
+                                 {
+                                     <li><a href="/urunler/@prd.ProductId/@prd.PageSlug" class="dropdown-toggle">@prd.Name</a></li>
+                                 }
+                                
+                                @*<li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@itemsub.GroupName</a></li>*@
                             }
                         }
                     </ul>

@@ -264,6 +264,7 @@
     <Compile Include="Models\ProductDetailWrapperModel.cs" />
     <Compile Include="Models\ProductSubWrapperModel.cs" />
     <Compile Include="Models\HomePageWrapperModel.cs" />
+    <Compile Include="Models\VMProductGroupModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Views\Brief\Brief.Designer.cs">
       <AutoGen>True</AutoGen>
