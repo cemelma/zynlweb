@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 
@@ -40,8 +42,8 @@ namespace web.Controllers
             using (var client = new SmtpClient(mset.ServerHost, mset.Port))
             {
                 client.EnableSsl = mset.Security;//true;//burası düzeltilecek
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = true;
+                //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
 
                 var mail = new MailMessage();
@@ -54,7 +56,7 @@ namespace web.Controllers
                 mail.Subject = "Yeni CV";
                 mail.IsBodyHtml = true;
                 mail.Body = "<p> Merhaba \"Zeyne Yayla\" üzerinden " + positionname + " pozisyonu için yeni bir CV gönderildi. <br> CV'yi mail ekinde bulabilirsiniz..</p>";
-
+                //ServicePointManager.ServerCertificateValidationCallback = delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 if (mail.To.Count > 0) client.Send(mail);
             }
             TempData["sent"] = "true";

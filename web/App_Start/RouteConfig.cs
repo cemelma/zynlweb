@@ -27,7 +27,7 @@ namespace web
             routes.MapRoute("urunler", "urunler/{id}/{pageslug}", new { action = "Index", Controller = "FProduct" });
             routes.MapRoute("fiyatlar", "fiyatlar/{id}/{pageslug}", new { action = "Prices", Controller = "FProduct" });
             routes.MapRoute("giris", "giris", new { action = "UserLogin", Controller = "FProduct" });
-            routes.MapRoute("cikis", "cikis", new { action = "UserLogout", Controller = "FProduct" });
+            routes.MapRoute("cik", "guvenlicikis", new { action = "UserLogout", Controller = "FProduct" });
 
             routes.MapRoute("hizmetler", "hizmetler/{id}/{page}", new { action = "Index", Controller = "FServices" });
 

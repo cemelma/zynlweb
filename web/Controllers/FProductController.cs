@@ -80,7 +80,7 @@ namespace web.Controllers
 
         public ActionResult UserLogout()
         {
-            Session.Remove("userlogin");
+            if (Session["userlogin"] != null) Session.Remove("userlogin");
             return RedirectToAction("Index", "FHome");
         }
         
