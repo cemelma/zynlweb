@@ -35,17 +35,15 @@
                 function Popup(data) {
                     var mywindow = window.open('', 'ZEYNEL YAYLA - FİYAT LİSTESİ', 'height=500,width=800');
                     mywindow.document.write('<html><head><title>ZEYNEL YAYLA - FİYAT LİSTESİ</title>');
-                    /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+                    mywindow.document.write('<link rel="stylesheet" href="/Content/Styles/style.css" type="text/css" />');
+                    mywindow.document.write('<link rel="stylesheet" href="/Content/Styles/bootstrap.min.css" type="text/css" />');
                     mywindow.document.write('</head><body >');
                     mywindow.document.write(data);
                     mywindow.document.write('</body></html>');
-
                     mywindow.print();
                     mywindow.close();
-
                     return true;
                 }
-
 </script>
 
         }
