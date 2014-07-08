@@ -32,12 +32,18 @@
                             }
                             else
                             {
-                                 foreach (var prd in Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId))
+                                
+                            <li class="dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">@itemsub.GroupName</a>
+                                   <ul class="dropdown-menu">
+                                @foreach (var prd in Model.Products.Where(d => d.ProductGroupId == itemsub.ProductGroupId))
                                  {
                                      <li><a href="/urunler/@prd.ProductId/@prd.PageSlug" class="dropdown-toggle">@prd.Name</a></li>
                                  }
                                 
-                                @*<li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug" class="dropdown-toggle">@itemsub.GroupName</a></li>*@
+                               
+                                   </ul>
+                            </li>
+                             
                             }
                         }
                     </ul>
