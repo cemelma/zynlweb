@@ -334,9 +334,19 @@ namespace web.Areas.Admin.Controllers
         {
             using (MainContext db = new MainContext())
             {
+                int topid = 0;
+                ProductGroup prodgroup;
+                prodgroup = ProductManager.GetTopGroupById(id);
+                while (prodgroup.TopProductId != 1)
+                {
+                    prodgroup = ProductManager.GetTopGroupById(prodgroup.TopProductId);
+                    topid = prodgroup.ProductGroupId;
+                }
+
                 Product prd = db.Product.Where(x => x.ProductId == prdId).SingleOrDefault();
                 if (prd != null)
                 {
+                    prd.TopProductGroupId = topid;
                     prd.ProductGroupId = id;
                     db.SaveChanges();
                 }

@@ -666,6 +666,16 @@ namespace BLL.ProductBL
 
         }
 
+        public static List<Product> GetProductListFront(int topid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.Product.Include("ProductDetail").Where(d => d.Deleted == false && d.Online == true && d.TopProductGroupId == topid).OrderByDescending(d => d.TimeCreated).
+                    OrderBy(d => d.SortNumber).
+                    ToList();
+                return list;
+            }
+        }
 
         #endregion Product
 
@@ -963,6 +973,27 @@ namespace BLL.ProductBL
                 }
             }
         }
-        
+
+        public static ProductGroup GetTopGroupById(int nid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    ProductGroup record = db.ProductGroup.Where(d => d.ProductGroupId == nid && d.Deleted == false).SingleOrDefault();
+                    if (record != null)
+                        return record;
+                    else
+                        return null;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+
+
+        }
+
     }
 }

@@ -55,111 +55,34 @@
         </div>*@
       <div class="pageContent">
         <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
-        <!-- Ürün Fiyat Başlangıç -->
-          <tr>
-            <td colspan="8" class="urunAd">Aşık Taşı - <a href="#">Ürün Detay</a></td>
-          </tr>
-          <tr class="fiyatTabloTitle">
-            <td>KOD</td>
-            <td>MALZEME</td>
-            <td>BİRİM</td>
-            <td>EBAT</td>
-            <td>AĞIRLIK (KG)</td>
-            <td>ARAÇ (20 TON)</td>
-            <td>B.RENGİ TL/M²</td>
-            <td>KIRMIZI TL/M²</td>
-          </tr>
-          <tr>
-            <td>1100-1105</td>
-            <td>Aşık Taşı</td>
-            <td>m²</td>
-            <td>19,8*16,3*6</td>
-            <td>140</td>
-            <td>140 m²</td>
-            <td>10,00</td>
-            <td>10,50</td>
-          </tr>
-          <tr>
-            <td>1100-1105</td>
-            <td>Aşık Taşı</td>
-            <td>m²</td>
-            <td>19,8*16,3*6</td>
-            <td>140</td>
-            <td>140 m²</td>
-            <td>10,00</td>
-            <td>10,50</td>
-          </tr>
-          <!-- Ürün Fiyat Bitiş -->
-                  <!-- Ürün Fiyat Başlangıç -->
-          <tr>
-            <td colspan="8" class="urunAd">Aşık Taşı - <a href="#">Ürün Detay</a></td>
-          </tr>
-          <tr class="fiyatTabloTitle">
-            <td>KOD</td>
-            <td>MALZEME</td>
-            <td>BİRİM</td>
-            <td>EBAT</td>
-            <td>AĞIRLIK (KG)</td>
-            <td>ARAÇ (20 TON)</td>
-            <td>B.RENGİ TL/M²</td>
-            <td>KIRMIZI TL/M²</td>
-          </tr>
-          <tr>
-            <td>1100-1105</td>
-            <td>Aşık Taşı</td>
-            <td>m²</td>
-            <td>19,8*16,3*6</td>
-            <td>140</td>
-            <td>140 m²</td>
-            <td>10,00</td>
-            <td>10,50</td>
-          </tr>
-          <tr>
-            <td>1100-1105</td>
-            <td>Aşık Taşı</td>
-            <td>m²</td>
-            <td>19,8*16,3*6</td>
-            <td>140</td>
-            <td>140 m²</td>
-            <td>10,00</td>
-            <td>10,50</td>
-          </tr>
-          <!-- Ürün Fiyat Bitiş -->
-                  <!-- Ürün Fiyat Başlangıç -->
-          <tr>
-            <td colspan="8" class="urunAd">Aşık Taşı - <a href="#">Ürün Detay</a></td>
-          </tr>
-          <tr class="fiyatTabloTitle">
-            <td>KOD</td>
-            <td>MALZEME</td>
-            <td>BİRİM</td>
-            <td>EBAT</td>
-            <td>AĞIRLIK (KG)</td>
-            <td>ARAÇ (20 TON)</td>
-            <td>B.RENGİ TL/M²</td>
-            <td>KIRMIZI TL/M²</td>
-          </tr>
-          <tr>
-            <td>1100-1105</td>
-            <td>Aşık Taşı</td>
-            <td>m²</td>
-            <td>19,8*16,3*6</td>
-            <td>140</td>
-            <td>140 m²</td>
-            <td>10,00</td>
-            <td>10,50</td>
-          </tr>
-          <tr>
-            <td>1100-1105</td>
-            <td>Aşık Taşı</td>
-            <td>m²</td>
-            <td>19,8*16,3*6</td>
-            <td>140</td>
-            <td>140 m²</td>
-            <td>10,00</td>
-            <td>10,50</td>
-          </tr>
-          <!-- Ürün Fiyat Bitiş --> 
+            @foreach (var item in @Model)
+            {
+                <tr><td colspan="8" class="urunAd">@item.Name - <a href="/urunler/@item.ProductId/@item.PageSlug">Ürün Detay</a></td></tr>
+                  <tr class="fiyatTabloTitle">
+                    <td>KOD</td>
+                    <td>MALZEME</td>
+                    <td>BİRİM</td>
+                    <td>EBAT</td>
+                    <td>AĞIRLIK (KG)</td>
+                    <td>ARAÇ (20 TON)</td>
+                    <td>RENGİ TL/M²</td>
+                    <td>FİYATI</td>
+                  </tr>
+                foreach (var itemdetail in item.ProductDetail)
+	            {
+		            <tr>
+                        <td>@itemdetail.Code</td>
+                        <td>@itemdetail.Material</td>
+                        <td>@itemdetail.Unit</td>
+                        <td>@itemdetail.Dimension</td>
+                        <td>@itemdetail.Weight</td>
+                        <td>@itemdetail.VehicleTon</td>
+                        <td>@itemdetail.ColorWhite</td>
+                        <td>@itemdetail.Price</td>
+                      </tr>
+	            }
+                  
+            }
         </table>
       </div>
     </div>
