@@ -47,8 +47,8 @@ namespace DAL.Entities
         //[Display(Name = "Ürün Donanımı Varmı?")]
         //public bool Hardware { get; set; }
 
-        
 
+        public int TopProductGroupId { get; set; }
        
 
        
@@ -60,6 +60,8 @@ namespace DAL.Entities
         public string PageSlug { get; set; }
 
         public ProductGroup ProductGroup { get; set; }
+
+        public List<ProductDetail> ProductDetail { get; set; }
         
     }
 }
