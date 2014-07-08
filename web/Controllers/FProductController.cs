@@ -1,5 +1,7 @@
-﻿using BLL.ProductBL;
+﻿using BLL.PhotoBL;
+using BLL.ProductBL;
 using BLL.ReferenceBL;
+using DAL.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +18,19 @@ namespace web.Controllers
             //web.Areas.Admin.Models.VMProductGroupModel grouplist = new web.Areas.Admin.Models.VMProductGroupModel();
             //grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
             int pId = Convert.ToInt32(RouteData.Values["id"]);
-            ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
+         //   ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
             ViewData["referanslar"] = ReferenceManager.GetReferenceListForFront("tr");
-            return View();
+            DAL.Entities.Product prd = ProductManager.GetProductById(pId);
+            ViewBag.ProductGroup = prd.ProductGroup.GroupName;
+
+            ViewBag.Photos = PhotoManager.GetListForFront(11, pId);
+            
+            using(MainContext db = new MainContext())
+            {
+                ViewBag.Details = db.ProductDetail.Where(x => x.ProductId == pId).ToList();
+            }
+               
+            return View(prd);
         }
 
         public ActionResult Prices()

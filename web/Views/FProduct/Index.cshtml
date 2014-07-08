@@ -1,28 +1,101 @@
-﻿@model dynamic
+﻿@model DAL.Entities.Product
 @{
     ViewBag.Title = "Ürünler";
     Layout = "~/Views/Shared/frontlayout.cshtml";
     List < DAL.Entities.References > referanslar = ViewData["referanslar"] as List < DAL.Entities.References > ;
         
 }
-
+<link href="~/Content/Styles/jquery.fancybox.css" rel="stylesheet" />
 @section breadcrumb{
     <div class="col-md-8 breadcrumb">
         <ul>
             <li><a href="/">Anasayfa</a></li>
-            <li><a href="/urunler/@ViewBag.ProductGroup.ProductGroupId/@ViewBag.ProductGroup.PageSlug">@ViewBag.ProductGroup.GroupName</a> </li>
+            @*<li><a href="/urunler/@ViewBag.ProductGroup.ProductGroupId/@ViewBag.ProductGroup.PageSlug">@ViewBag.ProductGroup.GroupName</a> </li>*@
+              <li><a href="#">@ViewBag.ProductGroup</a></li>
             <li>Ürünler </li>
         </ul>
     </div>
 }
 
 <div id="container" class="container">
-    <div class="col-md-12 shadow section noPadding">
-        <div class="col-md-12 sectionContent page">
-            <h2 class="pageTitle">ÜRÜNLER</h2>
-             İÇERİK GELECEK
-        </div>
+    <div class="col-md-12 shadow section noPadding noMarginTop">
+    <div class="col-md-12 sectionContent page newsPage">
+    
+      <h2 class="pageTitle">@Model.Name      </h2>
+      <div class="pageContent">
+        @Html.Raw(Model.Content)
     </div>
+      <div class="col-md-12 noPadding colors">
+        <div class="col-md-3">
+        <div class="col-md-6"><div class="renk1"></div>Renk 1</div>
+        <div class="col-md-6"><div class="renk2"></div>Renk 2</div>
+         <div class="col-md-6"><div class="renk3"></div>Renk 3</div>
+        <div class="col-md-6"><div class="renk4"></div>Renk 4</div>
+         <div class="col-md-6"><div class="renk5"></div>Renk 5</div>
+        <div class="col-md-6"><div class="renk6"></div>Renk 6</div> 
+        </div>
+        <div class="col-md-9">
+        <div class="col-md-1 "></div>
+        @if(!string.IsNullOrEmpty(Model.Image1))
+        {
+            <div class="col-md-5 "><img src="@Model.Image1" /></div>
+        }
+         @if(!string.IsNullOrEmpty(Model.Image2))
+        {
+            <div class="col-md-5 "><img src="@Model.Image2" /></div>
+        }
+        <div class="col-md-1 "></div> 
+        <div class="col-md-12 fiyatBilgi"><a href="#">Fiyat Bilgisi İçin Tıklayınız</a></div>  
+        </div>
+      </div>
+      <div class="col-md-12 noPadding fiyatBilgisiIcerik">
+      <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
+        <!-- Ürün Fiyat Başlangıç -->
+          <tr>
+            <td colspan="8" class="urunAd">@Model.Name</td>
+          </tr>
+          <tr class="fiyatTabloTitle">
+            <td>KOD</td>
+            <td>MALZEME</td>
+            <td>BİRİM</td>
+            <td>EBAT</td>
+            <td>AĞIRLIK (KG)</td>
+            <td>ARAÇ (20 TON)</td>
+            <td>RENGİ</td>
+            <td>KIRMIZI TL/M²</td>
+          </tr>
+            @foreach (var item in ViewBag.Details)
+          {
+               <tr>
+                 <td>@item.Code</td>
+                 <td>@item.Material</td>
+                 <td>@item.Unit</td>
+                 <td>@item.Dimension</td>
+                 <td>@item.Weight</td>
+                 <td>@item.VehicleTon</td>
+                 <td style="background-color:@item.ColorWhite"></td>
+                 <td style="text-align:center">@item.Price</td>
+               </tr>
+             
+          }
+         
+
+        </table>
+      </div>
+      
+      <div class="col-md-12 noPadding products">
+      <h2 class="pageTitle">UYGULAMA FOTOĞRAFLARI</h2>
+          @foreach (var item in ViewBag.Photos)
+          {
+               <div class="col-md-3 "><a href="@item.Path" class="fancybox" rel="gallery"><img src="@item.Thumbnail" style="width:210px;height:125px;"/></a></div>
+             
+          }
+      </div>
+    </div>
+  </div>
+
+     
+
 
 
     <div class="col-md-12 shadow references section noPadding">
@@ -52,3 +125,19 @@
     </div>
 
 </div>
+
+<script src="~/Content/Scripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".fancybox").fancybox({
+            openEffect	: 'none',
+            closeEffect	: 'none'
+        });
+
+        $('.fiyatBilgi a').click(function (e) {
+            e.preventDefault()
+            $('.fiyatBilgisiIcerik').css('display', 'block').fadeIn('slow');
+        })
+    });
+
+</script>
