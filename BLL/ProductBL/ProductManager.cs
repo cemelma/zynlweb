@@ -677,6 +677,17 @@ namespace BLL.ProductBL
             }
         }
 
+        public static List<Product> GetProductTopListFront(int[] topid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.Product.Include("ProductDetail").Where(d => d.Deleted == false && d.Online == true && topid.Contains(d.TopProductGroupId)).OrderByDescending(d => d.TimeCreated).
+                    OrderBy(d => d.SortNumber).
+                    ToList();
+                return list;
+            }
+        }
+
         #endregion Product
 
 

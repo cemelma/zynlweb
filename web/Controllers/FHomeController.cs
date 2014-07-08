@@ -35,7 +35,9 @@ namespace web.Controllers
             model.references = ReferenceManager.GetReferenceListForFront("tr");
 
             model.prodgroups = ProductManager.GetProductGroupList("tr").Where(x=>x.ProductGroupId!=1).Take(6);
-  
+            int[] pgoupids = model.prodgroups.Select(d => d.TopProductId).ToArray();
+            model.Products = ProductManager.GetProductTopListFront(pgoupids).ToList();
+
             return View(model);
         }
 
