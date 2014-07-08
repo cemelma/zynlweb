@@ -32,21 +32,27 @@
         <div class="col-md-12 sectionContent">
             <ul class="nav nav-tabs" id="productpositions">
                  @foreach (var item in Model.prodgroups)
-                    {
+                 {
                             <li class=""><a href="#prd_@item.ProductGroupId" data-toggle="tab" data-id="@item.ProductGroupId" class="positiontabclick">@item.GroupName</a></li>
-                    }
+                 }
             </ul>
             <div class="tab-content" id="productcontent">
                   @foreach (var item in Model.prodgroups)
-                    {
-                        <div class="tab-pane" id="prd_@item.ProductGroupId">
+                  {
+                      foreach (var itemproduct in Model.Products)
+                      {
+                          if (item.TopProductId == itemproduct.TopProductGroupId)
+                          { 
+                            <div class="tab-pane" id="prd_@item.ProductGroupId">
                              <div class="col-md-12 noPadding">
                                 <div class="col-md-3 ">
-                                    <img src="/Content/images/terrazzo_yer_ karosu.jpg" /><a href="#">Terrazzo Yer Karosu</a>
+                                    <img src="@itemproduct.Image1" /><a href="/urunler/@itemproduct.ProductId/@itemproduct.PageSlug">@itemproduct.Name</a>
                                 </div>
                              </div>
                         </div>
-                    }
+                          }
+                      }
+                  }
             </div>
         </div>
 
@@ -115,7 +121,7 @@
             <ul class="referenceSlider">
                 @foreach (var item in Model.references)
                 {
-                    if(item.Logo!=null)
+                    if (item.Logo != null)
                     {
                     <li><img src="@item.Logo" style="width:135px;height:135px;" /></li>
                     }
