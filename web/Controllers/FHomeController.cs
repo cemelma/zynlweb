@@ -33,6 +33,8 @@ namespace web.Controllers
             model.news = NewsManager.GetNewsListForFront("tr");
             model.servicegroups = ServiceManager.GetServiceList();
             model.references = ReferenceManager.GetReferenceListForFront("tr");
+
+            model.prodgroups = ProductManager.GetProductGroupList("tr").Where(x=>x.ProductGroupId!=1).Take(6);
   
             return View(model);
         }

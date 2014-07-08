@@ -16,6 +16,7 @@ namespace web.Models
         public IEnumerable<SectorGroup> sectorgroup { get; set; }
         public IEnumerable<ProductGroup> prodgroups { get; set; }
         public IEnumerable<Service> servicegroups { get; set; }
+        public IEnumerable<Product> Products { get; set; }
         public Contact contact { get; set; }
 
         public HomePageWrapperModel()

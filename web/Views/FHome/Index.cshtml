@@ -16,13 +16,9 @@
     <ul class="slider">
         @foreach (var item in Model.photos)
         {
-            <li>
-                <img src="@item.Path" style="width:1090px;height:347px;" /></li>
+            <li><a href="@item.Link" target="_blank">
+                <img src="@item.Path" style="width:1090px;height:347px;" /></a></li>
         }
-
-        @*  <li><img src="/Content/Images/beton_boru.jpg" /></li>
-    <li><img src="/Content/Images/spor_sahalari.jpg" /></li>
-    <li><img src="/Content/Images/dogal_tas.jpg" /></li>*@
     </ul>
 
 </div>
@@ -34,109 +30,23 @@
             </div>
         </div>
         <div class="col-md-12 sectionContent">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#altyapi" data-toggle="tab">Altyapı Elemanları</a></li>
-                <li><a href="#kentmobilya" data-toggle="tab">Kent Mobilyaları</a></li>
-                <li><a href="#cevreguvenlik" data-toggle="tab">Çevre Güvenlik Sistemleri</a></li>
-                <li><a href="#dogaltas" data-toggle="tab">Doğal Taşlar</a></li>
+            <ul class="nav nav-tabs" id="productpositions">
+                 @foreach (var item in Model.prodgroups)
+                    {
+                            <li class=""><a href="#prd_@item.ProductGroupId" data-toggle="tab" data-id="@item.ProductGroupId" class="positiontabclick">@item.GroupName</a></li>
+                    }
             </ul>
-            <div class="tab-content">
-
-
-                <div class="tab-pane active" id="altyapi">
-                    <div class="col-md-12 noPadding">
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/muflu_entegre_contalı_beton.png" /><a href="#">Muflu Entegre Contalı Beton</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/lamba_zıvanalı_betonarme_boru.png" /><a href="#">Lamba Zıvanalı Betornarme Boru</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/parsel_baca_tabani.png" /><a href="#">Parsel Baca Tabanı</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/muayene_baca_tabanlari.png" /><a href="#">Muayene Baca Tabanı</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/muayene_baca_tabani_reduksiyon_kapagi.png" /><a href="#">Muayene Baca Tabanı Redüksiyon Kapağı</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/konik_elemanlari.png" /><a href="#">Konik Elemanları</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/muayene_baca_govdeleri.png" /><a href="#">Muayene Baca Gövdeleri</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/muayene_baca_kapagi.png" /><a href="#">Muayene Baca Kapağı</a></div>
-
-                    </div>
-                </div>
-
-
-                <div class="tab-pane" id="kentmobilya">
-
-                    <div class="col-md-12 noPadding">
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/asik_tasi.png" /><a href="#">Aşık Taşı</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/prizma_tasi.png" /><a href="#">Prizma Taşı</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/super_dekor.png" /><a href="#">Süper Dekor</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/s_tasi.png" /><a href="#">S Taşı</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/l_agac_dibi_borduru.png" /><a href="#">L Ağaç Dibi Bordürü</a> </div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/agac_dibi_izgara.png" /><a href="#">Ağaç Dibi Izgara</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/yagmur_olugu.png" /><a href="#">Yağmur Oluğu</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/karolar.png" /><a href="#">Karolar</a></div>
-                    </div>
-
-                </div>
-
-                <div class="tab-pane" id="cevreguvenlik">
-                    <div class="col-md-12 noPadding">
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/sentetik_cim.png" /><a href="#">Sentetik Çim</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/panel_cit_sistemleri.png" /><a href="#">Panel Çit Sistemleri</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/double_panel_cit_sistemleri.png" /><a href="#">Double Panel Çit Sistemleri</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/jiletli_tel_sistemleri.png" /><a href="#">Jiletli Tel Sistemleri</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/tel_orgu_sistemleri.png" /><a href="#">Tel Örgü Sistemleri</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/portatif_panel_cit_sistemleri.png" /><a href="#">Portatif Panel Çit Sistemleri</a> </div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/yaprak_cit_sistemleri.png" /><a href="#">Yaprak Çit Sistemleri</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/celik_yapilar.png" /><a href="#">Çelik Yapılar</a></div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="tab-pane" id="dogaltas">
-
-                    <div class="col-md-12 noPadding">
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/terrazzo_yer_ karosu.jpg" /><a href="#">Terrazzo Yer Karosu</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/washbeton.jpg" /><a href="#">Washbeton</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/bazalt.jpg" /><a href="#">Bazalt</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/alacati_tasi.jpg" /><a href="#">Alaçatı Taşı</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/kuptas.jpg" /><a href="#">Küptaş</a> </div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/patlatma_taslar.jpg" /><a href="#">Patlatma Taşlar</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/fileli_mozaik.jpg" /><a href="#">Fileli Mozaik</a></div>
-                        <div class="col-md-3 ">
-                            <img src="/Content/images/dekoratif_tugla.jpg" /><a href="#">Dekoratif Tuğla</a></div>
-                    </div>
-
-
-                </div>
-
+            <div class="tab-content" id="productcontent">
+                  @foreach (var item in Model.prodgroups)
+                    {
+                        <div class="tab-pane" id="prd_@item.ProductGroupId">
+                             <div class="col-md-12 noPadding">
+                                <div class="col-md-3 ">
+                                    <img src="/Content/images/terrazzo_yer_ karosu.jpg" /><a href="#">Terrazzo Yer Karosu</a>
+                                </div>
+                             </div>
+                        </div>
+                    }
             </div>
         </div>
 
@@ -226,8 +136,9 @@
     $(function () {
         $("#servicepositions li:first").addClass("active");
         $("#servicecontent .tab-pane:first").addClass("active");
-
-
+        $("#productpositions li:first").addClass("active");
+        $("#productcontent .tab-pane:first").addClass("active");
+        
 
     });
 
