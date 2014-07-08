@@ -181,7 +181,7 @@
             <ul class="newsSlider">
                 @foreach (var item in Model.news)
                 {
-                    <li><a href="haberler.html">
+                    <li><a href="/haberler">
                         <h5>@item.Header</h5>
                         <p>@item.Spot</p>
                         <div>@item.TimeCreated.Value.ToShortDateString()</div>
@@ -207,11 +207,11 @@
                 {
                     if(item.Logo!=null)
                     {
-                    <li><img src="@item.Logo" style="width:169px;height:62px;" /></li>
+                    <li><img src="@item.Logo" style="width:135px;height:135px;" /></li>
                     }
                     else
                     {
-                        <li><img src="/Content/Images/Front/noimage.jpeg" style="width:169px;height:62px;" /></li>
+                        <li><img src="/Content/Images/Front/noimage.jpeg" style="width:135px;height:135px;" /></li>
                     }
                 }
         
