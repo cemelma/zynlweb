@@ -287,6 +287,8 @@ namespace web.Areas.Admin
             context.MapRoute("brifingsdetails", "yonetim/detaylibrifingler", new { action = "Detail", Controller = "Brifing" });
             context.MapRoute("brifingsdetailsinfo", "yonetim/detaylibrifingler/detay/{id}", new { action = "DetailInfo", Controller = "Brifing" });
 
+            context.MapRoute("uyeler", "yonetim/uyeler", new { action = "Index", Controller = "Users" });
+
 
             context.MapRoute(
                 "Admin_defaultx",

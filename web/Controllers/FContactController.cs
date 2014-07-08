@@ -15,6 +15,8 @@ using System.Drawing.Drawing2D;
 using DAL.Entities;
 using web.Models;
 using DAL.Context;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace web.Controllers
 {
@@ -101,8 +103,8 @@ namespace web.Controllers
                 using (var client = new SmtpClient(mset.ServerHost, mset.Port))
                 {
                     client.EnableSsl = mset.Security;//true;//burası düzeltilecek
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.UseDefaultCredentials = true;
+                    //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
                     client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
                     
                     var mail = new MailMessage();
@@ -116,13 +118,26 @@ namespace web.Controllers
                         "<b>Tel: </b>" + phone + 
                         "<br><b>Şehir: </b>" + city +
                         "<br><h3>Mesaj:</h3><p>" + body + "</p>";
-
+                    //ServicePointManager.ServerCertificateValidationCallback = delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                     if (mail.To.Count > 0) client.Send(mail);
                 }
                 TempData["sent"] = "true";
             }
             catch (Exception ex)
             {
+                string message =
+        "Exception type " + ex.GetType() + Environment.NewLine +
+        "Exception message: " + ex.Message + Environment.NewLine +
+        "Stack trace: " + ex.StackTrace + Environment.NewLine;
+                if (ex.InnerException != null)
+                {
+                    message += "---BEGIN InnerException--- " + Environment.NewLine +
+                               "Exception type " + ex.InnerException.GetType() + Environment.NewLine +
+                               "Exception message: " + ex.InnerException.Message + Environment.NewLine +
+                               "Stack trace: " + ex.InnerException.StackTrace + Environment.NewLine +
+                               "---END Inner Exception";
+                }
+                TempData["exception"] = message;
                 TempData["sent"] = "false";
             }
 

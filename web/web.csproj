@@ -214,6 +214,7 @@
     <Compile Include="Areas\Admin\Controllers\ReferenceController.cs" />
     <Compile Include="Areas\Admin\Controllers\EstateController.cs" />
     <Compile Include="Areas\Admin\Controllers\UpdatesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Filters\AuthenticateUser.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageHelper.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageResizer.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContactWrapperModel.cs" />
     <Compile Include="Models\AdvancedSearchWrapperModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\EstateWrapperModel.cs" />
     <Compile Include="Models\OurTeamWrapperModel.cs" />
     <Compile Include="Models\MediaAssetUploadModel.cs" />
@@ -2969,6 +2971,8 @@
     <Content Include="Areas\Admin\Views\Product\_detailtable1.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_categorychoise.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\ListCV.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\account_leftbar.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />
@@ -3172,7 +3176,6 @@
     <Content Include="Views\Shared\_submenu.cshtml" />
     <Content Include="Views\FProduct\Index.cshtml" />
     <Content Include="Views\FProduct\Prices.cshtml" />
-    <Content Include="Views\FProduct\UserLoginPopup.cshtml" />
     <Content Include="Views\FProduct\UserLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
