@@ -152,7 +152,7 @@
                     <p>
                         @Html.Label("Renk")
                          
-                        <input type="text" name="txtrenk" id="txtrenk" style="width:80px;"/>
+                        <input type="text" name="txtrenk" id="txtrenk" style="width:80px;" readonly="true"/>
                     </p>
                     <p>
                         @Html.Label("TL/M2")
@@ -192,6 +192,7 @@
 
     </section>
 </div>
+
 @section Scripts {
     <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.ui.all.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
@@ -211,8 +212,10 @@
 
     <script  type="text/javascript">
         $(document).ready(function () {
-
-
+            var value = "@Model.Product.ProductGroupId";
+            if(value!=null && value!="")
+                $("#" + "@Model.Product.ProductGroupId").prop("checked", true);
+            
             $('#txtrenk').colpick({
                 colorScheme: 'dark',
                 layout: 'rgbhex',
@@ -222,6 +225,7 @@
                     $(el).colpickHide();
                 }
             })
+
             var updateOutput = function (e) {
                 var list = e.length ? e : $(e.target),
                     output = list.data('output');
@@ -233,7 +237,7 @@
                 }
             };
             $('#nestable').nestable({ group: 1 }).on('change', updateOutput);
-            $('.dd').nestable('collapseAll'); //Başlangıçta tüm grupları kapat
+            //$('.dd').nestable('collapseAll'); //Başlangıçta tüm grupları kapat
 
             $('#nestable-menu').on('click', function (e) {
                 var target = $(e.target),

@@ -11,7 +11,6 @@
         if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
         {         
             <text> <li class="dd-item dd3-item" data-id="@item.ProductGroupId"> </text>
-            <div class="dd-handle dd3-handle">Drag</div>
             <div class="dd3-content">
                 @item.GroupName
             </div> 
@@ -43,7 +42,7 @@ else
           if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
             { 
         <text><li class="dd-item dd3-item" data-id="@item.ProductGroupId"></text>
-            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">
+            <div class="dd3-content">
                 @item.GroupName 
               
             </div> 
@@ -59,8 +58,7 @@ else
         }
         else
         {
-             <text> <li class="dd-item dd3-item" data-id="@item.ProductGroupId"> </text>
-    <div class="dd-handle dd3-handle">Drag</div>         
+             <text> <li class="dd-item dd3-item" data-id="@item.ProductGroupId"> </text>      
     <div class="dd3-content">
                 <input type="radio" id="@item.ProductGroupId" name="radiocat" />@item.GroupName
             </div> 
