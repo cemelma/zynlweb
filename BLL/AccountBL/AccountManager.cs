@@ -90,6 +90,15 @@ namespace BLL.AccountBL
             }
         }
 
+        public static List<User> GetCustomerList()
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.User.Where(d=>d.Deleted == false).ToList();
+                return list;
+            }
+        }
+
         public static bool Delete(int id)
         {
             using (MainContext db = new MainContext())
@@ -105,6 +114,58 @@ namespace BLL.AccountBL
                     logkeeper.LogDate = DateTime.Now;
                     logkeeper.LogProcess = EnumLogType.Kullanici.ToString();
                     logkeeper.Message = LogMessages.UserDeleted;
+                    logkeeper.User = HttpContext.Current.User.Identity.Name;
+                    logkeeper.Data = record.FullName;
+                    logkeeper.AddInfoLog(logger);
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static object UpdateStatus(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.User.SingleOrDefault(d => d.UserId == id);
+                try
+                {
+
+                    if (list != null)
+                    {
+                        list.Online = list.Online == true ? false : true;
+                        db.SaveChanges();
+
+                    }
+                    return list.Online;
+
+                }
+                catch (Exception)
+                {
+                    return list.Online;
+                }
+            }
+        }
+
+        public static bool DeleteUsers(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    var record = db.User.FirstOrDefault(d => d.UserId == id);
+                    record.Deleted = true;
+
+                    db.SaveChanges();
+
+                    LogtrackManager logkeeper = new LogtrackManager();
+                    logkeeper.LogDate = DateTime.Now;
+                    logkeeper.LogProcess = EnumLogType.Kullanici.ToString();
+                    logkeeper.Message = LogMessages.UserDeletedFront;
                     logkeeper.User = HttpContext.Current.User.Identity.Name;
                     logkeeper.Data = record.FullName;
                     logkeeper.AddInfoLog(logger);

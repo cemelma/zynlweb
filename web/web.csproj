@@ -214,6 +214,7 @@
     <Compile Include="Areas\Admin\Controllers\ReferenceController.cs" />
     <Compile Include="Areas\Admin\Controllers\EstateController.cs" />
     <Compile Include="Areas\Admin\Controllers\UpdatesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Filters\AuthenticateUser.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageHelper.cs" />
     <Compile Include="Areas\Admin\Helpers\ImageResizer.cs" />
@@ -2969,6 +2970,8 @@
     <Content Include="Areas\Admin\Views\Product\_detailtable1.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_categorychoise.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\ListCV.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\account_leftbar.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />

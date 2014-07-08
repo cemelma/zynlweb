@@ -78,5 +78,12 @@ namespace web.Controllers
             return View();
         }
 
+        public ActionResult UserLogout()
+        {
+            Session.Remove("userlogin");
+            return RedirectToAction("Index", "FHome");
+        }
+        
+
     }
 }

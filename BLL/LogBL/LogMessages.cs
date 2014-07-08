@@ -42,6 +42,8 @@ namespace BLL.LogBL
         public static string HumanResourceCVAdded = "Yeni CV Eklendi";
         public static string HumanResourcePositionCVDeleted = "CV Silindi";
 
+        public static string UserDeletedFront = "Üye Silindi";
+
         public static string DocumentGroupAdded = "Yeni Döküman grubu Eklendi";
         public static string DocumentGroupNotAdded = "Yeni Döküman grubu Eklenemedi";
         public static string DocumentGroupEdited = " Döküman grubu Düzenlendi";
