@@ -69,7 +69,7 @@ namespace web.Areas.Admin.Controllers
 
         public ActionResult Edit()
         {
-            ImageHelperNew.DestroyImageCashAndSession(1920, 1080);
+            ImageHelperNew.DestroyImageCashAndSession(1120, 350);
             //var languages = LanguageManager.GetLanguages();
             //var list = new SelectList(languages, "Culture", "Language");
      //       ViewBag.LanguageList = list;

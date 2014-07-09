@@ -2973,6 +2973,7 @@
     <Content Include="Areas\Admin\Views\HumanResource\ListCV.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Users\account_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_imageUploadAndCropRefeance.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />

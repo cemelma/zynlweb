@@ -32,11 +32,15 @@
             @Html.ValidationMessageFor(m => m.ReferenceName)
         </p>
         
-        <p>
-            <label for="txtname">Logo</label>
-            
-            <input type="file" name="uploadfile" id="uploadfile" />
-        </p>
+       
+           
+            <fieldset>
+                    <legend>Logo</legend>
+                    <div id="uploadPartial">
+                        @Html.Partial("_imageUploadAndCropRefeance")
+                    </div>
+                </fieldset>
+        
         <p>
             @Html.LabelFor(m=>m.Link)
             @Html.TextBoxFor(m=>m.Link, new { @class="textwidth50"})

@@ -31,6 +31,7 @@ namespace web.Areas.Admin.Controllers
 
         public ActionResult AddReference()
         {
+            ImageHelperNew.DestroyImageCashAndSession(169, 62);
              return View();
         }
 
@@ -39,17 +40,26 @@ namespace web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (uploadfile != null && uploadfile.ContentLength > 0)
+                if (Session["ModifiedImageId"] != null)
                 {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    new ImageHelper(240, 240).SaveThumbnail(uploadfile,"/Content/images/references/", Utility.SetPagePlug(newmodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName));
-                    newmodel.Logo = "/Content/images/references/" + Utility.SetPagePlug(newmodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    newmodel.Logo = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    ImageHelperNew.DestroyImageCashAndSession(0, 0);
                 }
                 else
                 {
                     newmodel.Logo = "/Content/images/front/noimage.jpeg";
                 }
+                //if (uploadfile != null && uploadfile.ContentLength > 0)
+                //{
+                //    Random random = new Random();
+                //    int rand = random.Next(1000, 99999999);
+                //    new ImageHelper(240, 240).SaveThumbnail(uploadfile,"/Content/images/references/", Utility.SetPagePlug(newmodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName));
+                //    newmodel.Logo = "/Content/images/references/" + Utility.SetPagePlug(newmodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                //}
+                //else
+                //{
+                //    newmodel.Logo = "/Content/images/front/noimage.jpeg";
+                //}
 
                 newmodel.Language = "tr";
                 newmodel.SortOrder = 9999;
@@ -122,6 +132,7 @@ namespace web.Areas.Admin.Controllers
                 bool isnumber = int.TryParse(RouteData.Values["id"].ToString(), out nid);
                 if (isnumber)
                 {
+                    ImageHelperNew.DestroyImageCashAndSession(169, 62);
                     References editreference = ReferenceManager.GetReferenceById(nid);
                     var photos = PhotoManager.GetList(4,nid);
                     ViewBag.Photos = photos;
@@ -141,13 +152,18 @@ namespace web.Areas.Admin.Controllers
              int ID = Convert.ToInt32(RouteData.Values["id"]);
             if (ModelState.IsValid)
             {
-                if (uploadfile != null && uploadfile.ContentLength > 0)
+                if (Session["ModifiedImageId"] != null)
                 {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    new ImageHelper(240, 240).SaveThumbnail(uploadfile, "/Content/images/references/", Utility.SetPagePlug(referencemodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName));
-                    referencemodel.Logo = "/Content/images/references/" + Utility.SetPagePlug(referencemodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    referencemodel.Logo = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    ImageHelperNew.DestroyImageCashAndSession(0, 0);
                 }
+                //if (uploadfile != null && uploadfile.ContentLength > 0)
+                //{
+                //    Random random = new Random();
+                //    int rand = random.Next(1000, 99999999);
+                //    new ImageHelper(240, 240).SaveThumbnail(uploadfile, "/Content/images/references/", Utility.SetPagePlug(referencemodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName));
+                //    referencemodel.Logo = "/Content/images/references/" + Utility.SetPagePlug(referencemodel.ReferenceName) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                //}
               
                 foreach (var item in attachments)
                 {
