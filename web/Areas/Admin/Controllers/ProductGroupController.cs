@@ -15,6 +15,12 @@ using Newtonsoft.Json;
 
 namespace web.Areas.Admin.Controllers
 {
+    public class nestedlist {
+        public int id { get; set; }
+        //public nestedlist children { get; set; }
+        //public nestedlist(){}
+    }
+
     [AuthenticateUser]
     public class ProductGroupController : Controller
     {
@@ -133,12 +139,20 @@ namespace web.Areas.Admin.Controllers
 
         public JsonResult SortRecords(string list)
         {
+
+            var m = JsonConvert.DeserializeObject<nestedlist>(list);
+
             JavaScriptSerializer Serializer = new JavaScriptSerializer();
-            dynamic dynamicResult = Serializer.Deserialize<dynamic>(list);
-            foreach (var item in dynamicResult)
-            {
-                
-            }
+
+            var dynamicResult = Serializer.Deserialize<List<nestedlist>>(list);
+            //foreach (KeyValuePair<string, string> item in dynamicResult)
+            //{
+                //int value;
+                //if (int.TryParse(item.Key, out value))
+                //{
+                //    value = value;
+                //}
+            //}
             //var jsonResponse = JsonConvert.DeserializeAnonymousType(json, list);
             //dynamic jsonResponse = JsonConvert.Deserialize(list);
 

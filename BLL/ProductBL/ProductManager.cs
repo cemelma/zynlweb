@@ -681,7 +681,7 @@ namespace BLL.ProductBL
         {
             using (MainContext db = new MainContext())
             {
-                var list = db.Product.Include("ProductDetail").Where(d => d.Deleted == false && d.Online == true && topid.Contains(d.ProductGroupId)).OrderByDescending(d => d.TimeCreated).
+                var list = db.Product.Include("ProductDetail").Where(d => d.Deleted == false && d.Online == true && topid.Contains(d.TopProductGroupId)).OrderByDescending(d => d.TimeCreated).
                     OrderBy(d => d.SortNumber).
                     ToList();
                 return list;
