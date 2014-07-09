@@ -55,7 +55,7 @@ namespace web.Controllers
                     mail.To.Add(item.MailAddress);
                 mail.Subject = "Yeni CV";
                 mail.IsBodyHtml = true;
-                mail.Body = "<p> Merhaba \"Zeyne Yayla\" üzerinden " + positionname + " pozisyonu için yeni bir CV gönderildi. <br> CV'yi mail ekinde bulabilirsiniz..</p>";
+                mail.Body = "<p> Merhaba \"Zeynel Yayla\" üzerinden " + positionname + " pozisyonu için yeni bir CV gönderildi. <br> CV'yi mail ekinde bulabilirsiniz..</p>";
                 //ServicePointManager.ServerCertificateValidationCallback = delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 if (mail.To.Count > 0) client.Send(mail);
             }

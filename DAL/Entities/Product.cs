@@ -18,7 +18,7 @@ namespace DAL.Entities
         [Required(ErrorMessage = "Ürün Adını Giriniz.")]
         public string Name { get; set; }
         [Display(Name = "İçerik")]
-        [Required(ErrorMessage = "İçerik Giriniz.")]
+       
         public string Content { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }
