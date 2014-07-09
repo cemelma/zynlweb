@@ -19,12 +19,12 @@
     <section class="grid_12 form">
         @Html.Hidden("ProcessMessage", (object)@ViewBag.ProcessMessage)
         @Html.Hidden("hdsaveResult", (object)@ViewBag.SaveResult)
-        @Html.Hidden("hdProductId", (object)@ViewBag.ProductId)
+        
 
 
         @using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-           
+           @Html.Hidden("hdProductId", (object)@ViewBag.ProductId)
             @Html.Hidden("hdfieldcategory")
             @Html.Hidden("hdfieldtaglist")
             @Html.ValidationSummary(true)

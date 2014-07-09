@@ -11,6 +11,7 @@ namespace DAL.Entities
     {
         [Key]
         public int DetailId{get;set;}
+
         public int ProductId { get; set; }
 
         [Display(Name = "Ürün Kodu")]
@@ -44,5 +45,6 @@ namespace DAL.Entities
         [Display(Name = "Kırmızı TL/M2")]
       
         public string Price { get; set; }
+
     }
 }

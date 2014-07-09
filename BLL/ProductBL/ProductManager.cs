@@ -263,6 +263,15 @@ namespace BLL.ProductBL
             }
         }
 
+        public static List<ProductDetail> GetProductDetailListForFront(int productId)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.ProductDetail.Where(d => d.ProductId == productId).ToList();
+                return list;
+            }
+        }
+
         public static bool AddProductGroup(ProductGroup record)
         {
             using (MainContext db = new MainContext())
@@ -633,7 +642,7 @@ namespace BLL.ProductBL
                         record.Content = data.Content;
                         record.PageSlug = data.PageSlug;
                      
-                        record.ProductGroupId = data.ProductGroupId;
+                        //record.ProductGroupId = data.ProductGroupId;
                        if(!string.IsNullOrEmpty(data.Image1))
                            record.Image1 = data.Image1;
                        if (!string.IsNullOrEmpty(data.Image2))
@@ -670,7 +679,7 @@ namespace BLL.ProductBL
         {
             using (MainContext db = new MainContext())
             {
-                var list = db.Product.Include("ProductDetail").Where(d => d.Deleted == false && d.Online == true && d.TopProductGroupId == topid).OrderByDescending(d => d.TimeCreated).
+                var list = db.Product.Where(d => d.Deleted == false && d.Online == true && d.TopProductGroupId == topid).OrderByDescending(d => d.TimeCreated).
                     OrderBy(d => d.SortNumber).
                     ToList();
                 return list;
@@ -681,7 +690,7 @@ namespace BLL.ProductBL
         {
             using (MainContext db = new MainContext())
             {
-                var list = db.Product.Include("ProductDetail").Where(d => d.Deleted == false && d.Online == true && topid.Contains(d.TopProductGroupId)).OrderByDescending(d => d.TimeCreated).
+                var list = db.Product.Where(d => d.Deleted == false && d.Online == true && topid.Contains(d.TopProductGroupId)).OrderByDescending(d => d.TimeCreated).
                     OrderBy(d => d.SortNumber).
                     ToList();
                 return list;

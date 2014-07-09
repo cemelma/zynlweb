@@ -169,12 +169,12 @@ namespace web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditProduct(ProductAddModel model, IEnumerable<HttpPostedFileBase> attachments, HttpPostedFileBase prd1, HttpPostedFileBase prd2)
+        public ActionResult EditProduct(ProductAddModel model, IEnumerable<HttpPostedFileBase> attachments, HttpPostedFileBase prd1, HttpPostedFileBase prd2,int hdProductId)
         {
             try
             {
                 model.Product.PageSlug = Utility.SetPagePlug(model.Product.Name);
-
+                model.Product.ProductId = hdProductId;
             //    model.Product.ProductGroupId = 1;
 
                 if (prd1 != null)

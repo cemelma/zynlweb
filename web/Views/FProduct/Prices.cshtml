@@ -68,7 +68,7 @@
                     <td>RENGİ TL/M²</td>
                     <td>FİYATI</td>
                   </tr>
-                foreach (var itemdetail in item.ProductDetail)
+                foreach (var itemdetail in BLL.ProductBL.ProductManager.GetProductDetailListForFront(item.ProductId))
 	            {
 		            <tr>
                         <td>@itemdetail.Code</td>
