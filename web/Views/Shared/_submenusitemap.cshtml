@@ -85,7 +85,7 @@ else
                         <div class="col-md-3 noPadding">
                             <h3>@item.GroupName</h3>
                        
-                        if (Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId).Any())
+                        @if (Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId).Any())
                         {   
                               <ul>
                                 @foreach (var prd in Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId))
