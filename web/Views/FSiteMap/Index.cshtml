@@ -39,10 +39,10 @@
       <div class="col-md-3 noPadding">
         <h3>Fiyat Listesi</h3>
 		<ul>
-          <li><a href="#">Kent Mobilyaları</a></li>
-          <li><a href="#">Altyapı Elemanları</a></li>
-          <li><a href="^#">Çevre Güvenlik Sistemleri</a></li>
-          <li><a href="#">Doğal Taşlar</a></li>
+            @foreach (var item in Model.ProductGroup.Where(d=>d.TopProductId == 1))
+            {
+                <li><a href="/fiyatlar/@item.ProductGroupId/@item.PageSlug">@item.GroupName</a></li>   
+            }
         </ul>
       </div>
 
