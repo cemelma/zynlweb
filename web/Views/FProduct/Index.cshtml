@@ -36,11 +36,11 @@
         </div>
         <div class="col-md-9">
         <div class="col-md-1 "></div>
-        @if(!string.IsNullOrEmpty(Model.Image1))
+        @if (!string.IsNullOrEmpty(Model.Image1) && Model.Image1 != "/Content/images/front/noimage.jpeg")
         {
             <div class="col-md-5 "><img src="@Model.Image1" /></div>
         }
-         @if(!string.IsNullOrEmpty(Model.Image2))
+         @if (!string.IsNullOrEmpty(Model.Image2) && Model.Image2 != "/Content/images/front/noimage.jpeg")
         {
             <div class="col-md-5 "><img src="@Model.Image2" /></div>
         }
