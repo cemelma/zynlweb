@@ -6,6 +6,7 @@
 @if(Model.SelectedProductGroup!=null)
 {
     productGroupId = Model.SelectedProductGroup.ProductGroupId;
+    
     foreach (var item in Model.ProductGroup.Where(d => d.TopProductId == productGroupId))
     {
         
@@ -29,7 +30,16 @@
                         }
                         else
                         {
-                            <li><a href="/urunler/@itemsub.ProductGroupId/@item.PageSlug">@itemsub.GroupName</a></li>
+                            <li><a href="#">@itemsub.GroupName</a></li>
+                             if (Model.Products.Where(d => d.ProductGroupId == itemsub.ProductGroupId).Any())
+                                {   
+                                      <ul>
+                                        @foreach (var prd in Model.Products.Where(d => d.ProductGroupId == itemsub.ProductGroupId))
+                                        {
+                                            <li><a href="/urunler/@prd.ProductId/@prd.PageSlug">@prd.Name</a></li>
+                                        }
+                                    </ul>
+                                }
                         }
                     }
                         </ul>
@@ -37,7 +47,17 @@
             }
             else
             {
-                <li><a href="/urunler/@item.ProductGroupId/@item.PageSlug">@item.GroupName</a></li>  
+                <li><a href="#">@item.GroupName</a></li>  
+                 if (Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId).Any())
+                    {   
+                          <ul>
+                            @foreach (var prd in Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId))
+                            {
+                                <li><a href="/urunler/@prd.ProductId/@prd.PageSlug">@prd.Name</a></li>
+                            }
+                        </ul>
+                    }
+                
             }
          
     }
@@ -60,9 +80,28 @@ else
             }
             else
             {
-                <div class="col-md-3 noPadding">
-                    <h3>@item.GroupName</h3>
-                </div>
+                if (Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId).Any())
+                {
+                        <div class="col-md-3 noPadding">
+                            <h3>@item.GroupName</h3>
+                       
+                        if (Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId).Any())
+                        {   
+                              <ul>
+                                @foreach (var prd in Model.Products.Where(d => d.ProductGroupId == item.ProductGroupId))
+                                {
+                                    <li><a href="/urunler/@prd.ProductId/@prd.PageSlug" >@prd.Name</a></li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                }
+                else 
+                {
+                    <div class="col-md-3 noPadding">
+                        <h3>@item.GroupName</h3>
+                    </div>
+                }
             }
                 
     }

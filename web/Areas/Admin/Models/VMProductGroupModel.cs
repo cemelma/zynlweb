@@ -10,6 +10,7 @@ namespace web.Areas.Admin.Models
     public class VMProductGroupModel
     {
         public IEnumerable<ProductGroup> ProductGroup { get; set; }
+        public List<Product> Products { get; set; }
         public ProductGroup SelectedProductGroup { get; set; }
     }
 }

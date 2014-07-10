@@ -334,7 +334,7 @@ namespace web.Areas.Admin.Controllers
         {
             using (MainContext db = new MainContext())
             {
-                int topid = 0;
+                int topid = id;
                 ProductGroup prodgroup;
                 prodgroup = ProductManager.GetTopGroupById(id);
                 while (prodgroup.TopProductId != 1)
