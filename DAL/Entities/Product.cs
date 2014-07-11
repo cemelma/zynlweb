@@ -30,6 +30,7 @@ namespace DAL.Entities
         [Display(Name = "Ürün Açıklaması")]
         public string PageSlug { get; set; }
         public ProductGroup ProductGroup { get; set; }
+        public bool IsShownMain { get; set; }
         //public List<ProductDetail> ProductDetail { get; set; }
     }
 }

@@ -641,6 +641,7 @@ namespace BLL.ProductBL
                         record.Name = data.Name;
                         record.Content = data.Content;
                         record.PageSlug = data.PageSlug;
+                        record.IsShownMain = data.IsShownMain;
                      
                         //record.ProductGroupId = data.ProductGroupId;
                        if(!string.IsNullOrEmpty(data.Image1))
@@ -657,8 +658,6 @@ namespace BLL.ProductBL
                         //logkeeper.User = HttpContext.Current.User.Identity.Name;
                         //logkeeper.Data = record.Name;
                         //logkeeper.AddInfoLog(logger);
-
-
                         return true;
                     }
                     else
@@ -691,6 +690,17 @@ namespace BLL.ProductBL
             using (MainContext db = new MainContext())
             {
                 var list = db.Product.Where(d => d.Deleted == false && d.Online == true && topid.Contains(d.TopProductGroupId)).OrderByDescending(d => d.TimeCreated).
+                    OrderBy(d => d.SortNumber).
+                    ToList();
+                return list;
+            }
+        }
+
+        public static List<Product> GetProductTopListFrontMainPage(int[] topid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.Product.Where(d => d.Deleted == false && d.Online == true && d.IsShownMain == true && topid.Contains(d.TopProductGroupId)).OrderByDescending(d => d.TimeCreated).
                     OrderBy(d => d.SortNumber).
                     ToList();
                 return list;

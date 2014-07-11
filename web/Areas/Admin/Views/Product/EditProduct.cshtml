@@ -47,6 +47,11 @@
                         @Html.ValidationMessageFor(m => m.Product.Content)
                     </p>
 
+                     <p>
+                        @Html.Label("Ana sayfada Göster")
+                        @Html.CheckBoxFor(x=>x.Product.IsShownMain)
+                    </p>
+
                     <p style="float: left; margin-right: 4px !important;">
                         <label>Ürün Fotoğrafları</label>
                     </p>
