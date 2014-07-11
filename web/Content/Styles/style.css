@@ -11,7 +11,7 @@ ul li { font-size: 12px; line-height: 18px; color: #666; }
 .sectionTitle h5 { color: #fff; font-size: 13px; font-weight: 600; margin: 0; line-height: 20px; }
 .sectionTitle .allContent a { color: #fff; font-size: 13px; font-weight: 600; margin: 0; float: right; }
 .sectionContent { background: #fff; padding: 10px; }
-.tab-pane .col-md-3 { padding: 10px; }
+.tab-pane .col-md-3 { padding: 10px; height:180px;}
 .referencePage .nav-tabs { border: none !important }
 .humanResources .nav-tabs { margin: 0px !important; }
 .humanResources .nav-tabs>li { float: none; margin-bottom: 0px; }
