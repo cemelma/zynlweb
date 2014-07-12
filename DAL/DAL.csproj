@@ -98,6 +98,7 @@
     <Compile Include="Entities\Tags.cs" />
     <Compile Include="Entities\Teklif.cs" />
     <Compile Include="Entities\Town.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContactRepository.cs" />
     <Compile Include="Repositories\IContactRepository.cs" />
@@ -106,9 +107,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

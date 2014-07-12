@@ -320,12 +320,16 @@ namespace web.Areas.Admin.Controllers
         }
 
 
-        public ActionResult Index()
+        public ActionResult Index(int? groupId)
         {
             using (MainContext db = new MainContext())
             {
-                var prd = db.Product.Where(x => x.Deleted==false).ToList();
-                return View(prd);
+                VMProductGroupModel vm = new VMProductGroupModel();
+                vm.ProductGroup = ProductManager.GetProductGroupList("tr");
+                if (groupId==null)
+                    vm.Products = db.Product.Where(x => x.Deleted==false).ToList();
+                else vm.Products = db.Product.Where(x => x.Deleted == false && x.TopProductGroupId == groupId).OrderBy(d=>d.SortNumber).ToList();
+                return View(vm);
             }
           
         }

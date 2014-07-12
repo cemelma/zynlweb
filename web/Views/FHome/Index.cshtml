@@ -48,7 +48,7 @@
                       <div class="tab-pane" id="prd_@item.ProductGroupId">
                              <div class="col-md-12 noPadding">
 
-                      @foreach (var itemproduct in Model.Products)
+                      @foreach (var itemproduct in Model.Products.OrderBy(d=>d.SortNumber))
                       {
                           if (item.ProductGroupId == itemproduct.TopProductGroupId)
                           { 

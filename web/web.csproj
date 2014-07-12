@@ -2974,6 +2974,7 @@
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Users\account_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_imageUploadAndCropRefeance.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_ProductGroupDropDown.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />

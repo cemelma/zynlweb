@@ -703,6 +703,14 @@ namespace BLL.ProductBL
                 var list = db.Product.Where(d => d.Deleted == false && d.Online == true && d.IsShownMain == true && topid.Contains(d.TopProductGroupId)).OrderByDescending(d => d.TimeCreated).
                     OrderBy(d => d.SortNumber).
                     ToList();
+
+                //Ürünlerin hepsini görünür ya anasayfada
+                //var li = db.Product.ToList();
+                //foreach (var item in li)
+                //{
+                //    item.IsShownMain = true;
+                //}
+                //db.SaveChanges();
                 return list;
             }
         }

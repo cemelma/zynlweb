@@ -1,7 +1,13 @@
-﻿@model IEnumerable<DAL.Entities.Product>
+﻿@model web.Areas.Admin.Models.VMProductGroupModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
+    string groupid = "";
+    if (Request.QueryString["groupId"] != null)
+    {
+        groupid = Request.QueryString["groupId"].ToString();
+    }
+    
 }
 
 
@@ -11,15 +17,18 @@
 
 @Html.Partial("product_leftbar")
 
+<input type="hidden" id="h_groupid" value="@groupid" />
 
 <div id="page-content" class="container_12">
     <div id="page-header">
        <h2>ÜRÜN BİLGİLERİ</h2>
     </div>  
     <section class="grid_12 form">
-    <div class="box-header" ><h1>Ürün Listesi
-        
-          
+    <div class="box-header" ><h1>Ürün Listesi | Kategori Seçiniz:
+        <select id="ddl_group">
+            <option value="0">Tümü</option>
+            @Html.Partial("_ProductGroupDropDown",Model)
+        </select>
     </h1></div>
     <table id="tblcategory" class="table no-border tablesorter">
         <thead>
@@ -34,7 +43,7 @@
             </tr>
         </thead>
          <tbody id="item-list">
-            @foreach (var item in Model)
+            @foreach (var item in Model.Products)
             {
                 <tr id="listItem_@item.ProductId"  class="handle">
                     <td class="center">
@@ -96,3 +105,24 @@
 <script src="~/Areas/Admin/Content/scripts/pagescripts/product/productlist.js"></script>
 
 
+<script>
+    $(function () {
+        $("#ddl_group option:last").remove();
+
+        var groupid = $("#h_groupid").val();
+        if (groupid!=null)
+            $("#ddl_group").val(groupid);
+
+        if ($("#ddl_group").val() == 0)
+        {
+            $(".sortimg").hide();
+        }
+
+        $("#ddl_group").change(function () {
+            if ($("#ddl_group").val() != 0)
+                window.location = "/yonetim/urunlistesi?groupId=" + $("#ddl_group").val();
+            else window.location = "/yonetim/urunlistesi";
+        });
+
+    });
+</script>
