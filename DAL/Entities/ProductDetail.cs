@@ -42,6 +42,8 @@ namespace DAL.Entities
       
         public string ColorWhite { get; set; }
 
+        //public string ColorName { get; set; }
+
         [Display(Name = "Kırmızı TL/M2")]
       
         public string Price { get; set; }

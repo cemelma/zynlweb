@@ -27,7 +27,8 @@
         $("#txtton").val("");
         $("#txtfiyat").val("");
         $("#txtbirim").val("");
-        $("#txtrenk").css("background-color","white");
+        //$("#txtrenk").css("background-color", "white");
+        $("#txtrenk").val();
 
     });
 
@@ -39,7 +40,8 @@
         var ton = $("#txtton").val();
         var fiyat = $("#txtfiyat").val();
         var birim = $("#txtbirim").val();
-        var renk = $("#txtrenk").css("background-color");
+        var renk = $("#txtrenk").val();
+        //$("#txtrenk").css("background-color", "white");
 
         if (code == "" || malzeme == "" || fiyat == "" || ebat=="" || agirlik=="" || ton=="" || birim=="" || renk=="" ) {
             alert("Kayıt eklemek için tüm alanları doldurmalısınız");

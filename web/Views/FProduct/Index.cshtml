@@ -62,7 +62,7 @@
             <td>AĞIRLIK (KG)</td>
             <td>ARAÇ (20 TON)</td>
             <td>RENGİ</td>
-            <td>KIRMIZI TL/M²</td>
+            <td>FİYATI</td>
           </tr>
             @foreach (var item in ViewBag.Details)
           {
@@ -73,8 +73,8 @@
                  <td>@item.Dimension</td>
                  <td>@item.Weight</td>
                  <td>@item.VehicleTon</td>
-                 <td style="background-color:@item.ColorWhite"></td>
-                 <td style="text-align:center">@item.Price</td>
+                 <td>@item.ColorWhite</td>
+                 <td>@item.Price</td>
                </tr>
              
           }

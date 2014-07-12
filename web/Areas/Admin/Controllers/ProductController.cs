@@ -276,7 +276,7 @@ namespace web.Areas.Admin.Controllers
 
 
 
-        public ActionResult SaveDetail(string code, string malzeme, string birim, string ebat, string agirlik, string ton, string fiyat,string renk,string prId)
+        public ActionResult SaveDetail(string code, string malzeme, string birim, string ebat, string agirlik, string ton, string fiyat, string renk, string prId)
         {
             using (MainContext db = new MainContext())
             {
@@ -294,7 +294,7 @@ namespace web.Areas.Admin.Controllers
                     pd.Dimension = ebat;
                     pd.Price = fiyat;
                     pd.ColorWhite = renk;
-
+                    //pd.ColorName = renkadi;
 
                     db.ProductDetail.Add(pd);
                     db.SaveChanges();
