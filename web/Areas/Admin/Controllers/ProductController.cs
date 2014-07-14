@@ -83,8 +83,12 @@ namespace web.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+
+                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+
                     new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
                     model.Product.Image1 = "/Content/images/userfiles/" + path;
+                    
                 }
                 else
                 {
@@ -97,6 +101,9 @@ namespace web.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd2.FileName);
+                    
+                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+
                     new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/", path);
                     model.Product.Image2 = "/Content/images/userfiles/" + path;
                 }
@@ -183,6 +190,9 @@ namespace web.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+
+                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);                    
+
                     new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
                     model.Product.Image1 = "/Content/images/userfiles/" + path;
                 }
@@ -197,6 +207,9 @@ namespace web.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd2.FileName);
+
+                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);                    
+                    
                     new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/", path);
                     model.Product.Image2 = "/Content/images/userfiles/" + path;
                 }

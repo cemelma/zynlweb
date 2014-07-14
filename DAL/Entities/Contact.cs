@@ -21,4 +21,27 @@ namespace DAL.Entities
         [Required(ErrorMessage = "Email Bilgisini Giriniz")]
         public string Email { get; set; }
     }
+
+    public class ContactHome
+    {
+        [Key]
+        public int ContactId { get; set; }
+
+        public string FullName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
+
+        public string City { get; set; }
+
+        public string Subject { get; set; }
+
+        public string Body { get; set; }
+
+        public DateTime TimeCreated { get; set; }
+
+        public bool Deleted { get; set; }
+
+    }
 }

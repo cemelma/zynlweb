@@ -61,6 +61,8 @@ namespace DAL.Context
         public DbSet<Tags> Tags { get; set; }
         public DbSet<ProductDetail> ProductDetail { get; set; }
         public DbSet<HumanResourceCv> HumanResourceCv { get; set; }
+        public DbSet<ContactHome> ContactHome { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -114,7 +116,8 @@ namespace DAL.Context
             modelBuilder.Entity<Slider>().ToTable("Slider");
             modelBuilder.Entity<ProductDetail>().ToTable("ProductDetail");
 
-            modelBuilder.Entity<HumanResourceCv>().ToTable("HumanResourceCv"); 
+            modelBuilder.Entity<HumanResourceCv>().ToTable("HumanResourceCv");
+            modelBuilder.Entity<ContactHome>().ToTable("ContactHome"); 
 
         }
     }

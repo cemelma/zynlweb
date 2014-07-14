@@ -66,5 +66,64 @@ namespace BLL.ContactBL
                 }
             }
         }
+
+
+
+
+
+
+        public static bool AddContactHome(ContactHome record)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    record.TimeCreated = DateTime.Now;
+                    record.Deleted = false;
+                    db.ContactHome.Add(record);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static List<ContactHome> GetListContactHome()
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    return db.ContactHome.Where(d => d.Deleted == false).OrderBy(d => d.TimeCreated).ToList();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static bool Delete(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    var record = db.ContactHome.FirstOrDefault(d => d.ContactId == id);
+                    if (record != null)
+                        record.Deleted = true;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
     }
 }

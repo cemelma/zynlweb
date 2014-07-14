@@ -82,20 +82,27 @@ namespace web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string namesurname, string email, string phone, string city, string subject, string body)
+        public ActionResult Index(string namesurname, string email, string phone, string city, string subject, string body,string captcha)
         {
             try
             {
-                //if (Session["Captcha"] == null || Session["Captcha"].ToString() != kepce)
-                //{
-                //    TempData["captchaError"] = "Yanlış değer girdiniz, lütfen tekrar deneyiniz.";
-                //    return RedirectToAction("Index");
-                //}
+                if (Session["Captcha"] == null || Session["Captcha"].ToString() != captcha)
+                {
+                    TempData["captchaError"] = "Güvenlik doğrulmasını yanlış girdiniz, lütfen tekrar deneyiniz.";
+                    return RedirectToAction("Index");
+                }
                 if (namesurname == String.Empty || email == String.Empty || subject == String.Empty || body == String.Empty)
                 {
                     TempData["required"] = "true";
                     return RedirectToAction("Index");
                 }
+
+                //DB kaydet
+                ContactHome contact = new ContactHome()
+                {
+                    FullName = namesurname, Email = email, City = city, Subject = subject, Body = body, Phone = phone
+                };
+                ContactManager.AddContactHome(contact);
 
                 var mset = MailManager.GetMailSettings();
                 var msend = MailManager.GetMailUsersList(0);

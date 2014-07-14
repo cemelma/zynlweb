@@ -227,6 +227,7 @@ namespace web.Areas.Admin
             // İLETİŞİM
 
             context.MapRoute("contact_defaultx", "yonetim/iletisim", new { action = "Index", Controller = "Contact" });
+            context.MapRoute("contact_defaultx1", "yonetim/iletisim-mesajlari", new { action = "Messages", Controller = "Contact" });
             context.MapRoute("contactx", "yonetim/iletisim/{lang}", new { action = "Index", Controller = "Contact" });
 
             // İNSAN KAYNAKLARI

@@ -32,7 +32,11 @@
 }
 <div id="container" class="container">
 
-                <p>@Html.ValidationMessage("_FORM")</p>
+            <p>@Html.ValidationMessage("_FORM")</p>
+            @if (TempData["captchaError"] != null)
+            {
+                <div class="notification error">@TempData["captchaError"].ToString()</div>
+            }
             @if (TempData["required"] != null)
             {
                 if (TempData["required"].ToString().Equals("true"))
@@ -78,7 +82,15 @@
                 <div class="col-md-12">
                     <textarea placeholder="Mesaj İçeriği" id="body" name="body" class="validate[required] text-input"></textarea>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    <a href="@Url.Action("Index")">
+                        <img alt="Captcha" src="@Url.Action("CaptchaImage")" style="" />
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" placeholder="Güvenlik Kodu" id="captcha" name="captcha" class="validate[required] text-input"/>
+                </div>
+                <div class="col-md-12" style="margin-top:15px;">
                     <input type="submit" class="btn btn-warning" value="GÖNDER" />
                 </div>
             </div>
@@ -105,9 +117,13 @@
                         <li>
                             <span class="red col-xs-4 noPadding">[ Adres ]
               <span class="colon">:</span></span><span>@contact.Address</span></li>
+
                     </ul>
 
                 </div>
+
+                
+
             </div>
         </div>
     </div>

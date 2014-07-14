@@ -25,11 +25,9 @@ namespace web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(Contact record)
         {
-             ViewBag.ProcessMessage = ContactManager.EditContact(record);
+             //ViewBag.ProcessMessage = ContactManager.EditContact(record);
             return View();
         }
-        
-
 
         string FillLanguagesList()
         {
@@ -43,5 +41,22 @@ namespace web.Areas.Admin.Controllers
             ViewBag.LanguageList = list;
             return lang;
         }
+
+
+
+
+
+        public ActionResult Messages()
+        {
+            var contact = ContactManager.GetListContactHome();
+            return View(contact);
+        }
+
+        public JsonResult DeleteContactHome(int id)
+        {
+            bool isdelete = ContactManager.Delete(id);
+            return Json(isdelete);
+        }
+
     }
 }

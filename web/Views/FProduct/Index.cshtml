@@ -38,11 +38,15 @@
         <div class="col-md-1 "></div>
         @if (!string.IsNullOrEmpty(Model.Image1) && Model.Image1 != "/Content/images/front/noimage.jpeg")
         {
-            <div class="col-md-5 "><img src="@Model.Image1" /></div>
+            <div class="col-md-5 ">
+                <a href="@Model.Image1.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image1" style="width:210px;height:125px;"/></a>
+            </div>
         }
          @if (!string.IsNullOrEmpty(Model.Image2) && Model.Image2 != "/Content/images/front/noimage.jpeg")
         {
-            <div class="col-md-5 "><img src="@Model.Image2" /></div>
+            <div class="col-md-5 ">
+                <a href="@Model.Image2.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image2" style="width:210px;height:125px;"/></a>
+            </div>
         }
         <div class="col-md-1 "></div> 
         <div class="col-md-12 fiyatBilgi"><a href="#">Fiyat Bilgisi İçin Tıklayınız</a></div>  
