@@ -2608,6 +2608,8 @@
     <Content Include="Content\Images\userfiles\nakliye_69125651.png" />
     <Content Include="Content\Images\userfiles\nakliye_73059085.png" />
     <Content Include="Content\Images\userfiles\nakliye_94993118.png" />
+    <Content Include="Content\Images\userfiles\productbig\deneme_9302707.jpg" />
+    <Content Include="Content\Images\userfiles\productbig\deneme_98797222.jpg" />
     <Content Include="Content\Images\userfiles\tel_orgu_sistemleri.png" />
     <Content Include="Content\Images\userfiles\yuksek_guvenlik_citleri_buyuk7.png" />
     <Content Include="Content\Images\washbeton.jpg" />
@@ -3209,7 +3211,6 @@
     <Folder Include="Content\Images\references\" />
     <Folder Include="Content\Images\sectors\" />
     <Folder Include="Content\Images\socialmedia\" />
-    <Folder Include="Content\Images\userfiles\productbig\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
