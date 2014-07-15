@@ -117,7 +117,8 @@ namespace DAL.Context
             modelBuilder.Entity<ProductDetail>().ToTable("ProductDetail");
 
             modelBuilder.Entity<HumanResourceCv>().ToTable("HumanResourceCv");
-            modelBuilder.Entity<ContactHome>().ToTable("ContactHome"); 
+            modelBuilder.Entity<ContactHome>().ToTable("ContactHome");
+            modelBuilder.Entity<ProductHeaders>().ToTable("ProductHeaders"); 
 
         }
     }
