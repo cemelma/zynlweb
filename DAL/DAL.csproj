@@ -60,6 +60,7 @@
     <Compile Include="Entities\HumanResourceCv.cs" />
     <Compile Include="Entities\ProductDetail.cs" />
     <Compile Include="Entities\ProductHeaders.cs" />
+    <Compile Include="Entities\ProductInformation.cs" />
     <Compile Include="Entities\Slider.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Country.cs" />

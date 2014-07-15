@@ -191,7 +191,7 @@ namespace web.Areas.Admin
             context.MapRoute("productsgroups_defaultx", "yonetim/urungruplari", new { action = "Index", Controller = "ProductGroup" });
             context.MapRoute("productsgroups_editx", "yonetim/urungrubuduzenle/{id}", new { action = "EdtiGroup", Controller = "ProductGroup" });
             context.MapRoute("productsgroupsx", "yonetim/urungruplari/{lang}", new { action = "Index", Controller = "ProductGroup" });
-            
+            context.MapRoute("productsgroups_defaultx1", "yonetim/urungruplari/basliklar/{id}", new { action = "Baslik", Controller = "ProductGroup" });
             context.MapRoute("productssubgroups_defaultx", "yonetim/urunaltgruplari", new { action = "Index", Controller = "ProductSubGroup" });
             context.MapRoute("productssubgroups_editx", "yonetim/urunaltgrubuduzenle/{id}", new { action = "EdtiGroup", Controller = "ProductSubGroup" });
             context.MapRoute("productssubgroupsx", "yonetim/urunaltgruplari/{lang}", new { action = "Index", Controller = "ProductSubGroup" });

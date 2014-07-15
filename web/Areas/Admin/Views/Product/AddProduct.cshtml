@@ -32,8 +32,8 @@
             <div id="tabs">
                 <ul>
                     <li><a href="#tabs-1">Ürün Bilgileri</a></li>
-                    <li><a href="#tabs-2">Ürün Özellikleri/Detayları</a></li>
-                    <li><a href="#tabs-3">Ürün Kategorisi</a></li>
+                    @*<li><a href="#tabs-2">Ürün Özellikleri/Detayları</a></li>
+                    <li><a href="#tabs-3">Ürün Kategorisi</a></li>*@
                 </ul>
                 <div id="tabs-1">
                     @*  <p>
@@ -43,6 +43,14 @@
                         <img src="/Areas/Admin/Content/images/icons/16/loader.gif" id="imgloader" class="imgloader" />
                     </p>
                   *@
+                    <p>
+                        <label>Ürün Kategorisi</label>
+                        <select id="ddl_group" class="required" required="required" name="ddl_group">
+                            <option></option>
+                            @Html.Partial("_ProductGroupDropDownadd",Model.VMProductGroupModel)
+                        </select>
+                    </p>
+                    <br />
                     <p>
                         @Html.LabelFor(m => m.Product.Name)
                         @Html.TextBoxFor(m => m.Product.Name, new { @class = "textwidth50", Rows = "5" })
@@ -76,8 +84,8 @@
                     <input type="submit" value="Kaydet" id="btnsave" />
                 </div>
 
-                <div id="tabs-2">
-                    <p>
+             @*   <div id="tabs-2">*@
+                   @* <p>
                         @Html.Label("Kod")
                         <input type="text" name="txtcode" id="txtcode" style="width:100px"/>
                     </p>
@@ -110,19 +118,16 @@
                         @Html.Label("Fiyat")
                         <input type="text" name="txtfiyat" id="txtfiyat" style="width:60px"/>
                     </p>
-                    @*    <p>
-                        @Html.Label("Kırmızı TL/M2")
-                        <input type="text" name="txtkirmizi" />
-                    </p>*@
+                  
                     <p>
                         <input type="button" value="Temizle" id="btnclear" />
                         <input type="button" value="Kaydet" id="btnsaveProp" />
-                    </p>
-                    <div id="resultTable">
-                        @*@Html.Partial("_detailtable1",null)*@
+                    </p>*@
+                 @*   <div id="resultTable">
+                      
                     </div>
-                </div>
-                <div id="tabs-3">
+                </div>*@
+               @* <div id="tabs-3">
                     <div class="box-header" style="width: 668px;">
                         <h1>Grup Listesi</h1>
                         <menu id="nestable-menu">
@@ -137,7 +142,7 @@
                         </ol>
                     </div>
                     <div style="clear:both;"></div>
-                </div>
+                </div>*@
             </div>
         
         }

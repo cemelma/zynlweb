@@ -21,6 +21,9 @@
                     <img src="~/Areas/Admin/Content/images/icons/offline.png" class="submenubtnonline" title="Online Yap" id="img_online_@item.ProductGroupId" onclick="SetOnlineStatus('/ProductGroup/GroupEditStatus',@item.ProductGroupId)" />
                 }
                 <img src="~/Areas/Admin/Content/images/icons/16/delete.png" class="submenubtndelete" id="DeleteImage_@item.ProductGroupId" onclick="DeleteRecord('/ProductGroup/DeleteRecord',@item.ProductGroupId)" />
+                <a href="/yonetim/urungruplari/basliklar/@item.ProductGroupId">
+                    <img src="~/Areas/Admin/Content/images/icons/16/edit.png" class="submenubtnedit" />
+                </a>
             </div> 
             if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
             { 
@@ -51,9 +54,17 @@ else
                     <img src="~/Areas/Admin/Content/images/icons/offline.png" class="submenubtnonline" title="Online Yap" id="img_online_@item.ProductGroupId" onclick="SetOnlineStatus('/ProductGroup/GroupEditStatus',@item.ProductGroupId)" />
                 }
                 <img src="~/Areas/Admin/Content/images/icons/16/delete.png" class="submenubtndelete" id="DeleteImage_@item.ProductGroupId" onclick="DeleteRecord('/ProductGroup/DeleteRecord',@item.ProductGroupId)" />
+
+                 @if (!Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
+                { 
+                <a href="/yonetim/urungruplari/basliklar/@item.ProductGroupId">
+                    <img src="~/Areas/Admin/Content/images/icons/16/edit.png" class="submenubtnedit" />
+                </a>
+                }
             </div> 
             if (Model.ProductGroup.Where(d => d.TopProductId == item.ProductGroupId).Any())
             { 
+                
                 <ol class="dd-list">
                     @{
                         Model.SelectedProductGroup = item;
@@ -61,6 +72,7 @@ else
                     }
                 </ol>
             }
+            
         <text><li /></text>
     }
 }

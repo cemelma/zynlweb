@@ -2,6 +2,7 @@
     var status = $("#ProcessMessage").val();
     var result = $("#hdsaveResult").val();
     var prId = $("#hdProductId").val();
+    var cId = $("#hdCategoryId").val();
     $("#imgloader").css("display", "none");
     if (status == "True" || status == "true")
         MessageBox("İşlem Başarıyla Tamamlandı", "info");
@@ -12,8 +13,8 @@
 
     $.ajax({
         type: 'POST',
-        url: '/Product/GetDetail',
-        data: '{id:"' + prId + '"}',
+        url: '/Product/GetDetailPage',
+        data: '{id:"' + prId + '",cid:"'+cId+'"}',
         contentType: "application/json; charset=utf-8",
         dataType: 'html',
         success: function (result) {

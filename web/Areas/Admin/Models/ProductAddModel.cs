@@ -10,5 +10,6 @@ namespace web.Areas.Admin.Models
     {
         public Product Product{get;set;}
         public VMProductGroupModel VMProductGroupModel { get; set; }
+        public ProductGroup SelectedProductGroup { get; set; }
     }
 }

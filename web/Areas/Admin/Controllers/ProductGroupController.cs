@@ -12,6 +12,7 @@ using BLL.ProductBL;
 //using BLL.ProductBL;
 using DAL.Entities;
 using Newtonsoft.Json;
+using DAL.Context;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -125,6 +126,52 @@ namespace web.Areas.Admin.Controllers
             ProductManager.EditProductGroup(id, clearname, pageslug);
         }
 
+
+        public ActionResult Baslik(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                ProductHeaders hed = db.ProductHeaders.FirstOrDefault(x => x.CategoryId == id);
+                if (hed != null)
+                {
+                    return View(hed);
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Baslik(ProductHeaders model)
+        {
+            int catId = Convert.ToInt32(RouteData.Values["id"]);
+
+            using (MainContext db = new MainContext())
+            {
+                ProductHeaders hed =db.ProductHeaders.FirstOrDefault(x => x.CategoryId == catId);
+                if(hed!=null)
+                {
+                    hed.Header1 = model.Header1;
+                    hed.Header2 = model.Header2;
+                    hed.Header3 = model.Header3;
+                    hed.Header4 = model.Header4;
+                    hed.Header5 = model.Header5;
+                    hed.Header6 = model.Header6;
+                    hed.Header7 = model.Header7;
+                    hed.Header8 = model.Header8;
+                   
+
+                }
+                else
+                {
+                    model.CategoryId = catId;
+                    db.ProductHeaders.Add(model);
+                    
+                }
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
 
         public JsonResult GroupEditStatus(int id)
         {

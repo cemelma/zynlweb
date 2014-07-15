@@ -37,7 +37,8 @@ namespace web.Areas.Admin.Controllers
             grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
             ProductAddModel model = new ProductAddModel();
             model.VMProductGroupModel = grouplist;
-      //      ViewBag.Groups = grouplist;
+
+           //      ViewBag.Groups = grouplist;
             return View(model);
         }
 
@@ -52,7 +53,9 @@ namespace web.Areas.Admin.Controllers
             {
                 ViewBag.SaveResult = true;
                 ViewBag.ProductId = id;
+               
                 Product prt = ProductManager.GetProductById(id);
+                ViewBag.CategoryId = prt.ProductGroupId;
                 model.Product = prt;
             }
             else
@@ -69,13 +72,13 @@ namespace web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddProduct(ProductAddModel model, IEnumerable<HttpPostedFileBase> attachments, HttpPostedFileBase prd1, HttpPostedFileBase prd2)
+        public ActionResult AddProduct(ProductAddModel model, IEnumerable<HttpPostedFileBase> attachments, HttpPostedFileBase prd1, HttpPostedFileBase prd2, string ddl_group)
         {
             try
             {
                 model.Product.PageSlug = Utility.SetPagePlug(model.Product.Name);
 
-                model.Product.ProductGroupId = 1;
+                model.Product.ProductGroupId = Convert.ToInt32(ddl_group);
 
                 if (prd1 != null)
                 {
@@ -161,15 +164,17 @@ namespace web.Areas.Admin.Controllers
 
              
                 ViewBag.SaveResult = true;
+                ViewBag.ProcessMessage = true;
             }
             catch (Exception ex)
             {
                 ViewBag.SaveResult = false;
+                ViewBag.ProcessMessage = false;
             }
 
+        
 
-
-            return Redirect("/yonetim/urunekle/" + model.Product.ProductId);
+            return Redirect("/yonetim/urunduzenle/" + model.Product.ProductId);
             //return View();
         }
 
@@ -323,6 +328,32 @@ namespace web.Areas.Admin.Controllers
             }
         }
 
+
+        public void SaveProductDetail(string prid, string input1, string input2, string input3, string input4, string input5, string input6, string input7, string input8)
+        {
+            using (MainContext db = new MainContext())
+            {
+                ProductInformation pinfo = new ProductInformation();
+                if (input1 != "undefined") pinfo.Field1 = input1;
+                if (input2 != "undefined") pinfo.Field2 = input2;
+                if (input3 != "undefined") pinfo.Field3 = input3;
+                if (input4 != "undefined") pinfo.Field4 = input4;
+                if (input5 != "undefined") pinfo.Field5 = input5;
+                if (input6 != "undefined") pinfo.Field6 = input6;
+                if (input7 != "undefined") pinfo.Field7 = input7;
+                if (input8 != "undefined") pinfo.Field8 = input8;
+
+                pinfo.ProductId = Convert.ToInt32(prid);
+
+                db.ProductInformation.Add(pinfo);
+                db.SaveChanges();
+            }
+         
+        }
+
+
+
+
         public ActionResult GetDetail(int id)
         {
             using (MainContext db = new MainContext())
@@ -332,7 +363,19 @@ namespace web.Areas.Admin.Controllers
              }
         }
 
+        public ActionResult GetDetailPage(int id,int cid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                PropertyModel model = new PropertyModel();
+                model.header = db.ProductHeaders.FirstOrDefault(x => x.CategoryId == cid);
+                ViewBag.PrId = id;
+                ViewBag.Details = db.ProductDetail.Where(x => x.ProductId == id).ToList();
+                return PartialView("~/Areas/Admin/Views/Product/_detailproptable.cshtml",model);
+            }
+        }
 
+      
         public ActionResult Index(int? groupId)
         {
             using (MainContext db = new MainContext())

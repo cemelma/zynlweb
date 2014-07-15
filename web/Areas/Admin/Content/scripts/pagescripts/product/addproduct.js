@@ -19,6 +19,12 @@
 
     }
   
+    if (status == "True" || status == "true") {
+
+
+    }
+
+
     $("#btnclear").click(function () {
         $("#txtcode").val("");
         $("#txtmalzeme").val("");

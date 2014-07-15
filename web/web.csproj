@@ -222,6 +222,7 @@
     <Compile Include="Areas\Admin\Helpers\Utility.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Admin\Models\ProductAddModel.cs" />
+    <Compile Include="Areas\Admin\Models\PropertyModel.cs" />
     <Compile Include="Areas\Admin\Models\VMProductGroupModel.cs" />
     <Compile Include="Controllers\FProductController.cs" />
     <Compile Include="Controllers\FEstatesController.cs" />
@@ -2979,6 +2980,9 @@
     <Content Include="Areas\Admin\Views\Product\_ProductGroupDropDown.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\messages.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\messagesleftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductGroup\Baslik.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_ProductGroupDropDownadd.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_detailproptable.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />
