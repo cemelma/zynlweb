@@ -47,11 +47,15 @@
                     <input type="file" style="width: 99%" name="attachments" class="multi" />
                 </div>
                 <div style="height: 40px; clear: both;"></div>
-<p>
+        <p>
             @Html.Label("Anasayfada Göster")
             @Html.CheckBoxFor(m=>m.ShowInMenu)
-            
         </p>
+        <p>
+            @Html.Label("Anasayfada Resimleri Göster")
+            @Html.CheckBoxFor(m=>m.ShowContentHome)
+        </p>
+
 
         <p>
             <input type="submit" value="Kaydet" id="btnsave" />

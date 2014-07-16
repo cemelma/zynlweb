@@ -198,5 +198,14 @@ namespace BLL.PhotoBL
                 return db.Photo.Where(d => d.Language == lang && d.CategoryId == categoryID && d.Online == true).OrderBy(d=>d.SortOrder).ToList();
             }
         }
+
+        public static List<Photo> GetListForFrontServices(int categoryID)
+        {
+            using (MainContext db = new MainContext())
+            {
+                return db.Photo.Where(d => d.Language == "tr" && d.CategoryId == categoryID && d.Online == true).OrderBy(d => d.SortOrder).ToList();
+            }
+        }
+
     }
 }

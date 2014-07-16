@@ -181,6 +181,8 @@ namespace BLL.ServiceBL
                         record.PageSlug = Servicemodel.PageSlug;
                         record.Language = Servicemodel.Language;
                         record.Content = Servicemodel.Content;
+                        record.ShowContentHome = Servicemodel.ShowContentHome;
+                        record.ShowInMenu = Servicemodel.ShowInMenu;
                         db.SaveChanges();
                         return true;
                     }
