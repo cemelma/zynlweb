@@ -91,6 +91,42 @@
             }
         });
 
+    }); $("#btnsaveProp").click(function () {
+        var prid = $("#prId").val();
+        var input1 = $("#inputtext1").val();
+        var input2 = $("#inputtext2").val();
+        var input3 = $("#inputtext3").val();
+        var input4 = $("#inputtext4").val();
+        var input5 = $("#inputtext5").val();
+        var input6 = $("#inputtext6").val();
+        var input7 = $("#inputtext7").val();
+        var input8 = $("#inputtext8").val();
+        alert(input1 + ";" + input2 + ";" + input3 + ";" + input4 + ";" + input5 + ";" + input6 + ";" + input7 + ";" + input8);
+
+        $.ajax({
+            type: 'POST',
+            url: '/Product/SaveProductDetail',
+            data: '{prId:"' + prid + '",input1:"' + input1 + '",input2:"' + input2 + '",input3:"' + input3 + '",input4:"' + input4 + '",input5:"' + input5 + '",input6:"' + input6 + '",input7:"' + input7 + '",input8:"' + input8 + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'html',
+            success: function (result) {
+                $.unblockUI();
+                $("#resultTable").html(result);
+
+                //$("#ProductSubGroupId").empty().append($("<option></option>").val("").html("Ürün Alt Grubunu Seçiniz..."));
+                //$("#g1").css("display", "block");
+                //$.each(result, function (i, item) {
+                //    $("#ProductSubGroupId").append($("<option></option>").val(item.Value).html(item.Text));
+                //});
+                //$("#ProductSubGroupId").removeAttr("disabled");
+                //$("#imgloader2").css("display", "none");
+            },
+            error: function () {
+                $.unblockUI();
+            }
+        });
+
+
     });
 
 

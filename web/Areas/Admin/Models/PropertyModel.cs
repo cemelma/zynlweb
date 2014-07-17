@@ -10,5 +10,6 @@ namespace web.Areas.Admin.Models
     public class PropertyModel 
     {
         public ProductHeaders header { get; set; }
+        public List <ProductInformation> ProductInfo { get; set; }
     }
 }

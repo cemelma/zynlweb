@@ -1,6 +1,7 @@
 ﻿@model web.Areas.Admin.Models.PropertyModel
 
 @Html.Hidden("prId", (object)@ViewBag.PrId)
+@Html.Hidden("catId", (object)@ViewBag.CatId)
 @if (Model.header != null)
 {
     if (!string.IsNullOrEmpty(@Model.header.Header1))
@@ -10,14 +11,14 @@
         <input type="text" id="inputtext1" />
     </p>
     }
-   if (!string.IsNullOrEmpty(@Model.header.Header2))
+    if (!string.IsNullOrEmpty(@Model.header.Header2))
     {
     <p>
         <label>@Model.header.Header2</label>
         <input type="text" id="inputtext2" />
     </p>
     }
-    
+
     if (!string.IsNullOrEmpty(@Model.header.Header3))
     {
     <p>
@@ -25,7 +26,7 @@
         <input type="text" id="inputtext3" />
     </p>
     }
-    
+
     if (!string.IsNullOrEmpty(@Model.header.Header4))
     {
     <p>
@@ -33,7 +34,7 @@
         <input type="text" id="inputtext4" />
     </p>
     }
-    
+
     if (!string.IsNullOrEmpty(@Model.header.Header5))
     {
     <p>
@@ -41,7 +42,7 @@
         <input type="text" id="inputtext5" />
     </p>
     }
-    
+
     if (!string.IsNullOrEmpty(@Model.header.Header6))
     {
     <p>
@@ -49,7 +50,7 @@
         <input type="text" id="inputtext6" />
     </p>
     }
-    
+
     if (!string.IsNullOrEmpty(@Model.header.Header7))
     {
     <p>
@@ -57,7 +58,7 @@
         <input type="text" id="inputtext7" />
     </p>
     }
-    
+
     if (!string.IsNullOrEmpty(@Model.header.Header8))
     {
     <p>
@@ -66,16 +67,131 @@
     </p>
     }
     
-     <p>
-                        <input type="button" value="Temizle" id="btnclear" />
-                        <input type="button" value="Kaydet" id="btnsaveProp" />
-                    </p>
+    <p>
+        <input type="button" value="Temizle" id="btnclear" />
+        <input type="button" value="Kaydet" id="btnsaveProp" />
+    </p>
+    
+    <p></p>
+    
+    <table class="table no-border tablesorter">
+        <thead>
+            <tr>
+                @if (!string.IsNullOrEmpty(@Model.header.Header1))
+                {
+                   
+                        <th>@Model.header.Header1</th>
+                       
+                   
+                }
+                @if (!string.IsNullOrEmpty(@Model.header.Header2))
+                {
+                    
+                        <th>@Model.header.Header2</th>
+                      
+                   
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.header.Header3))
+                {
+                   
+                        <th>@Model.header.Header3</th>
+                       
+                   
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.header.Header4))
+                {
+                    
+                        <th>@Model.header.Header4</th>
+                      
+                    
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.header.Header5))
+                {
+                   
+                        <th>@Model.header.Header5</th>
+                     
+                   
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.header.Header6))
+                {
+                  
+                        <th>@Model.header.Header6</th>
+                       
+                    
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.header.Header7))
+                {
+               
+                        <th>@Model.header.Header7</th>
+                      
+              
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.header.Header8))
+                {
+              
+                        <th>@Model.header.Header8</th>
+                      
+             
+                }
+            </tr>
+        </thead>
+        <tbody>
+           @if (Model.ProductInfo != null)
+           {
+               foreach (var item in Model.ProductInfo)
+               {
+                   <tr>
+                       @if(item.Field1!=null)
+                       {
+                           <td>@item.Field1</td>
+                       }
+                         @if(item.Field2!=null)
+                       {
+                           <td>@item.Field2</td>
+                       }
+                         @if(item.Field3!=null)
+                       {
+                           <td>@item.Field3</td>
+                       }
+                         @if(item.Field4!=null)
+                       {
+                           <td>@item.Field4</td>
+                       }
+                         @if(item.Field5!=null)
+                       {
+                           <td>@item.Field5</td>
+                       }
+                         @if(item.Field6!=null)
+                       {
+                           <td>@item.Field6</td>
+                       }
+                         @if(item.Field7!=null)
+                       {
+                           <td>@item.Field7</td>
+                       }
+                         @if(item.Field8!=null)
+                       {
+                           <td>@item.Field8</td>
+                       }
+                   </tr>
+               }
+           }
+        </tbody>
+    </table>
+    
     
 }
 
 <script type="text/javascript">
     $("#btnsaveProp").click(function () {
         var prid = $("#prId").val();
+        var catid = $("#catId").val();
         var input1 = $("#inputtext1").val();
         var input2 = $("#inputtext2").val();
         var input3 = $("#inputtext3").val();
@@ -89,7 +205,7 @@
         $.ajax({
             type: 'POST',
             url: '/Product/SaveProductDetail',
-            data: '{prId:"'+prid+'",input1:"' + input1 + '",input2:"' + input2 + '",input3:"' + input3 + '",input4:"' + input4 + '",input5:"' + input5 + '",input6:"' + input6 + '",input7:"' + input7 + '",input8:"' + input8 + '"}',
+            data: '{prId:"' + prid + '",catid:"' + catid + '",input1:"' + input1 + '",input2:"' + input2 + '",input3:"' + input3 + '",input4:"' + input4 + '",input5:"' + input5 + '",input6:"' + input6 + '",input7:"' + input7 + '",input8:"' + input8 + '"}',
             contentType: "application/json; charset=utf-8",
             dataType: 'html',
             success: function (result) {
@@ -112,7 +228,7 @@
 
     });
 
-</script>   
+</script>
 
 
 

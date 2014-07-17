@@ -329,7 +329,7 @@ namespace web.Areas.Admin.Controllers
         }
 
 
-        public void SaveProductDetail(string prid, string input1, string input2, string input3, string input4, string input5, string input6, string input7, string input8)
+        public PartialViewResult SaveProductDetail(string prid,string catid, string input1, string input2, string input3, string input4, string input5, string input6, string input7, string input8)
         {
             using (MainContext db = new MainContext())
             {
@@ -347,8 +347,19 @@ namespace web.Areas.Admin.Controllers
 
                 db.ProductInformation.Add(pinfo);
                 db.SaveChanges();
+
+                int cid = Convert.ToInt32(catid);
+                int pid = Convert.ToInt32(prid);
+                PropertyModel model = new PropertyModel();
+                model.header = db.ProductHeaders.FirstOrDefault(x => x.CategoryId == cid);
+
+                model.ProductInfo = db.ProductInformation.Where(x => x.ProductId == pid).ToList();
+
+                ViewBag.PrId = pid;
+                ViewBag.Details = db.ProductDetail.Where(x => x.ProductId == pid).ToList();
+                return PartialView("~/Areas/Admin/Views/Product/_detailproptable.cshtml", model);
             }
-         
+        
         }
 
 
@@ -369,7 +380,9 @@ namespace web.Areas.Admin.Controllers
             {
                 PropertyModel model = new PropertyModel();
                 model.header = db.ProductHeaders.FirstOrDefault(x => x.CategoryId == cid);
+                model.ProductInfo = db.ProductInformation.Where(x => x.ProductId == id).ToList();
                 ViewBag.PrId = id;
+                ViewBag.CatId = cid;
                 ViewBag.Details = db.ProductDetail.Where(x => x.ProductId == id).ToList();
                 return PartialView("~/Areas/Admin/Views/Product/_detailproptable.cshtml",model);
             }
