@@ -2983,6 +2983,7 @@
     <Content Include="Areas\Admin\Views\ProductGroup\Baslik.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_ProductGroupDropDownadd.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_detailproptable.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductGroup\IndexNew.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />

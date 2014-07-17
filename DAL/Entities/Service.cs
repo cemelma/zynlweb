@@ -27,6 +27,7 @@ namespace DAL.Entities
         public bool Deleted { get; set; }
         [Display(Name = "Anasayfada Göster Ek Doya")]
         public bool ShowInMenu { get; set; }
+        public bool ShowContentHome { get; set; }
         public int ServiceGroupId { get; set; }
     }
 }

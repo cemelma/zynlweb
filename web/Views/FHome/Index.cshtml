@@ -91,6 +91,13 @@
                             @Html.Raw(item.Content)
                         </div>
                         <div class="col-md-12 noPadding">
+                            @if(item.ShowContentHome)
+                            {
+                                foreach (var itemsub in Model.servicesphotos.Where(d=>d.ItemId == item.ServiceId))
+                                {
+                                    <div class="col-md-3 "><a href="@itemsub.Path" class="fancybox" rel="galleryservice"><img src="@itemsub.Thumbnail" /></a></div>                                
+                                }
+                            }
                         </div>
                     </div>
                 }
@@ -150,6 +157,8 @@
     <!-- /REFERANLAR BÖLÜMÜ -->
 </div>
 
+<link href="~/Content/Styles/jquery.fancybox.css" rel="stylesheet" />
+<script src="~/Content/Scripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#servicepositions li:first").addClass("active");
@@ -157,6 +166,10 @@
         $("#productpositions li:first").addClass("active");
         $("#productcontent .tab-pane:first").addClass("active");
         
+        $(".fancybox").fancybox({
+            openEffect: 'none',
+            closeEffect: 'none'
+        });
 
     });
 

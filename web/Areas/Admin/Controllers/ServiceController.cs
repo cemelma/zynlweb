@@ -33,10 +33,6 @@ namespace web.Areas.Admin.Controllers
 
         public ActionResult OurServices()
         {
-         
-
-         
-
             var servicepage = ServiceManager.GetOurServices("tr");
             return View(servicepage);
         }
@@ -70,7 +66,6 @@ namespace web.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-               
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
                 newmodel.TimeCreated = DateTime.Now;
                 ViewBag.ProcessMessage = ServiceManager.AddService(newmodel);
@@ -121,11 +116,7 @@ namespace web.Areas.Admin.Controllers
                         PhotoManager.Save(p);
                     }
                  }
-
-
-
                 ModelState.Clear();
-
                 return View();
             }
             else

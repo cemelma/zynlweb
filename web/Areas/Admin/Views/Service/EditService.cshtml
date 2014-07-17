@@ -37,7 +37,14 @@
             @Html.ValidationMessageFor(m=>m.Content,"", new { @class="verticalaligntop"})
            
         </p>
-
+            <p>
+            @Html.Label("Anasayfada Göster")
+            @Html.CheckBoxFor(m=>m.ShowInMenu)
+        </p>
+        <p>
+            @Html.Label("Anasayfada Resimleri Göster")
+            @Html.CheckBoxFor(m=>m.ShowContentHome)
+        </p>
           <p style="float: left; margin-right: 4px !important;">
                     <label>Fotoğraflar</label>
                 </p>

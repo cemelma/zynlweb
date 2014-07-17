@@ -37,6 +37,7 @@ namespace web.Controllers
             model.prodgroups = ProductManager.GetProductGroupList("tr").Where(x=>x.TopProductId==1).Take(6);
             int[] pgoupids = model.prodgroups.Select(d => d.ProductGroupId).ToArray();
             model.Products = ProductManager.GetProductTopListFrontMainPage(pgoupids).ToList();
+            model.servicesphotos = PhotoManager.GetListForFrontServices((int)web.Areas.Admin.Helpers.PhotoType.Service);
 
             return View(model);
         }
