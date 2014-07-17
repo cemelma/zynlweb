@@ -80,14 +80,14 @@
                 @if (!string.IsNullOrEmpty(@Model.header.Header1))
                 {
                    
-                        <th>@Model.header.Header1</th>
+                    <th>@Model.header.Header1</th>
                        
                    
                 }
                 @if (!string.IsNullOrEmpty(@Model.header.Header2))
                 {
                     
-                        <th>@Model.header.Header2</th>
+                    <th>@Model.header.Header2</th>
                       
                    
                 }
@@ -95,7 +95,7 @@
                 @if (!string.IsNullOrEmpty(@Model.header.Header3))
                 {
                    
-                        <th>@Model.header.Header3</th>
+                    <th>@Model.header.Header3</th>
                        
                    
                 }
@@ -103,7 +103,7 @@
                 @if (!string.IsNullOrEmpty(@Model.header.Header4))
                 {
                     
-                        <th>@Model.header.Header4</th>
+                    <th>@Model.header.Header4</th>
                       
                     
                 }
@@ -111,7 +111,7 @@
                 @if (!string.IsNullOrEmpty(@Model.header.Header5))
                 {
                    
-                        <th>@Model.header.Header5</th>
+                    <th>@Model.header.Header5</th>
                      
                    
                 }
@@ -119,7 +119,7 @@
                 @if (!string.IsNullOrEmpty(@Model.header.Header6))
                 {
                   
-                        <th>@Model.header.Header6</th>
+                    <th>@Model.header.Header6</th>
                        
                     
                 }
@@ -127,7 +127,7 @@
                 @if (!string.IsNullOrEmpty(@Model.header.Header7))
                 {
                
-                        <th>@Model.header.Header7</th>
+                    <th>@Model.header.Header7</th>
                       
               
                 }
@@ -135,53 +135,89 @@
                 @if (!string.IsNullOrEmpty(@Model.header.Header8))
                 {
               
-                        <th>@Model.header.Header8</th>
+                    <th>@Model.header.Header8</th>
                       
              
                 }
+                <th>İşlem</th>
             </tr>
         </thead>
         <tbody>
-           @if (Model.ProductInfo != null)
-           {
-               foreach (var item in Model.ProductInfo)
-               {
-                   <tr>
-                       @if(item.Field1!=null)
-                       {
-                           <td>@item.Field1</td>
-                       }
-                         @if(item.Field2!=null)
-                       {
-                           <td>@item.Field2</td>
-                       }
-                         @if(item.Field3!=null)
-                       {
-                           <td>@item.Field3</td>
-                       }
-                         @if(item.Field4!=null)
-                       {
-                           <td>@item.Field4</td>
-                       }
-                         @if(item.Field5!=null)
-                       {
-                           <td>@item.Field5</td>
-                       }
-                         @if(item.Field6!=null)
-                       {
-                           <td>@item.Field6</td>
-                       }
-                         @if(item.Field7!=null)
-                       {
-                           <td>@item.Field7</td>
-                       }
-                         @if(item.Field8!=null)
-                       {
-                           <td>@item.Field8</td>
-                       }
-                   </tr>
-               }
-           }
+            @if (Model.ProductInfo != null)
+            {
+                foreach (var item in Model.ProductInfo)
+                {
+               <tr id="listItem_@item.ProductInformationId"  class="handle">
+
+                    @if (!string.IsNullOrEmpty(Model.header.Header1))
+                    {
+                        //if (@item.Field1 != null)
+                        //{
+<td>@item.Field1</td>
+                        //}
+                    }
+                    @if (!string.IsNullOrEmpty(Model.header.Header2))
+                    {
+                        //if (@item.Field2 != null)
+                        //{
+<td>@item.Field2</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.header.Header3))
+                    {
+
+                        //if (@item.Field3 != null)
+                        //{
+<td>@item.Field3</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.header.Header4))
+                    {
+                        //if (@item.Field4 != null)
+                        //{
+<td>@item.Field4</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.header.Header5))
+                    {
+                        //if (@item.Field5 != null)
+                        //{
+<td>@item.Field5</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.header.Header6))
+                    {
+                        //if (@item.Field6 != null)
+                        //{
+<td>@item.Field6</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.header.Header7))
+                    {
+                        //if (@item.Field7 != null)
+                        //{
+<td>@item.Field7</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.header.Header8))
+                    {
+                        //if (@item.Field8 != null)
+                        //{
+<td>@item.Field8</td>
+                        //}
+                    }
+                    <td>
+                        <img id="DeleteImage_@item.ProductInformationId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/Product/DeleteDetail',@item.ProductInformationId)">
+                    </td>
+                </tr>
+                }
+            }
         </tbody>
     </table>
     
@@ -200,7 +236,7 @@
         var input6 = $("#inputtext6").val();
         var input7 = $("#inputtext7").val();
         var input8 = $("#inputtext8").val();
-        alert(input1 + ";" + input2 + ";" + input3 + ";" + input4 + ";" + input5 + ";" + input6 + ";" + input7 + ";" + input8);
+//        alert(input1 + ";" + input2 + ";" + input3 + ";" + input4 + ";" + input5 + ";" + input6 + ";" + input7 + ";" + input8);
 
         $.ajax({
             type: 'POST',

@@ -452,8 +452,10 @@ namespace web.Areas.Admin.Controllers
             {
                 try
                 {
-                    var record = db.ProductDetail.FirstOrDefault(d => d.DetailId == id);
-                    db.ProductDetail.Remove(record);
+                    var record = db.ProductInformation.FirstOrDefault(d => d.ProductInformationId == id);
+                    db.ProductInformation.Remove(record);
+                    //var record = db.ProductDetail.FirstOrDefault(d => d.DetailId == id);
+                    //db.ProductDetail.Remove(record);
                     db.SaveChanges();
                     return Json(true);
                 }
