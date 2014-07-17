@@ -21,20 +21,25 @@ namespace BLL.SearchBL
                 //var sectorgs = db.SectorGroup.Where(d => d.Online == true && d.Deleted == false && d.Language == lang).FullTextSearch(text);
                 //var sectors = db.Sector.Where(d => d.Online == true && d.Deleted == false && d.Language == lang).FullTextSearch(text);
                 var news = db.News.Where(d => d.Online == true && d.Deleted == false && d.Language == "tr").FullTextSearch(text);
-                //var projects = db.Projects.Where(d => d.Online == true && d.Deleted == false && d.Language == lang).FullTextSearch(text);
-                //var emlak = db.Estate.Where(d => d.Language == lang).FullTextSearch(text);
-                //var team = db.OurTeam.Where(d => d.Language == lang).FullTextSearch(text);
+                var products = db.Product.Where(d => d.Online == true && d.Deleted == false).FullTextSearch(text);
                 
                 var result = new List<Tuple<string, string>>();
                 string route, link = string.Empty;
 
+                ///urunler/68/muflu-betornarme-boru-grubu
+                foreach (var item in products)
+                {
+                    route = "urunler";
+                    link = "/" + route + "/" + item.ProductId + "/" + item.PageSlug;
+                    result.Add(Tuple.Create(item.Name, link));
+                }
 
-                //foreach (var item in servicegs)
-                //{
-                //    if (lang.Equals("tr")) route = "hizmetler"; else route = "services";
-                //    link = "/" + lang + "/" + route + "/" + item.PageSlug + "/" + item.ServiceGroupId;
-                //    result.Add(Tuple.Create(item.GroupName, link));
-                //}
+
+                if (text.ToLower().Contains("iletisim") || text.ToLower().Contains("iletişim"))
+                    result.Add(Tuple.Create("İletişim", "/iletisim"));
+
+                if (text.ToLower().Contains("kurumsal") || text.ToLower().Contains("kurumsal"))
+                    result.Add(Tuple.Create("Kurumsal", "/kurumsal"));
 
                 foreach (var item in services)
                 {
