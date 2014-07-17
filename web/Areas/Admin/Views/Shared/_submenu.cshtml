@@ -9,8 +9,9 @@
     foreach (var item in Model.ProductGroup.Where(d => d.TopProductId == productGroupId))
     {
         <text><li class="dd-item dd3-item" data-id="@item.ProductGroupId"></text>
-            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">
+            <div class="dd3-handle">Drag</div><div class="dd3-content">
                 @item.GroupName
+                <input type="number" class="sorttext" value="@item.SortNumber" />
                 <a href="?topProductGroupId=@item.ProductGroupId"><img src="~/Areas/Admin/Content/images/add.png" class="submenubtnnew" /></a>
                 @if(item.Online==true)
                 {
@@ -42,8 +43,9 @@ else
     foreach (var item in Model.ProductGroup.Where(d=>d.TopProductId == 1))
     {
         <text><li class="dd-item dd3-item" data-id="@item.ProductGroupId"></text>
-            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">
+            <div class="dd3-handle">Drag</div><div class="dd3-content">
                 @item.GroupName 
+                <input type="number" class="sorttext" value="@item.SortNumber"/>
                 <a href="?topProductGroupId=@item.ProductGroupId"><img src="~/Areas/Admin/Content/images/add.png" class="submenubtnnew" /></a>
                 @if(item.Online==true)
                 {

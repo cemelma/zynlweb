@@ -5,7 +5,7 @@
             output = list.data('output');
         if (window.JSON) {
             $('#nestable-output').val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
-            SortOrder();
+            //SortOrder();
         } else {
             $('#nestable-output').val('JSON browser support required for this demo.');
         }
