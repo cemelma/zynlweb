@@ -182,3 +182,15 @@ top: 4px; }
 .submenubtnnew:hover {
     opacity:1
 }
+
+
+
+.sorttext {
+    width: 45px !important;
+    height: 13px;
+    bottom: 2px;
+    float: right;
+    right: 155px;
+    margin: 0 113px 0px 0 !important;
+    margin-top: -3px !important;
+}

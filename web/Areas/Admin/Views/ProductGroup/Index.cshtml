@@ -10,6 +10,22 @@
 <link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/nestedsortable.css" rel="stylesheet" />
 
+<style>
+    .dd3-handle {
+        vertical-align: middle !important;
+        top: -5px !important;
+        height: 27px !important;
+        margin: 5px 0 !important;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 3px !important;
+        border-bottom-left-radius: 3px !important;
+    }
+</style>
+
 @Html.Partial("product_leftbar")
 
 <div id="page-content" class="container_12">
@@ -37,6 +53,7 @@
             <a href="/yonetim/urungruplari?topProductGroupId=1">Yeni Grup</a>
             <button type="button" data-action="expand-all">Grupları Aç</button>
             <button type="button" data-action="collapse-all">Tümünü Grupla</button>
+            <button type="button" id="btnsortsave">Sıralamayı Kaydet</button>
         </menu>
     </div>
     <div class="dd" id="nestable">
@@ -58,3 +75,15 @@
 <script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>
 
 @*<script src="~/Areas/Admin/Content/scripts/myscripts/SortOrder.js"></script>*@
+
+<script>
+    $(document).ready(function () {
+        $("#btnsortsave").click(function () {
+            var datalist = [];
+            jQuery.each($(".dd-list").find("li"), function (i, val) {
+                console.log($(this));
+            });
+
+        });
+    });
+</script>
