@@ -20,17 +20,27 @@ namespace web.Controllers
             int pId = Convert.ToInt32(RouteData.Values["id"]);
          //   ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
             ViewData["referanslar"] = ReferenceManager.GetReferenceListForFront("tr");
-            DAL.Entities.Product prd = ProductManager.GetProductById(pId);
-            ViewBag.ProductGroup = prd.ProductGroup.GroupName;
-
-            ViewBag.Photos = PhotoManager.GetListForFront(11, pId);
+            
+            
             
             using(MainContext db = new MainContext())
             {
-                ViewBag.Details = db.ProductDetail.Where(x => x.ProductId == pId).ToList();
+                ProductFrontModel model = new ProductFrontModel();
+                model.product = ProductManager.GetProductById(pId);
+                int catId = model.product.ProductGroupId;
+                model.headers = db.ProductHeaders.FirstOrDefault(x=>x.CategoryId==catId);
+                model.ProductInfo = db.ProductInformation.Where(x => x.ProductId == pId).ToList();
+
+                ViewBag.ProductGroup = model.product.ProductGroup.GroupName;
+                ViewBag.Photos = PhotoManager.GetListForFront(11, pId);
+
+                ViewBag.ProductInfo = db.ProductDetail.Where(x => x.ProductId == pId).ToList();
+                return View(model);
             }
                
-            return View(prd);
+
+
+          
         }
 
         public ActionResult Prices()

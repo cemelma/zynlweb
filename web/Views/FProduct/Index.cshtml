@@ -1,4 +1,4 @@
-﻿@model DAL.Entities.Product
+﻿@model web.Models.ProductFrontModel
 @{
     ViewBag.Title = "Ürünler";
     Layout = "~/Views/Shared/frontlayout.cshtml";
@@ -21,9 +21,9 @@
     <div class="col-md-12 shadow section noPadding noMarginTop">
     <div class="col-md-12 sectionContent page newsPage">
     
-      <h2 class="pageTitle">@Model.Name</h2>
+      <h2 class="pageTitle">@Model.product.Name</h2>
       <div class="pageContent">
-        @Html.Raw(Model.Content)
+        @Html.Raw(Model.product.Content)
     </div>
       <div class="col-md-12 noPadding colors">
         <div class="col-md-3">
@@ -36,16 +36,16 @@
         </div>
         <div class="col-md-9">
         <div class="col-md-1 "></div>
-        @if (!string.IsNullOrEmpty(Model.Image1) && Model.Image1 != "/Content/images/front/noimage.jpeg")
+        @if (!string.IsNullOrEmpty(Model.product.Image1) && Model.product.Image1 != "/Content/images/front/noimage.jpeg")
         {
             <div class="col-md-5 ">
-                <a href="@Model.Image1.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image1" style="width:210px;height:125px;"/></a>
+                <a href="@Model.product.Image1.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image1" style="width:210px;height:125px;"/></a>
             </div>
         }
-         @if (!string.IsNullOrEmpty(Model.Image2) && Model.Image2 != "/Content/images/front/noimage.jpeg")
+         @if (!string.IsNullOrEmpty(Model.product.Image2) && Model.product.Image2 != "/Content/images/front/noimage.jpeg")
         {
             <div class="col-md-5 ">
-                <a href="@Model.Image2.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image2" style="width:210px;height:125px;"/></a>
+                <a href="@Model.product.Image2.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image2" style="width:210px;height:125px;"/></a>
             </div>
         }
         <div class="col-md-1 "></div> 
@@ -53,8 +53,158 @@
         </div>
       </div>
       <div class="col-md-12 noPadding fiyatBilgisiIcerik">
-      <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
-        <!-- Ürün Fiyat Başlangıç -->
+
+          <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
+       
+          <tr>
+            <td colspan="8" class="urunAd">@Model.product.Name</td>
+          </tr>
+          <tr class="fiyatTabloTitle">
+            @if (!string.IsNullOrEmpty(@Model.headers.Header1))
+                {
+                   
+                    <td>@Model.headers.Header1</td>
+                       
+                   
+                }
+                @if (!string.IsNullOrEmpty(@Model.headers.Header2))
+                {
+                    
+                    <td>@Model.headers.Header2</td>
+                      
+                   
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.headers.Header3))
+                {
+                   
+                    <td>@Model.headers.Header3</td>
+                       
+                   
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.headers.Header4))
+                {
+                    
+                    <td>@Model.headers.Header4</td>
+                      
+                    
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.headers.Header5))
+                {
+                   
+                    <td>@Model.headers.Header5</td>
+                     
+                   
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.headers.Header6))
+                {
+                  
+                    <td>@Model.headers.Header6</td>
+                       
+                    
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.headers.Header7))
+                {
+               
+                    <td>@Model.headers.Header7</td>
+                      
+              
+                }
+
+                @if (!string.IsNullOrEmpty(@Model.headers.Header8))
+                {
+              
+                    <td>@Model.headers.Header8</td>
+                      
+             
+                }
+              
+            </tr>
+        
+       
+            @if (Model.ProductInfo != null)
+            {
+                foreach (var item in Model.ProductInfo)
+                {
+               <tr id="listItem_@item.ProductInformationId"  class="handle">
+
+                    @if (!string.IsNullOrEmpty(Model.headers.Header1))
+                    {
+                        //if (@item.Field1 != null)
+                        //{
+<td>@item.Field1</td>
+                        //}
+                    }
+                    @if (!string.IsNullOrEmpty(Model.headers.Header2))
+                    {
+                        //if (@item.Field2 != null)
+                        //{
+<td>@item.Field2</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.headers.Header3))
+                    {
+
+                        //if (@item.Field3 != null)
+                        //{
+<td>@item.Field3</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.headers.Header4))
+                    {
+                        //if (@item.Field4 != null)
+                        //{
+<td>@item.Field4</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.headers.Header5))
+                    {
+                        //if (@item.Field5 != null)
+                        //{
+<td>@item.Field5</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.headers.Header6))
+                    {
+                        //if (@item.Field6 != null)
+                        //{
+<td>@item.Field6</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.headers.Header7))
+                    {
+                        //if (@item.Field7 != null)
+                        //{
+<td>@item.Field7</td>
+                        //}
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.headers.Header8))
+                    {
+                        //if (@item.Field8 != null)
+                        //{
+<td>@item.Field8</td>
+                        //}
+                    }
+                   
+                </tr>
+                }
+            }
+       
+    </table>
+
+
+    @*  <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
+       
           <tr>
             <td colspan="8" class="urunAd">@Model.Name</td>
           </tr>
@@ -84,7 +234,7 @@
           }
          
 
-        </table>
+        </table>*@
       </div>
       
       <div class="col-md-12 noPadding products">
