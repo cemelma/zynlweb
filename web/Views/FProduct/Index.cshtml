@@ -39,13 +39,13 @@
         @if (!string.IsNullOrEmpty(Model.Image1) && Model.Image1 != "/Content/images/front/noimage.jpeg")
         {
             <div class="col-md-5 ">
-                <a href="@Model.Image1.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image1" style="width:210px;height:125px;"/></a>
+                <a href="@Model.Image1.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image1" /></a>
             </div>
         }
          @if (!string.IsNullOrEmpty(Model.Image2) && Model.Image2 != "/Content/images/front/noimage.jpeg")
         {
             <div class="col-md-5 ">
-                <a href="@Model.Image2.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image2" style="width:210px;height:125px;"/></a>
+                <a href="@Model.Image2.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.Image2"/></a>
             </div>
         }
         <div class="col-md-1 "></div> 
