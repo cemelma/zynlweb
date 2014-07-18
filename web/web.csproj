@@ -43,13 +43,13 @@
       <HintPath>..\packages\CaptchaMvc.Mvc4.1.4.1\lib\net40-full\CaptchaMvc.dll</HintPath>
     </Reference>
     <Reference Include="CKEditor.NET">
-      <HintPath>..\..\..\DLL\CKEditor.NET.dll</HintPath>
+      <HintPath>E:\CTSWorkshop\Tools\DLL\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="CKFinder">
-      <HintPath>..\..\..\DLL\CKFinder.dll</HintPath>
+      <HintPath>E:\CTSWorkshop\Tools\DLL\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="ImageUploadAndCrop">
-      <HintPath>..\..\..\DLL\ImageUploadAndCrop.dll</HintPath>
+      <HintPath>E:\CTSWorkshop\Tools\DLL\ImageUploadAndCrop.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
