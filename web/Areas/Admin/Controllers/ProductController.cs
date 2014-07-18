@@ -80,6 +80,8 @@ namespace web.Areas.Admin.Controllers
 
                 model.Product.ProductGroupId = Convert.ToInt32(ddl_group);
 
+                model.Product.TopProductGroupId = GetTopCategoryId(Convert.ToInt32(ddl_group));
+
                 if (prd1 != null)
                 {
                     //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
@@ -285,9 +287,7 @@ namespace web.Areas.Admin.Controllers
 
             web.Areas.Admin.Models.VMProductGroupModel grouplist = new Models.VMProductGroupModel();
             grouplist.ProductGroup = ProductManager.GetProductGroupList("tr");
-            
             model.VMProductGroupModel = grouplist;
-           
 
             return View(model);
         }
@@ -423,6 +423,22 @@ namespace web.Areas.Admin.Controllers
                     prd.ProductGroupId = id;
                     db.SaveChanges();
                 }
+            }
+        }
+
+        public int GetTopCategoryId(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                int topid = id;
+                ProductGroup prodgroup;
+                prodgroup = ProductManager.GetTopGroupById(id);
+                while (prodgroup.TopProductId != 1)
+                {
+                    prodgroup = ProductManager.GetTopGroupById(prodgroup.TopProductId);
+                    topid = prodgroup.ProductGroupId;
+                }
+                return topid;
             }
         }
 
