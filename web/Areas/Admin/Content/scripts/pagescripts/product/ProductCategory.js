@@ -3,12 +3,12 @@
     var updateOutput = function (e) {
         var list = e.length ? e : $(e.target),
             output = list.data('output');
-        if (window.JSON) {
-            $('#nestable-output').val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
-            //SortOrder();
-        } else {
-            $('#nestable-output').val('JSON browser support required for this demo.');
-        }
+        //if (window.JSON) {
+        //    $('#nestable-output').val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+        //    //SortOrder();
+        //} else {
+        //    $('#nestable-output').val('JSON browser support required for this demo.');
+        //}
     };
     $('#nestable').nestable({group: 1}).on('change', updateOutput);
     $('.dd').nestable('collapseAll'); //Başlangıçta tüm grupları kapat

@@ -187,30 +187,9 @@ namespace web.Areas.Admin.Controllers
         public JsonResult SortRecords(string list)
         {
 
-            var m = JsonConvert.DeserializeObject<nestedlist>(list);
-
-            JavaScriptSerializer Serializer = new JavaScriptSerializer();
-
-            var dynamicResult = Serializer.Deserialize<List<nestedlist>>(list);
-            //foreach (KeyValuePair<string, string> item in dynamicResult)
-            //{
-                //int value;
-                //if (int.TryParse(item.Key, out value))
-                //{
-                //    value = value;
-                //}
-            //}
-            //var jsonResponse = JsonConvert.DeserializeAnonymousType(json, list);
-            //dynamic jsonResponse = JsonConvert.Deserialize(list);
-
-            //var dynamicObject = Json.Decode(jsonString);
-
-            //JsonList psl = (new JavaScriptSerializer()).Deserialize<JsonList>(list);
-            //string[] idsList = psl.list;
-            //bool issorted = ProductManager.SortRecords(idsList);
-            return Json(true);
-
-
+            string[] sortlist = list.Split(',');
+            bool issorted = ProductManager.SortRecords(sortlist);
+            return Json(issorted);
         }
 
         public class JsonList

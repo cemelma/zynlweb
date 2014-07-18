@@ -79,9 +79,28 @@
 <script>
     $(document).ready(function () {
         $("#btnsortsave").click(function () {
-            var datalist = [];
-            jQuery.each($(".dd-list").find("li"), function (i, val) {
-                console.log($(this));
+            var list = "";
+            $(".dd-list").find("li").each(function (index) {
+                if ($(this).attr('data-id') != undefined) {
+                    var ss = $(this).attr('data-id') + '-' + $(this).find(".sorttext").val() + ',';
+                    list += ss;
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '/ProductGroup/SortRecords',
+                data: '{list:"' + list + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'html',
+                success: function (result) {
+                    $('#info').empty();
+                    $('#info').append('<div class=\"notification success no-margin\"> <span class=\"strong\">Not:</span> Sıralama işlemi yapılmıştır.</div>');
+                },
+                error: function () {
+                    $('#info').empty();
+                    $('#info').append('<div class=\"notification error no-margin\"> <span class=\"strong\">Not:</span> Sıralama işlemi yapılamadı.</div>');
+                }
             });
 
         });

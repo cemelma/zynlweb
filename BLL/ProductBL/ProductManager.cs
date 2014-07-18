@@ -458,16 +458,28 @@ namespace BLL.ProductBL
             {
                 try
                 {
-
-                    int row = 0;
-                    foreach (string id in idsList)
+                    string[] itemlist;
+                    int listid=0;
+                    foreach (var item in idsList)
                     {
-                        int mid = Convert.ToInt32(id);
-                        ProductGroup sortingrecord = db.ProductGroup.SingleOrDefault(d => d.ProductGroupId == mid);
-                        sortingrecord.SortNumber = Convert.ToInt32(row);
-                        db.SaveChanges();
-                        row++;
+                        if (item != "")
+                        {
+                            itemlist = item.Split('-');
+                            listid = Convert.ToInt32(itemlist[0]);
+                            ProductGroup sortingrecord = db.ProductGroup.SingleOrDefault(d => d.ProductGroupId == listid);
+                            sortingrecord.SortNumber = Convert.ToInt32(itemlist[1]);
+                            db.SaveChanges();
+                        }
                     }
+
+                    //foreach (string id in idsList)
+                    //{
+                    //    int mid = Convert.ToInt32(id);
+                    //    ProductGroup sortingrecord = db.ProductGroup.SingleOrDefault(d => d.ProductGroupId == mid);
+                    //    sortingrecord.SortNumber = Convert.ToInt32(row);
+                    //    db.SaveChanges();
+                    //    row++;
+                    //}
                     return true;
                 }
                 catch (Exception)
