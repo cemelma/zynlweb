@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BLL.PhotoBL
 {
@@ -83,7 +84,20 @@ namespace BLL.PhotoBL
                 {
                     Photo p = db.Photo.First(d => d.PhotoId == id);
                     db.Photo.Remove(p);
+                    string filePath = HttpContext.Current.Server.MapPath(p.Path);
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+
+                    string filePatht = HttpContext.Current.Server.MapPath(p.Thumbnail);
+                    if (System.IO.File.Exists(filePatht))
+                    {
+                        System.IO.File.Delete(filePatht);
+                    }
+
                     db.SaveChanges();
+
                     return true;
                 }
                 catch (Exception)
