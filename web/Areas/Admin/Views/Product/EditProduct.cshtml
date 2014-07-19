@@ -34,7 +34,7 @@
                 <ul>
                     <li><a href="#tabs-1">Ürün Bilgileri</a></li>
                     <li><a href="#tabs-2">Ürün Özellikleri/Detayları</a></li>
-                  @*  <li><a href="#tabs-3">Ürün Kategorisi</a></li>*@
+                    <li><a href="#tabs-3">Ürün Renkleri</a></li>
                 </ul>
                 <div id="tabs-1">
                  
@@ -137,22 +137,11 @@
                       
                     </div>
                 </div>
-               @* <div id="tabs-3">
-                    <div class="box-header" style="width: 668px;">
-                        <h1>Grup Listesi</h1>
-                        <menu id="nestable-menu">
-                             <button type="button" data-action="expand-all">Grupları Aç</button>
-                            <button type="button" data-action="collapse-all">Tümünü Grupla</button>
-                            <button type="button" id="btnsavecategory">Kategoriyi Kaydet</button>
-                        </menu>
+                <div id="tabs-3">
+                    <div id="resultColor">
+                      
                     </div>
-                    <div class="dd" id="nestable">
-                        <ol class="dd-list">
-                            @{Html.RenderPartial("_categorychoise", Model.VMProductGroupModel);}
-                        </ol>
-                    </div>
-                    <div style="clear:both;"></div>
-                </div>*@
+                </div>
             </div>
         
         }

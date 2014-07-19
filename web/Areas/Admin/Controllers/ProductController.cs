@@ -548,5 +548,57 @@ namespace web.Areas.Admin.Controllers
                 }
             }
         }
+
+        public ActionResult GetColors(int id,int cid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                ViewBag.PrId = id;
+                ViewBag.Colors = db.ProductColors.Where(x => x.ProductId == id).ToList();
+                return PartialView("~/Areas/Admin/Views/Product/_colorss.cshtml", ViewBag.Colors);
+            }
+        }
+
+        public ActionResult SaveColor(int id, string ad,string code)
+        {
+            using (MainContext db = new MainContext())
+            {
+                ProductColors pinfo = new ProductColors();
+                pinfo.Adi = ad;
+                pinfo.RenkKodu = code;
+                pinfo.ProductId = id;
+                
+
+                //pinfo.ProductId = Convert.ToInt32(prid);
+
+                db.ProductColors.Add(pinfo);
+                db.SaveChanges();
+
+                ViewBag.PrId = id;
+                ViewBag.Colors = db.ProductColors.Where(x => x.ProductId == id).ToList();
+                return PartialView("~/Areas/Admin/Views/Product/_colorss.cshtml", ViewBag.Colors);
+            }
+        }
+
+        [AllowAnonymous]
+        public JsonResult DeleteColor(int id)
+        {
+            using (MainContext db = new MainContext())
+            {
+                try
+                {
+                    var record = db.ProductColors.FirstOrDefault(d => d.ColorId == id);
+                    db.ProductColors.Remove(record);
+                    //var record = db.ProductDetail.FirstOrDefault(d => d.DetailId == id);
+                    //db.ProductDetail.Remove(record);
+                    db.SaveChanges();
+                    return Json(true);
+                }
+                catch (Exception)
+                {
+                    return Json(false);
+                }
+            }
+        }
     }
 }

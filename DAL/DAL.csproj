@@ -58,6 +58,7 @@
     <Compile Include="Entities\Analytic.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\HumanResourceCv.cs" />
+    <Compile Include="Entities\ProductColors.cs" />
     <Compile Include="Entities\ProductDetail.cs" />
     <Compile Include="Entities\ProductHeaders.cs" />
     <Compile Include="Entities\ProductInformation.cs" />

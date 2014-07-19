@@ -2986,6 +2986,7 @@
     <Content Include="Areas\Admin\Views\Product\_detailproptable.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroup\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroup\_menu.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_colorss.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />

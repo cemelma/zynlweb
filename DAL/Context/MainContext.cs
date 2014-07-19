@@ -65,6 +65,7 @@ namespace DAL.Context
         public DbSet<ProductHeaders> ProductHeaders { get; set; }
 
         public DbSet<ProductInformation> ProductInformation { get; set; }
+        public DbSet<ProductColors> ProductColors { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -122,7 +123,9 @@ namespace DAL.Context
             modelBuilder.Entity<HumanResourceCv>().ToTable("HumanResourceCv");
             modelBuilder.Entity<ContactHome>().ToTable("ContactHome");
             modelBuilder.Entity<ProductHeaders>().ToTable("ProductHeaders");
-            modelBuilder.Entity<ProductInformation>().ToTable("ProductInformation"); 
+            modelBuilder.Entity<ProductInformation>().ToTable("ProductInformation");
+            modelBuilder.Entity<ProductColors>().ToTable("ProductColors"); 
+            
             
         }
     }

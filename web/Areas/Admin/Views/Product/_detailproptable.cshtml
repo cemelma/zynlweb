@@ -225,6 +225,18 @@
 }
 
 <script type="text/javascript">
+    $("#btnclear").click(function () {
+        $("#inputtext1").val("");
+        $("#inputtext2").val("");
+        $("#inputtext3").val("");
+        $("#inputtext4").val("");
+        $("#inputtext5").val("");
+        $("#inputtext6").val("");
+        $("#inputtext7").val("");
+        $("#inputtext8").val("");
+        $("#inputtext1").focus();
+
+    });
     $("#btnsaveProp").click(function () {
         var prid = $("#prId").val();
         var catid = $("#catId").val();
