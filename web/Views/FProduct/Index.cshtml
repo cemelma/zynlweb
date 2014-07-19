@@ -27,12 +27,11 @@
     </div>
       <div class="col-md-12 noPadding colors">
         <div class="col-md-3">
-        @*<div class="col-md-6"><div class="renk1"></div>Renk 1</div>
-        <div class="col-md-6"><div class="renk2"></div>Renk 2</div>
-         <div class="col-md-6"><div class="renk3"></div>Renk 3</div>
-        <div class="col-md-6"><div class="renk4"></div>Renk 4</div>
-         <div class="col-md-6"><div class="renk5"></div>Renk 5</div>
-        <div class="col-md-6"><div class="renk6"></div>Renk 6</div> *@
+            @foreach (var item in Model.Colors)
+            {
+                <div class="col-md-6"><div style="background-color: @item.RenkKodu;padding: 13px;display: block;margin-top: 10px;"></div>@item.Adi</div>
+            }
+ 
         </div>
         <div class="col-md-9">
         <div class="col-md-1 "></div>
@@ -40,17 +39,17 @@
         {
             <div class="col-md-5 ">
 
-                <a href="@Model.product.Image1.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image1"/></a>
+                <a href="@Model.product.Image1.Replace("userfiles/", "userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image1"/></a>
 
             </div>
         }
          @if (!string.IsNullOrEmpty(Model.product.Image2) && Model.product.Image2 != "/Content/images/front/noimage.jpeg")
-        {
+         {
             <div class="col-md-5 ">
 
-                <a href="@Model.product.Image2.Replace("userfiles/","userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image2"/></a>
+                <a href="@Model.product.Image2.Replace("userfiles/", "userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image2"/></a>
             </div>
-        }
+         }
         <div class="col-md-1 "></div> 
         <div class="col-md-12 fiyatBilgi"><a href="#">Fiyat Bilgisi İçin Tıklayınız</a></div>  
         </div>
@@ -64,12 +63,12 @@
           </tr>
           <tr class="fiyatTabloTitle">
             @if (!string.IsNullOrEmpty(@Model.headers.Header1))
-                {
+            {
                    
                     <td>@Model.headers.Header1</td>
                        
                    
-                }
+            }
                 @if (!string.IsNullOrEmpty(@Model.headers.Header2))
                 {
                     
@@ -266,7 +265,7 @@
             <ul class="referenceSlider">
                 @foreach (var item in referanslar)
                 {
-                    if(item.Logo!=null)
+                    if (item.Logo != null)
                     {
                     <li><img src="@item.Logo" style="width:169px;height:62px;" /></li>
                     }

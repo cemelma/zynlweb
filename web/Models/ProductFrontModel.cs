@@ -11,5 +11,6 @@ namespace web.Models
         public Product product { get; set; }
         public ProductHeaders headers { get; set; }
         public List<ProductInformation> ProductInfo { get; set; }
+        public List<ProductColors> Colors { get; set; }
     }
 }

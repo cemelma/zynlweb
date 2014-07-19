@@ -31,6 +31,8 @@ namespace web.Controllers
                 model.headers = db.ProductHeaders.FirstOrDefault(x=>x.CategoryId==catId);
                 model.ProductInfo = db.ProductInformation.Where(x => x.ProductId == pId).ToList();
 
+                model.Colors = db.ProductColors.Where(x => x.ProductId == pId).ToList();
+
                 ViewBag.ProductGroup = model.product.ProductGroup.GroupName;
                 ViewBag.Photos = PhotoManager.GetListForFront(11, pId);
 
