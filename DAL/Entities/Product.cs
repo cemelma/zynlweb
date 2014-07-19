@@ -32,5 +32,6 @@ namespace DAL.Entities
         public ProductGroup ProductGroup { get; set; }
         public bool IsShownMain { get; set; }
         //public List<ProductDetail> ProductDetail { get; set; }
+        //public List<ProductInformation> ProductInformation { get; set; }
     }
 }
