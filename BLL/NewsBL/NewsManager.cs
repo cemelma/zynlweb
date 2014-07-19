@@ -168,6 +168,11 @@ namespace BLL.NewsBL
                         record.TypeId = newsmodel.TypeId;
                         if (!string.IsNullOrEmpty(newsmodel.NewsImage))
                         {
+                            string filePath = HttpContext.Current.Server.MapPath(record.NewsImage);
+                            if (System.IO.File.Exists(filePath))
+                            {
+                                System.IO.File.Delete(filePath);
+                            }
                             record.NewsImage = newsmodel.NewsImage;
                         }
                         record.PageSlug = newsmodel.PageSlug;

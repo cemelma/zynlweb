@@ -15,6 +15,7 @@ using System.Drawing;
 using BLL.PhotoBL;
 using DAL.Context;
 using web.Areas.Admin.Models;
+using System.Web.Helpers;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -93,6 +94,8 @@ namespace web.Areas.Admin.Controllers
 
                     new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
                     model.Product.Image1 = "/Content/images/userfiles/" + path;
+
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
                     
                 }
                 else
@@ -111,6 +114,9 @@ namespace web.Areas.Admin.Controllers
 
                     new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/", path);
                     model.Product.Image2 = "/Content/images/userfiles/" + path;
+
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
+
                 }
                 else
                 {
@@ -202,6 +208,8 @@ namespace web.Areas.Admin.Controllers
 
                     new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
                     model.Product.Image1 = "/Content/images/userfiles/" + path;
+
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
                 }
                 else
                 {
@@ -219,6 +227,8 @@ namespace web.Areas.Admin.Controllers
                     
                     new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/", path);
                     model.Product.Image2 = "/Content/images/userfiles/" + path;
+                   
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 40);
                 }
                 else
                 {
@@ -255,6 +265,8 @@ namespace web.Areas.Admin.Controllers
                             Orgbmp.Dispose();
                             GC.Collect();
                         }
+
+                        Helpers.ImageHelper.WaterMark("/Content/images/userfiles/" + path, 60);
 
                         //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
                         Photo p = new Photo();
@@ -452,6 +464,35 @@ namespace web.Areas.Admin.Controllers
                     var record = db.Product.FirstOrDefault(d => d.ProductId == id);
                     db.Product.Remove(record);
                     db.SaveChanges();
+
+                    string filePath = Server.MapPath(record.Image1);
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                    string filePath2 = Server.MapPath(record.Image2);
+                    if (System.IO.File.Exists(filePath2))
+                    {
+                        System.IO.File.Delete(filePath2);
+                    }
+
+                    var recordphoto = db.Photo.Where(d => d.CategoryId == (int)PhotoType.ProductUygulama && d.ItemId == record.ProductId).ToList();
+                    foreach (var item in recordphoto)
+                    {
+                        string filePathfullimg = Server.MapPath(item.Path);
+                        if (System.IO.File.Exists(filePathfullimg))
+                        {
+                            System.IO.File.Delete(filePathfullimg);
+                        }
+
+                        string filePathfullimgt = Server.MapPath(item.Thumbnail);
+                        if (System.IO.File.Exists(filePathfullimgt))
+                        {
+                            System.IO.File.Delete(filePathfullimgt);
+                        }
+
+                    }
+
                     return Json(true);
                 }
                 catch (Exception)

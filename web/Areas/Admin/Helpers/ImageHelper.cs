@@ -7,6 +7,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Net;
+using System.Web.Helpers;
 
 namespace web.Areas.Admin.Helpers
 {
@@ -130,7 +131,24 @@ namespace web.Areas.Admin.Helpers
         }
 
 
+        public static bool WaterMark(string url,int fontsize)
+        {
+            try
+            {
+                string wpath = HttpContext.Current.Server.MapPath(url);
+                WebImage supermanImage = new WebImage(wpath);
+                //supermanImage.AddTextWatermark("Zeynel Yayla ©", "White", fontsize, "Regular", "Consolas", "Right", "Bottom", 70, 5);
+                string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/zyimage.jpg");
+                supermanImage.AddImageWatermark(watermarkImageFilePath, 112, 90, "Right", "Bottom", 60, 5);
+                supermanImage.Save(wpath);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
+        }
 
 
     }

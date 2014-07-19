@@ -13,6 +13,7 @@ using web.Areas.Admin.Filters;
 using System.Web.Script.Serialization;
 using System.Drawing.Imaging;
 using BLL.PhotoBL;
+using System.Web.Helpers;
 namespace web.Areas.Admin.Controllers
 {
     [AuthenticateUser]
@@ -44,8 +45,11 @@ namespace web.Areas.Admin.Controllers
             {
                 if (Session["ModifiedImageId"] != null)
                 {
-                    newsmodel.NewsImage = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    string imagename = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    newsmodel.NewsImage = imagename;
                     ImageHelperNew.DestroyImageCashAndSession(0,0);
+
+                    Helpers.ImageHelper.WaterMark(imagename, 100);
                 }
                 else
                 {
@@ -111,6 +115,7 @@ namespace web.Areas.Admin.Controllers
                 bool isnumber=int.TryParse(RouteData.Values["id"].ToString(),out nid);
                 if (isnumber)
                 {
+                    ImageHelperNew.DestroyImageCashAndSession(1920, 1080);
                     News editnews = NewsManager.GetNewsById(nid);
                     return View(editnews);
                 }
@@ -146,8 +151,11 @@ namespace web.Areas.Admin.Controllers
                 
                 if (Session["ModifiedImageId"] != null)
                 {
-                    newsmodel.NewsImage = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    string imagename = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    newsmodel.NewsImage = imagename;
                     ImageHelperNew.DestroyImageCashAndSession(0, 0);
+
+                    Helpers.ImageHelper.WaterMark(imagename,100);
                 }
               
                 newsmodel.PageSlug = Utility.SetPagePlug(newsmodel.Header);
