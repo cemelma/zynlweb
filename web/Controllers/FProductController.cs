@@ -2,6 +2,7 @@
 using BLL.ProductBL;
 using BLL.ReferenceBL;
 using DAL.Context;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,17 +48,57 @@ namespace web.Controllers
 
         public ActionResult Prices()
         {
+            ProductPriceModel model = new ProductPriceModel();
             if (RouteData.Values["id"] != null)
             {
                 int pId = Convert.ToInt32(RouteData.Values["id"]);
-                ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
+
+                using(MainContext db = new MainContext())
+                {
+                    var groups = db.ProductGroup.Where(x => x.TopProductId == pId && x.Deleted==false).ToList();
+                    int[] groupIds = groups.Select(x => x.ProductGroupId).ToArray();
+
+                    List<ProductHeaders> productHeaders = db.ProductHeaders.Where(x => groupIds.Contains(x.CategoryId)).ToList();
+                    List<Product> products = db.Product.Where(x => x.TopProductGroupId == pId && x.Deleted == false && x.Online == true).OrderBy(x => x.SortNumber).ToList();
+                    int[] prIds = db.Product.Select(x => x.ProductId).ToArray();
+                    List<ProductInformation> procudtDetails = db.ProductInformation.Where(x => prIds.Contains(x.ProductId)).ToList();
+
+                    foreach (var item in products)
+                    {
+                        ProductPriceDetail detail = new ProductPriceDetail();
+                        detail.ProductName = item.Name;
+                        detail.CategoryId = item.ProductGroupId;
+                        detail.ProductId = item.ProductId;
+                        detail.PageSlug = item.PageSlug;
+                        detail.headers = productHeaders.FirstOrDefault(x => x.CategoryId == detail.CategoryId);
+                        detail.productsinfo = procudtDetails.Where(x => x.ProductId == detail.ProductId).ToList();
+
+                        model.Info.Add(detail);
+                    }
 
 
-                if (Session["userlogin"] != null)
-                    ViewBag.userloginemail = Session["userlogin"];
-                else ViewBag.userloginemail = "";
 
-                return View(ProductManager.GetProductListFront(pId).ToList());
+                    ViewBag.ProductGroup = ProductManager.GetProductGroupItem(pId);
+
+
+                    if (Session["userlogin"] != null)
+                        ViewBag.userloginemail = Session["userlogin"];
+                    else ViewBag.userloginemail = "";
+
+                    return View(model);
+                }
+               
+
+
+                //List<ProductHeaders> headerlist = d
+
+
+
+
+
+              
+
+                //return View(ProductManager.GetProductListFront(pId).ToList());
             }
             return View();
         }

@@ -255,6 +255,7 @@
     <Compile Include="Models\ContactWrapperModel.cs" />
     <Compile Include="Models\AdvancedSearchWrapperModel.cs" />
     <Compile Include="Models\ProductFrontModel.cs" />
+    <Compile Include="Models\ProductPriceModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\EstateWrapperModel.cs" />
     <Compile Include="Models\OurTeamWrapperModel.cs" />
