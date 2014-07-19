@@ -58,6 +58,9 @@
             <div class="pageContent">
                 @foreach (var item in Model.Info)
                 {
+                    if(item.headers!=null && item.productsinfo!=null && item.productsinfo.Count()>0)
+                    {
+                    
                     <table width="100%" cellspacing="0" cellpadding="0" class="fiyatTablo">
                         <tr>
                             <td colspan="8" class="urunAd">@item.ProductName - <a href="/urunler/@item.ProductId/@item.PageSlug">Ürün Detay</a></td>
@@ -109,6 +112,7 @@
                         }
 
                     </table>
+                    }
                 }
 
 
