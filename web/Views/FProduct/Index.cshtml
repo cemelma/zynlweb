@@ -39,7 +39,7 @@
         {
             <div class="col-md-5 ">
 
-                <a href="@Model.product.Image1.Replace("userfiles/", "userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image1"/></a>
+                <a href="@Model.product.Image1.Replace("userfiles/", "userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image1.Replace(".jpg",".jpeg")"/></a>
 
             </div>
         }
@@ -47,7 +47,7 @@
          {
             <div class="col-md-5 ">
 
-                <a href="@Model.product.Image2.Replace("userfiles/", "userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image2"/></a>
+                <a href="@Model.product.Image2.Replace("userfiles/", "userfiles/productbig/")" class="fancybox" rel="gallery"><img src="@Model.product.Image2.Replace(".jpg",".jpeg")"/></a>
             </div>
          }
         <div class="col-md-1 "></div> 
@@ -61,6 +61,8 @@
           <tr>
             <td colspan="8" class="urunAd">@Model.product.Name</td>
           </tr>
+              @if(Model.headers!=null)
+              {
           <tr class="fiyatTabloTitle">
             @if (!string.IsNullOrEmpty(@Model.headers.Header1))
             {
@@ -126,7 +128,7 @@
                 }
               
             </tr>
-        
+        }
        
             @if (Model.ProductInfo != null)
             {
@@ -243,7 +245,7 @@
       <h2 class="pageTitle">UYGULAMA FOTOĞRAFLARI</h2>
           @foreach (var item in ViewBag.Photos)
           {
-               <div class="col-md-3 "><a href="@item.Path" class="fancybox" rel="galleryi"><img src="@item.Thumbnail" style="width:210px;height:125px;"/></a></div>
+               <div class="col-md-3 "><a href="@item.Path" class="fancybox" rel="galleryi"><img src="@item.Thumbnail.Replace(".jpg",".png")" style="width:210px;height:125px;"/></a></div>
              
           }
       </div>

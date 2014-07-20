@@ -2409,6 +2409,7 @@
     <Content Include="bin\CKEditor.NET.dll" />
     <Content Include="bin\CKFinder.dll" />
     <Content Include="bin\ImageUploadAndCrop.dll" />
+    <Content Include="Content\EditImg\userfiles\productbig\yuksek-guvenlik-cit-sistemleri_36527323.png" />
     <Content Include="Content\Images\adim_tasi.jpg" />
     <Content Include="Content\Images\agac_dibi_izgara.png" />
     <Content Include="Content\Images\agac_dibi_izgara_cizim.png" />
@@ -2583,9 +2584,17 @@
     <Content Include="Content\Images\terrazzo_yer_karosu.jpg" />
     <Content Include="Content\Images\traverten.jpg" />
     <Content Include="Content\Images\Twitter-icon.png" />
-    <Content Include="Content\Images\userfiles\6c8eeac7-b931-4b08-9b2e-f9c17f5bee9f.jpg" />
     <Content Include="Content\Images\userfiles\humanresources\12_16843348.png" />
-    <Content Include="Content\Images\userfiles\productbig\test_99054515.jpg" />
+    <Content Include="Content\Images\userfiles\productbig\test_92111666.jpg" />
+    <Content Include="Content\Images\userfiles\Puppy-images.jpg" />
+    <Content Include="Content\Images\userfiles\Siberian-Tiger-Running-Through-Snow-Tom-Brakefield-Getty-Images-200353826-001.jpg" />
+    <Content Include="Content\Images\userfiles\test_3169275.png" />
+    <Content Include="Content\Images\userfiles\test_36052856.jpg" />
+    <Content Include="Content\Images\userfiles\test_64845354.jpg" />
+    <Content Include="Content\Images\userfiles\test_64845354.png" />
+    <Content Include="Content\Images\userfiles\test_8986435.png" />
+    <Content Include="Content\Images\userfiles\test_92111666.jpeg" />
+    <Content Include="Content\Images\userfiles\test_92111666.jpg" />
     <Content Include="Content\Images\washbeton.jpg" />
     <Content Include="Content\Images\Windows_7_Wallpaper_by_tfcian.jpg" />
     <Content Include="Content\Images\yagmur_olugu.png" />
@@ -2609,6 +2618,7 @@
     <Content Include="Content\Images\yuksek_guvenlik_citleri_kucuk8.png" />
     <Content Include="Content\Images\yuksek_guvenlik_cit_uygulamasi.png" />
     <Content Include="Content\Images\zyimage.jpg" />
+    <Content Include="Content\Images\zyimagethumb.jpg" />
     <Content Include="Content\Scripts\bootstrap.min.js" />
     <Content Include="Content\Scripts\html5shiv.js" />
     <Content Include="Content\Scripts\jquery-1.8.3.min.js" />

@@ -186,6 +186,34 @@ namespace web.Areas.Admin.Controllers
             //return View();
         }
 
+        public ActionResult EditImg()
+        {
+
+            using (MainContext db = new MainContext())
+            {
+                var plist = db.Product.Where(x => x.Deleted == false && x.ProductId == 86).ToList();
+                foreach (var item in plist)
+                {
+                    string item1 = item.Image1.Replace("Content/images/", "Content/EditImg/");
+
+                    string filePath = Server.MapPath(item1);
+                    if (System.IO.File.Exists(filePath))
+                    {
+
+                        string filePathb = Server.MapPath(item1.Replace("userfiles/", "userfiles/productbig/"));
+                        if (System.IO.File.Exists(filePathb))
+                        {
+                            Helpers.ImageHelper.WaterMark(item1.Replace("userfiles/", "userfiles/productbig/"), 100);
+                        }
+
+                        Helpers.ImageHelper.WaterMarkThumb(item1);
+                    }
+                }
+                
+
+            }
+            return View();
+        }
 
         [HttpPost]
         [ValidateInput(false)]
@@ -210,6 +238,7 @@ namespace web.Areas.Admin.Controllers
                     model.Product.Image1 = "/Content/images/userfiles/" + path;
 
                     Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/" + path);
                 }
                 else
                 {
@@ -229,6 +258,7 @@ namespace web.Areas.Admin.Controllers
                     model.Product.Image2 = "/Content/images/userfiles/" + path;
                    
                     Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 40);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/" + path);
                 }
                 else
                 {
@@ -267,7 +297,7 @@ namespace web.Areas.Admin.Controllers
                         }
 
                         Helpers.ImageHelper.WaterMark("/Content/images/userfiles/" + path, 60);
-
+                        Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/" + thumbnail);
                         //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
                         Photo p = new Photo();
                         p.CategoryId = (int)PhotoType.ProductUygulama;

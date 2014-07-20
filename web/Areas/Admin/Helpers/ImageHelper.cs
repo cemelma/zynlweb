@@ -151,5 +151,25 @@ namespace web.Areas.Admin.Helpers
         }
 
 
+        public static bool WaterMarkThumb(string url)
+        {
+            try
+            {
+                string wpath = HttpContext.Current.Server.MapPath(url);
+                WebImage supermanImage = new WebImage(wpath);
+                //supermanImage.AddTextWatermark("Zeynel Yayla ©", "White", fontsize, "Regular", "Consolas", "Right", "Bottom", 70, 5);
+                string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/zyimagethumb.jpg");
+                supermanImage.AddImageWatermark(watermarkImageFilePath, 30, 25, "Right", "Bottom", 60, 5);
+                wpath = wpath.Replace(".jpg", "");
+                supermanImage.Save(wpath);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
     }
 }
