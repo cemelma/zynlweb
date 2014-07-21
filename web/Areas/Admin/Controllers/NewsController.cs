@@ -45,8 +45,8 @@ namespace web.Areas.Admin.Controllers
             {
                 if (Session["ModifiedImageId"] != null)
                 {
-                    string imagename = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
-                    newsmodel.NewsImage = imagename;
+                    string imagename = "/Content/images/userfiles/news/" + Session["ModifiedImageId"].ToString();// + Session["WorkingImageExtension"].ToString();
+                    newsmodel.NewsImage = imagename + ".jpeg";
                     ImageHelperNew.DestroyImageCashAndSession(0,0);
 
                     Helpers.ImageHelper.WaterMark(imagename, 100);
@@ -151,8 +151,8 @@ namespace web.Areas.Admin.Controllers
                 
                 if (Session["ModifiedImageId"] != null)
                 {
-                    string imagename = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
-                    newsmodel.NewsImage = imagename;
+                    string imagename = "/Content/images/userfiles/news/" + Session["ModifiedImageId"].ToString();// +Session["WorkingImageExtension"].ToString();
+                    newsmodel.NewsImage = imagename + ".jpeg";
                     ImageHelperNew.DestroyImageCashAndSession(0, 0);
 
                     Helpers.ImageHelper.WaterMark(imagename,100);

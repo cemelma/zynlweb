@@ -88,14 +88,12 @@ namespace web.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd1.FileName);
+                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/productthumb/", path);
+                    model.Product.Image1 = "/Content/images/userfiles/productthumb/" + path + ".jpeg"; ;
 
-                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
-
-                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/newthumb/", path);
-                    model.Product.Image1 = "/Content/images/userfiles/" + path + ".jpeg"; ;
-
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 100);
-                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/productthumb/" + path);
                 }
                 else
                 {
@@ -108,13 +106,12 @@ namespace web.Areas.Admin.Controllers
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd2.FileName);
 
-                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
+                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/productthumb/", path);
+                    model.Product.Image2 = "/Content/images/userfiles/productthumb/" + path + ".jpeg"; ;
 
-                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/newthumb/", path);
-                    model.Product.Image2 = "/Content/images/userfiles/newbig/" + path + ".jpeg";;
-
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 40);
-                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 40);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/productthumb/" + path);
                 }
                 else
                 {
@@ -224,12 +221,12 @@ namespace web.Areas.Admin.Controllers
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd1.FileName);
-                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
-                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/newthumb/", path);
-                    model.Product.Image1 = "/Content/images/userfiles/newthumb/" + path + ".jpeg"; ;
+                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/productthumb/", path);
+                    model.Product.Image1 = "/Content/images/userfiles/productthumb/" + path + ".jpeg"; ;
 
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 100);
-                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/productthumb/" + path);
                 }
 
                 if (prd2 != null)
@@ -238,12 +235,12 @@ namespace web.Areas.Admin.Controllers
                     int rand = random.Next(1000, 99999999);
                     string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd2.FileName);
 
-                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
-                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/newthumb/", path);
-                    model.Product.Image2 = "/Content/images/userfiles/newbig/" + path + ".jpeg"; ;
+                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/productthumb/", path);
+                    model.Product.Image2 = "/Content/images/userfiles/productthumb/" + path + ".jpeg"; ;
 
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 40);
-                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 40);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/productthumb/" + path);
                 }
 
                 ProductManager.EditProduct(model.Product);
@@ -472,17 +469,22 @@ namespace web.Areas.Admin.Controllers
                     db.Product.Remove(record);
                     db.SaveChanges();
 
-                    string filePath = Server.MapPath(record.Image1);
-                    if (System.IO.File.Exists(filePath))
+                    if (record.Image1 != "/Content/images/front/noimage.jpeg")
                     {
-                        System.IO.File.Delete(filePath);
+                        string filePath = Server.MapPath(record.Image1);
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
                     }
-                    string filePath2 = Server.MapPath(record.Image2);
-                    if (System.IO.File.Exists(filePath2))
+                    if (record.Image2 != "/Content/images/front/noimage.jpeg")
                     {
-                        System.IO.File.Delete(filePath2);
+                        string filePath2 = Server.MapPath(record.Image2);
+                        if (System.IO.File.Exists(filePath2))
+                        {
+                            System.IO.File.Delete(filePath2);
+                        }
                     }
-
                     var recordphoto = db.Photo.Where(d => d.CategoryId == (int)PhotoType.ProductUygulama && d.ItemId == record.ProductId).ToList();
                     foreach (var item in recordphoto)
                     {

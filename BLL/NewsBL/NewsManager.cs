@@ -111,6 +111,15 @@ namespace BLL.NewsBL
                 {
                     var record = db.News.FirstOrDefault(d => d.NewsId == id);
                     record.Deleted = true;
+                    if (record.NewsImage != "/Content/images/front/noimage.jpeg")
+                    {
+
+                        string filePatht = HttpContext.Current.Server.MapPath(record.NewsImage);
+                        if (System.IO.File.Exists(filePatht))
+                        {
+                            System.IO.File.Delete(filePatht);
+                        }
+                    }
 
                     db.SaveChanges();
 
@@ -166,7 +175,7 @@ namespace BLL.NewsBL
                         record.Content = newsmodel.Content;
                         record.ShowInMenu = newsmodel.ShowInMenu;
                         record.TypeId = newsmodel.TypeId;
-                        if (!string.IsNullOrEmpty(newsmodel.NewsImage))
+                        if (!string.IsNullOrEmpty(newsmodel.NewsImage) && newsmodel.NewsImage != "/Content/images/front/noimage.jpeg")
                         {
                             string filePath = HttpContext.Current.Server.MapPath(record.NewsImage);
                             if (System.IO.File.Exists(filePath))
