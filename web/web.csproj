@@ -2585,16 +2585,22 @@
     <Content Include="Content\Images\traverten.jpg" />
     <Content Include="Content\Images\Twitter-icon.png" />
     <Content Include="Content\Images\userfiles\humanresources\12_16843348.png" />
-    <Content Include="Content\Images\userfiles\productbig\test_92111666.jpg" />
-    <Content Include="Content\Images\userfiles\Puppy-images.jpg" />
-    <Content Include="Content\Images\userfiles\Siberian-Tiger-Running-Through-Snow-Tom-Brakefield-Getty-Images-200353826-001.jpg" />
-    <Content Include="Content\Images\userfiles\test_3169275.png" />
-    <Content Include="Content\Images\userfiles\test_36052856.jpg" />
-    <Content Include="Content\Images\userfiles\test_64845354.jpg" />
-    <Content Include="Content\Images\userfiles\test_64845354.png" />
-    <Content Include="Content\Images\userfiles\test_8986435.png" />
-    <Content Include="Content\Images\userfiles\test_92111666.jpeg" />
-    <Content Include="Content\Images\userfiles\test_92111666.jpg" />
+    <Content Include="Content\Images\userfiles\newbig\deneme-cem_15520760sortorder.jpeg" />
+    <Content Include="Content\Images\userfiles\newbig\deneme-cem_25803241pewopk_lg.jpeg" />
+    <Content Include="Content\Images\userfiles\newbig\deneme-cem_62383417East_German_Border_near_Grasleben_19890727.jpeg" />
+    <Content Include="Content\Images\userfiles\newthumb\deneme-cem_15520760sortorder.jpeg" />
+    <Content Include="Content\Images\userfiles\newthumb\deneme-cem_25803241pewopk_lg.jpeg" />
+    <Content Include="Content\Images\userfiles\newthumb\deneme-cem_62383417East_German_Border_near_Grasleben_19890727.jpeg" />
+    <Content Include="Content\Images\userfiles\productbig\deneme-cem_21865301pewopk_lg.jpeg" />
+    <Content Include="Content\Images\userfiles\productbig\deneme-cem_91033314sortorder.jpeg" />
+    <Content Include="Content\Images\userfiles\productbig\deneme-cem_93736590group-cartoon-children-playing-tug-war-illustration-34608223.jpeg" />
+    <Content Include="Content\Images\userfiles\productbig\test-urunu_74126189sortorder.jpeg" />
+    <Content Include="Content\Images\userfiles\productbig\test-urunu_8099835East_German_Border_near_Grasleben_19890727.jpeg" />
+    <Content Include="Content\Images\userfiles\productthumb\deneme-cem_21865301pewopk_lg.jpeg" />
+    <Content Include="Content\Images\userfiles\productthumb\deneme-cem_91033314sortorder.jpeg" />
+    <Content Include="Content\Images\userfiles\productthumb\deneme-cem_93736590group-cartoon-children-playing-tug-war-illustration-34608223.jpeg" />
+    <Content Include="Content\Images\userfiles\productthumb\test-urunu_74126189sortorder.jpeg" />
+    <Content Include="Content\Images\userfiles\productthumb\test-urunu_8099835East_German_Border_near_Grasleben_19890727.jpeg" />
     <Content Include="Content\Images\washbeton.jpg" />
     <Content Include="Content\Images\Windows_7_Wallpaper_by_tfcian.jpg" />
     <Content Include="Content\Images\yagmur_olugu.png" />
@@ -3202,9 +3208,6 @@
     <Folder Include="Content\Images\references\" />
     <Folder Include="Content\Images\sectors\" />
     <Folder Include="Content\Images\socialmedia\" />
-    <Folder Include="Content\Images\userfiles\newbig\" />
-    <Folder Include="Content\Images\userfiles\newthumb\" />
-    <Folder Include="Content\Images\userfiles\productthumb\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
