@@ -140,7 +140,13 @@ namespace web.Areas.Admin.Helpers
                 //supermanImage.AddTextWatermark("Zeynel Yayla ©", "White", fontsize, "Regular", "Consolas", "Right", "Bottom", 70, 5);
                 string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/zyimage.jpg");
                 supermanImage.AddImageWatermark(watermarkImageFilePath, 112, 90, "Right", "Bottom", 60, 5);
-                supermanImage.Save(wpath);
+
+                if (System.IO.File.Exists(wpath))
+                {
+                    System.IO.File.Delete(wpath);
+                }
+
+                supermanImage.Save(wpath,"jpg");
                 return true;
             }
             catch (Exception)
@@ -160,8 +166,13 @@ namespace web.Areas.Admin.Helpers
                 //supermanImage.AddTextWatermark("Zeynel Yayla ©", "White", fontsize, "Regular", "Consolas", "Right", "Bottom", 70, 5);
                 string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/zyimagethumb.jpg");
                 supermanImage.AddImageWatermark(watermarkImageFilePath, 30, 25, "Right", "Bottom", 60, 5);
-                wpath = wpath.Replace(".jpg", "");
-                supermanImage.Save(wpath);
+
+                if (System.IO.File.Exists(wpath))
+                {
+                    System.IO.File.Delete(wpath);
+                }
+
+                supermanImage.Save(wpath, "jpg");
                 return true;
             }
             catch (Exception)

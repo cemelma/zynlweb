@@ -3202,6 +3202,9 @@
     <Folder Include="Content\Images\references\" />
     <Folder Include="Content\Images\sectors\" />
     <Folder Include="Content\Images\socialmedia\" />
+    <Folder Include="Content\Images\userfiles\newbig\" />
+    <Folder Include="Content\Images\userfiles\newthumb\" />
+    <Folder Include="Content\Images\userfiles\productthumb\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

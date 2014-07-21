@@ -85,18 +85,17 @@ namespace web.Areas.Admin.Controllers
 
                 if (prd1 != null)
                 {
-                    //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd1.FileName);
 
-                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
 
-                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
-                    model.Product.Image1 = "/Content/images/userfiles/" + path;
+                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/newthumb/", path);
+                    model.Product.Image1 = "/Content/images/userfiles/" + path + ".jpeg"; ;
 
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
-                    
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 100);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
                 }
                 else
                 {
@@ -105,18 +104,17 @@ namespace web.Areas.Admin.Controllers
 
                 if (prd2 != null)
                 {
-                    //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd2.FileName);
-                    
-                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd2.FileName);
 
-                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/", path);
-                    model.Product.Image2 = "/Content/images/userfiles/" + path;
+                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
 
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
+                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/newthumb/", path);
+                    model.Product.Image2 = "/Content/images/userfiles/newbig/" + path + ".jpeg";;
 
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 40);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
                 }
                 else
                 {
@@ -129,44 +127,42 @@ namespace web.Areas.Admin.Controllers
                 {
                     if (item != null && item.ContentLength > 0)
                     {
-                        item.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+
                         Random random = new Random();
                         int rand = random.Next(1000, 99999999);
-                        string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                        new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
+                        string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                        item.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                        new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/productthumb/", path);
 
-                        rand = random.Next(1000, 99999999);
-                        string thumbnail = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                        Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
-
+                        string thumbnail = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                        Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/productbig/") + path);
                         Bitmap bmp2 = new Bitmap(bmp);
-
                         using (Bitmap Orgbmp = bmp2)
                         {
 
                             int sabit = 90;
                             Size Boyut = new Size(210, 125);
                             Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
-                            ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/") + thumbnail);
+                            ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/productthumb/") + thumbnail);
                             bmp.Dispose();
                             bmp2.Dispose();
                             Orgbmp.Dispose();
                             GC.Collect();
                         }
 
-                        //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
+                        Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 60);
+                        Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/productthumb/" + thumbnail);
                         Photo p = new Photo();
                         p.CategoryId = (int)PhotoType.ProductUygulama;
                         p.ItemId = model.Product.ProductId;
-                        p.Path = "/Content/images/userfiles/" + path;
-                        p.Thumbnail = "/Content/images/userfiles/" + thumbnail;
+                        p.Path = "/Content/images/userfiles/productbig/" + path + ".jpeg"; ;
+                        p.Thumbnail = "/Content/images/userfiles/productthumb/" + thumbnail + ".jpeg";
                         p.Online = true;
                         p.SortOrder = 9999;
                         p.Language = "tr";
                         p.TimeCreated = DateTime.Now;
                         p.Title = model.Product.Name;
                         PhotoManager.Save(p);
-                       
                     }
                 }
 
@@ -223,46 +219,31 @@ namespace web.Areas.Admin.Controllers
             {
                 model.Product.PageSlug = Utility.SetPagePlug(model.Product.Name);
                 model.Product.ProductId = hdProductId;
-            //    model.Product.ProductGroupId = 1;
-
                 if (prd1 != null)
                 {
-                    //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd1.FileName);
+                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd1.FileName);
+                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
+                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/newthumb/", path);
+                    model.Product.Image1 = "/Content/images/userfiles/newthumb/" + path + ".jpeg"; ;
 
-                    prd1.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);                    
-
-                    new ImageHelper(210, 125).SaveThumbnail(prd1, "/Content/images/userfiles/", path);
-                    model.Product.Image1 = "/Content/images/userfiles/" + path;
-
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 100);
-                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/" + path);
-                }
-                else
-                {
-                        //model.Product.Image1 = "/Content/images/front/noimage.jpeg";
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 100);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
                 }
 
                 if (prd2 != null)
                 {
-                    //prd1.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(prd2.FileName);
+                    string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(prd2.FileName);
 
-                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);                    
-                    
-                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/", path);
-                    model.Product.Image2 = "/Content/images/userfiles/" + path;
-                   
-                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 40);
-                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/" + path);
-                }
-                else
-                {
-                       //model.Product.Image2 = "/Content/images/front/noimage.jpeg";
+                    prd2.SaveAs(Server.MapPath("/Content/images/userfiles/newbig/") + path);
+                    new ImageHelper(210, 125).SaveThumbnail(prd2, "/Content/images/userfiles/newthumb/", path);
+                    model.Product.Image2 = "/Content/images/userfiles/newbig/" + path + ".jpeg"; ;
+
+                    Helpers.ImageHelper.WaterMark("/Content/images/userfiles/newbig/" + path, 40);
+                    Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/newthumb/" + path);
                 }
 
                 ProductManager.EditProduct(model.Product);
@@ -271,39 +252,35 @@ namespace web.Areas.Admin.Controllers
                 {
                     if (item != null && item.ContentLength > 0)
                     {
-                        item.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                         Random random = new Random();
                         int rand = random.Next(1000, 99999999);
-                        string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                        new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
+                        string path = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                        item.SaveAs(Server.MapPath("/Content/images/userfiles/productbig/") + path);
+                        new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/productthumb/", path);
 
-                        rand = random.Next(1000, 99999999);
-                        string thumbnail = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                        Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
-
+                        string thumbnail = Utility.SetPagePlug(model.Product.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                        Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/productbig/") + path);
                         Bitmap bmp2 = new Bitmap(bmp);
-
                         using (Bitmap Orgbmp = bmp2)
                         {
 
                             int sabit = 90;
                             Size Boyut = new Size(210, 125);
                             Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
-                            ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/") + thumbnail);
+                            ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/productthumb/") + thumbnail);
                             bmp.Dispose();
                             bmp2.Dispose();
                             Orgbmp.Dispose();
                             GC.Collect();
                         }
 
-                        Helpers.ImageHelper.WaterMark("/Content/images/userfiles/" + path, 60);
-                        Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/" + thumbnail);
-                        //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
+                        Helpers.ImageHelper.WaterMark("/Content/images/userfiles/productbig/" + path, 60);
+                        Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/productthumb/" + thumbnail);
                         Photo p = new Photo();
                         p.CategoryId = (int)PhotoType.ProductUygulama;
                         p.ItemId = Convert.ToInt32(RouteData.Values["id"]);
-                        p.Path = "/Content/images/userfiles/" + path;
-                        p.Thumbnail = "/Content/images/userfiles/" + thumbnail;
+                        p.Path = "/Content/images/userfiles/productbig/" + path + ".jpeg"; ;
+                        p.Thumbnail = "/Content/images/userfiles/productthumb/" + thumbnail + ".jpeg";
                         p.Online = true;
                         p.SortOrder = 9999;
                         p.Language = "tr";
