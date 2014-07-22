@@ -86,6 +86,8 @@
             <div class="tab-content" id="servicecontent">
                 @foreach (var item in Model.servicegroups)
                 {
+                   if (item.ShowInMenu==true)
+                   {
                     <div class="tab-pane" id="service_@item.Name">
                         <div class="col-md-12">
                             @Html.Raw(item.Content)
@@ -100,6 +102,7 @@
                             }
                         </div>
                     </div>
+                    }
                 }
             </div>
         </div>

@@ -74,40 +74,63 @@ namespace web.Areas.Admin.Controllers
                 {
                     if (item != null && item.ContentLength > 0)
                     {
-                        item.SaveAs(Server.MapPath("/Content/images/userfiles/")+item.FileName);
                         Random random = new Random();
                         int rand = random.Next(1000, 99999999);
-                        string path = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                        new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
+                        string path = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                        item.SaveAs(Server.MapPath("/Content/images/userfiles/servicebig/") + path);
+                        new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/servicethumb/", path);
 
-                        rand = random.Next(1000, 99999999);
-                        string thumbnail = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                        string thumbnail = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                        Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/servicebig/") + path);
+                        Bitmap bmp2 = new Bitmap(bmp);
+                        using (Bitmap Orgbmp = bmp2)
+                        {
 
-                       // Image img = Image.FromFile(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+                            int sabit = 90;
+                            Size Boyut = new Size(210, 125);
+                            Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
+                            ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/servicethumb/") + thumbnail);
+                            bmp.Dispose();
+                            bmp2.Dispose();
+                            Orgbmp.Dispose();
+                            GC.Collect();
+                        }
 
-                        Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+                  //      item.SaveAs(Server.MapPath("/Content/images/userfiles/")+item.FileName);
+                  //      Random random = new Random();
+                  //      int rand = random.Next(1000, 99999999);
+                  //      string path = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                  //      new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
 
-                    Bitmap bmp2 = new Bitmap(bmp);
+                  //      rand = random.Next(1000, 99999999);
+                  //      string thumbnail = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
 
-                  using (Bitmap Orgbmp = bmp2)
-                   {
+                  //     // Image img = Image.FromFile(Server.MapPath("/Content/images/userfiles/") + item.FileName);
 
-                       int sabit = 90;
-                       Size Boyut = new Size(210, 125);
-                       Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
-                        ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/")+thumbnail);
-                       bmp.Dispose();
-                         bmp2.Dispose();
-                       Orgbmp.Dispose();
-                       GC.Collect();
-                    }
+                  //      Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
 
-                       //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
+                  //  Bitmap bmp2 = new Bitmap(bmp);
+
+                  //using (Bitmap Orgbmp = bmp2)
+                  // {
+
+                  //     int sabit = 90;
+                  //     Size Boyut = new Size(210, 125);
+                  //     Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
+                  //      ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/")+thumbnail);
+                  //     bmp.Dispose();
+                  //       bmp2.Dispose();
+                  //     Orgbmp.Dispose();
+                  //     GC.Collect();
+                  //  }
+
+                        Helpers.ImageHelper.WaterMark("/Content/images/userfiles/servicebig/" + path, 60);
+                        Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/servicethumb/" + thumbnail);
                         Photo p = new Photo();
                         p.CategoryId = (int)PhotoType.Service;
                         p.ItemId = newmodel.ServiceId;
-                        p.Path = "/Content/images/userfiles/" + path;
-                        p.Thumbnail = "/Content/images/userfiles/" + thumbnail;
+                        p.Path = "/Content/images/userfiles/servicebig/" + path + ".jpeg"; ;
+                        p.Thumbnail = "/Content/images/userfiles/servicethumb/" + thumbnail + ".jpeg";
                         p.Online = true;
                         p.SortOrder = 9999;
                         p.Language = "tr";
@@ -177,40 +200,62 @@ namespace web.Areas.Admin.Controllers
                         {
                             if (item != null && item.ContentLength > 0)
                             {
-                                item.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
                                 Random random = new Random();
                                 int rand = random.Next(1000, 99999999);
-                                string path = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
-                                new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
+                                string path = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                                item.SaveAs(Server.MapPath("/Content/images/userfiles/servicebig/") + path);
+                                new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/servicethumb/", path);
 
-                                rand = random.Next(1000, 99999999);
-                                string thumbnail = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
-
-                                // Image img = Image.FromFile(Server.MapPath("/Content/images/userfiles/") + item.FileName);
-
-                                Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
-
+                                string thumbnail = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetFileNameWithoutExtension(item.FileName);
+                                Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/servicebig/") + path);
                                 Bitmap bmp2 = new Bitmap(bmp);
-
                                 using (Bitmap Orgbmp = bmp2)
                                 {
 
                                     int sabit = 90;
                                     Size Boyut = new Size(210, 125);
                                     Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
-                                    ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/") + thumbnail);
+                                    ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/servicethumb/") + thumbnail);
                                     bmp.Dispose();
                                     bmp2.Dispose();
                                     Orgbmp.Dispose();
                                     GC.Collect();
                                 }
+                                //item.SaveAs(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+                                //Random random = new Random();
+                                //int rand = random.Next(1000, 99999999);
+                                //string path = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                                //new ImageHelper(1020, 768).SaveThumbnail(item, "/Content/images/userfiles/", path);
 
-                                //new ImageHelper(300, 280).ResizeFromStream("/Content/images/userfiles/",thumbnail,img);
+                                //rand = random.Next(1000, 99999999);
+                                //string thumbnail = Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+
+                                //// Image img = Image.FromFile(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+
+                                //Bitmap bmp = new Bitmap(Server.MapPath("/Content/images/userfiles/") + item.FileName);
+
+                                //Bitmap bmp2 = new Bitmap(bmp);
+
+                                //using (Bitmap Orgbmp = bmp2)
+                                //{
+
+                                //    int sabit = 90;
+                                //    Size Boyut = new Size(210, 125);
+                                //    Bitmap ReSizedThmb = new Bitmap(Orgbmp, Boyut);
+                                //    ReSizedThmb.Save(Server.MapPath("/Content/images/userfiles/") + thumbnail);
+                                //    bmp.Dispose();
+                                //    bmp2.Dispose();
+                                //    Orgbmp.Dispose();
+                                //    GC.Collect();
+                                //}
+
+                                Helpers.ImageHelper.WaterMark("/Content/images/userfiles/servicebig/" + path, 60);
+                                Helpers.ImageHelper.WaterMarkThumb("/Content/images/userfiles/servicethumb/" + thumbnail);
                                 Photo p = new Photo();
                                 p.CategoryId = (int)PhotoType.Service;
                                 p.ItemId = newmodel.ServiceId;
-                                p.Path = "/Content/images/userfiles/" + path;
-                                p.Thumbnail = "/Content/images/userfiles/" + thumbnail;
+                                p.Path = "/Content/images/userfiles/servicebig/" + path + ".jpeg"; ;
+                                p.Thumbnail = "/Content/images/userfiles/servicethumb/" + thumbnail + ".jpeg";
                                 p.Online = true;
                                 p.SortOrder = 9999;
                                 p.Language = "tr";

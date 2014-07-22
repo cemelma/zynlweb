@@ -76,8 +76,8 @@ namespace BLL.ServiceBL
         public static List<Service> GetServiceListForFront(string language)
         {
             using (MainContext db = new MainContext())
-            {
-                var list = db.Service.Where(d =>  d.Online == true && d.ShowInMenu==true).OrderBy(d => d.SortOrder).ToList();
+            {// && d.ShowInMenu==true
+                var list = db.Service.Where(d =>  d.Online == true).OrderBy(d => d.SortOrder).ToList();
                 return list;
             }
         }

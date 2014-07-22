@@ -2590,6 +2590,8 @@
     <Content Include="Content\Images\userfiles\news\standart.gif" />
     <Content Include="Content\Images\userfiles\productbig\standart.gif" />
     <Content Include="Content\Images\userfiles\productthumb\standart.gif" />
+    <Content Include="Content\Images\userfiles\servicebig\standart.gif" />
+    <Content Include="Content\Images\userfiles\servicethumb\standart.gif" />
     <Content Include="Content\Images\washbeton.jpg" />
     <Content Include="Content\Images\Windows_7_Wallpaper_by_tfcian.jpg" />
     <Content Include="Content\Images\yagmur_olugu.png" />
