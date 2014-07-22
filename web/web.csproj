@@ -2445,6 +2445,8 @@
     <Content Include="Content\Images\ferforje_kapi_sistemleri.png" />
     <Content Include="Content\Images\fileli_mozaik.jpg" />
     <Content Include="Content\Images\fileli_patlatma_mozaik_dogaltaslar.jpg" />
+    <Content Include="Content\Images\fligran\Fligran.jpg" />
+    <Content Include="Content\Images\fligran\FligranThumb.jpg" />
     <Content Include="Content\Images\Front\error.png" />
     <Content Include="Content\Images\Front\noimage.jpeg" />
     <Content Include="Content\Images\Front\success.png" />

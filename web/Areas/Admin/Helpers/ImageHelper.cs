@@ -138,8 +138,8 @@ namespace web.Areas.Admin.Helpers
                 string wpath = HttpContext.Current.Server.MapPath(url);
                 WebImage supermanImage = new WebImage(wpath);
                 //supermanImage.AddTextWatermark("Zeynel Yayla ©", "White", fontsize, "Regular", "Consolas", "Right", "Bottom", 70, 5);
-                string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/zyimage.jpg");
-                supermanImage.AddImageWatermark(watermarkImageFilePath, 112, 90, "Right", "Bottom", 60, 5);
+                string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/fligran/Fligran.jpg");
+                supermanImage.AddImageWatermark(watermarkImageFilePath, 110, 61, "Right", "Bottom", 70, 5);
 
                 if (System.IO.File.Exists(wpath))
                 {
@@ -164,8 +164,8 @@ namespace web.Areas.Admin.Helpers
                 string wpath = HttpContext.Current.Server.MapPath(url);
                 WebImage supermanImage = new WebImage(wpath);
                 //supermanImage.AddTextWatermark("Zeynel Yayla ©", "White", fontsize, "Regular", "Consolas", "Right", "Bottom", 70, 5);
-                string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/zyimagethumb.jpg");
-                supermanImage.AddImageWatermark(watermarkImageFilePath, 30, 25, "Right", "Bottom", 60, 5);
+                string watermarkImageFilePath = HttpContext.Current.Server.MapPath("/Content/Images/fligran/FligranThumb.jpg");                
+                supermanImage.AddImageWatermark(watermarkImageFilePath, 40, 22, "Right", "Bottom", 70, 5);
 
                 if (System.IO.File.Exists(wpath))
                 {

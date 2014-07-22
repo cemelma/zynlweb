@@ -32,7 +32,7 @@ namespace web.Areas.Admin.Controllers
             //var languages = LanguageManager.GetLanguages();
             //var list = new SelectList(languages, "Culture", "Language");
             //ViewBag.LanguageList = list;
-            ImageHelperNew.DestroyImageCashAndSession(1920, 1080);
+            ImageHelperNew.DestroyImageCashAndSession(600, 338);
             return View();
         }
 
@@ -115,7 +115,7 @@ namespace web.Areas.Admin.Controllers
                 bool isnumber=int.TryParse(RouteData.Values["id"].ToString(),out nid);
                 if (isnumber)
                 {
-                    ImageHelperNew.DestroyImageCashAndSession(1920, 1080);
+                    ImageHelperNew.DestroyImageCashAndSession(600, 338);
                     News editnews = NewsManager.GetNewsById(nid);
                     return View(editnews);
                 }
