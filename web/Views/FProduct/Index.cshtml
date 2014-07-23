@@ -1,6 +1,6 @@
 ﻿@model web.Models.ProductFrontModel
 @{
-    ViewBag.Title = "Ürünler";
+    ViewBag.Title = Model.product.Name;
     Layout = "~/Views/Shared/frontlayout.cshtml";
     List < DAL.Entities.References > referanslar = ViewData["referanslar"] as List < DAL.Entities.References > ;
         
