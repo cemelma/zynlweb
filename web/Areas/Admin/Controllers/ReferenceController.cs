@@ -42,7 +42,7 @@ namespace web.Areas.Admin.Controllers
             {
                 if (Session["ModifiedImageId"] != null)
                 {
-                    newmodel.Logo = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    newmodel.Logo = "/Content/images/userfiles/news/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
                     ImageHelperNew.DestroyImageCashAndSession(0, 0);
                 }
                 else
@@ -154,7 +154,7 @@ namespace web.Areas.Admin.Controllers
             {
                 if (Session["ModifiedImageId"] != null)
                 {
-                    referencemodel.Logo = "/Content/images/userfiles/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
+                    referencemodel.Logo = "/Content/images/userfiles/news/" + Session["ModifiedImageId"].ToString() + Session["WorkingImageExtension"].ToString();
                     ImageHelperNew.DestroyImageCashAndSession(0, 0);
                 }
                 //if (uploadfile != null && uploadfile.ContentLength > 0)

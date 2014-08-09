@@ -334,7 +334,8 @@ namespace web.Areas.Admin.Controllers
             
             Image CoreppedImg = ImageHelperNew.ByteArrayToImage(ModifiedImage);
             //CoreppedImg.Save(Server.MapPath("/Content/images/userfiles/newbig/" + ModifiedImageId + WorkingImageExtension));
-            CoreppedImg.Save(Server.MapPath("/Content/images/userfiles/news/" + ModifiedImageId));
+            //CoreppedImg.Save(Server.MapPath("/Content/images/userfiles/news/" + ModifiedImageId));
+            CoreppedImg.Save(Server.MapPath("/Content/images/userfiles/news/" + ModifiedImageId + WorkingImageExtension));
             return ModifiedImageId.ToString();
         }
 
