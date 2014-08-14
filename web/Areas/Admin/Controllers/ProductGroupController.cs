@@ -158,6 +158,10 @@ namespace web.Areas.Admin.Controllers
                     hed.Header6 = model.Header6;
                     hed.Header7 = model.Header7;
                     hed.Header8 = model.Header8;
+                    hed.Header9 = model.Header9;
+                    hed.Header10 = model.Header10;
+                    hed.Header11 = model.Header11;
+                    hed.Header12 = model.Header12;
                    
 
                 }

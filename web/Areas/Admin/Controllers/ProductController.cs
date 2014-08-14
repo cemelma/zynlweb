@@ -345,7 +345,7 @@ namespace web.Areas.Admin.Controllers
         }
 
 
-        public PartialViewResult SaveProductDetail(string prid,string catid, string input1, string input2, string input3, string input4, string input5, string input6, string input7, string input8)
+        public PartialViewResult SaveProductDetail(string prid, string catid, string input1, string input2, string input3, string input4, string input5, string input6, string input7, string input8, string input9, string input10, string input11, string input12)
         {
             using (MainContext db = new MainContext())
             {
@@ -358,6 +358,10 @@ namespace web.Areas.Admin.Controllers
                 if (input6 != "undefined") pinfo.Field6 = input6;
                 if (input7 != "undefined") pinfo.Field7 = input7;
                 if (input8 != "undefined") pinfo.Field8 = input8;
+                if (input9 != "undefined") pinfo.Field9 = input9;
+                if (input10 != "undefined") pinfo.Field10 = input10;
+                if (input11 != "undefined") pinfo.Field11 = input11;
+                if (input12 != "undefined") pinfo.Field12 = input12;
 
                 pinfo.ProductId = Convert.ToInt32(prid);
 
