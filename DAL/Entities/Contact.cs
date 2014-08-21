@@ -15,6 +15,8 @@ namespace DAL.Entities
         public string Address { get; set; }
         [Display(Name = "Telefon")]
         public string Phone { get; set; }
+        [Display(Name = "GSM")]
+        public string GSM { get; set; }
         [Display(Name = "Faks")]
         public string Fax { get; set; }
         [Display(Name = "Email")]

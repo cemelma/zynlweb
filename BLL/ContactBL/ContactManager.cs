@@ -33,6 +33,7 @@ namespace BLL.ContactBL
                     if (contact == null)
                     {
                         contact = new Contact();
+                        contact.GSM = record.GSM;
                         contact.Address = record.Address;
                         contact.Phone = record.Phone;
                         contact.Fax = record.Fax;
@@ -44,6 +45,7 @@ namespace BLL.ContactBL
                         contact.Address = record.Address;
                         contact.Phone = record.Phone;
                         contact.Fax = record.Fax;
+                        contact.GSM = record.GSM;
                         contact.Email = record.Email;
                     }
 
