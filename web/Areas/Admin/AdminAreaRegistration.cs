@@ -206,6 +206,9 @@ namespace web.Areas.Admin
             context.MapRoute("addproductsx", "yonetim/urunekle", new { action = "AddProduct", Controller = "Product" });
             context.MapRoute("addproductsxdd", "yonetim/urunekle/{id}", new { action = "AddProduct", Controller = "Product" });
             context.MapRoute("editproductsx", "yonetim/urunduzenle/{id}", new { action = "EditProduct", Controller = "Product" });
+            context.MapRoute("editproductpropsx", "yonetim/urunozellikduzenle/{id}/{prid}/{catid}", new { action = "UrunOzelikDuzenle", Controller = "Product" });
+
+            
             context.MapRoute("productslist_defaultx", "yonetim/urunlistesi", new { action = "Index", Controller = "Product" }, null, new[] { "web.Areas.Admin.Controllers" });
             context.MapRoute("productslistx", "yonetim/urunlistesi/{lang}", new { action = "Index", Controller = "Product" });
             context.MapRoute("productslist_twoparamx", "yonetim/urunlistesi/{lang}/{id}", new { action = "Index", Controller = "Product" });

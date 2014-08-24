@@ -276,6 +276,9 @@
                        <td>@item.Field12</td>
                    }
                     <td>
+                         <a href="/yonetim/urunozellikduzenle/@item.ProductInformationId/@ViewBag.PrId/@ViewBag.CatId">
+                        <img id="btn_update_@item.ProductInformationId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" >
+                        </a>
                         <img id="DeleteImage_@item.ProductInformationId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/Product/DeleteDetail',@item.ProductInformationId)">
                     </td>
                 </tr>

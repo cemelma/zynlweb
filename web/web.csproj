@@ -43,13 +43,13 @@
       <HintPath>..\packages\CaptchaMvc.Mvc4.1.4.1\lib\net40-full\CaptchaMvc.dll</HintPath>
     </Reference>
     <Reference Include="CKEditor.NET">
-      <HintPath>E:\CTSWorkshop\Tools\DLL\CKEditor.NET.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="CKFinder">
-      <HintPath>E:\CTSWorkshop\Tools\DLL\CKFinder.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="ImageUploadAndCrop">
-      <HintPath>E:\CTSWorkshop\Tools\DLL\ImageUploadAndCrop.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\ImageUploadAndCrop.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -2967,12 +2967,16 @@
     <Content Include="Areas\Admin\Views\ProductGroup\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroup\_menu.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_colorss.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\UrunOzelikDuzenle.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\ist.pubxml" />
     <None Include="Properties\PublishProfiles\kontrolmatik.pubxml" />
     <None Include="Properties\PublishProfiles\zeynel.pubxml" />
     <None Include="Properties\PublishProfiles\zynl.pubxml" />
+    <None Include="Properties\PublishProfiles\zynlv.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="HTMLTemplate\imza.png" />
     <Content Include="HTMLTemplate\Receipt.htm" />

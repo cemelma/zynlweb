@@ -16,6 +16,7 @@ using BLL.PhotoBL;
 using DAL.Context;
 using web.Areas.Admin.Models;
 using System.Web.Helpers;
+using System.Data;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -652,6 +653,51 @@ namespace web.Areas.Admin.Controllers
                 {
                     return Json(false);
                 }
+            }
+        }
+
+
+        public ActionResult UrunOzelikDuzenle(int id,int prid,int catid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                int cid = Convert.ToInt32(catid);
+                int pid = Convert.ToInt32(prid);
+                PropertyUpdateModel model = new PropertyUpdateModel();
+                model.header = db.ProductHeaders.FirstOrDefault(x => x.CategoryId == cid);
+
+                model.ProductInfo = db.ProductInformation.FirstOrDefault(x => x.ProductInformationId == id);
+
+                ViewBag.PrId = pid;
+                ViewBag.Details = db.ProductDetail.Where(x => x.ProductId == pid).ToList();
+
+
+               // var model = db.ProductInformation.FirstOrDefault(x => x.ProductInformationId == id);
+                return View(model);
+            }
+
+        }
+        [HttpPost]
+        public void UrunOzelikDuzenle(PropertyUpdateModel model, string prid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var info = db.ProductInformation.FirstOrDefault(XmlReadMode => XmlReadMode.ProductInformationId == model.ProductInfo.ProductInformationId);
+                if (model.ProductInfo.Field1 != null) info.Field1 = model.ProductInfo.Field1;
+                if (model.ProductInfo.Field2 != null) info.Field2 = model.ProductInfo.Field2;
+                if (model.ProductInfo.Field3 != null) info.Field3 = model.ProductInfo.Field3;
+                if (model.ProductInfo.Field4 != null) info.Field4 = model.ProductInfo.Field4;
+                if (model.ProductInfo.Field5 != null) info.Field5 = model.ProductInfo.Field5;
+                if (model.ProductInfo.Field6 != null) info.Field6 = model.ProductInfo.Field6;
+                if (model.ProductInfo.Field7 != null) info.Field7 = model.ProductInfo.Field7;
+                if (model.ProductInfo.Field8 != null) info.Field8 = model.ProductInfo.Field8;
+                if (model.ProductInfo.Field9 != null) info.Field9 = model.ProductInfo.Field9;
+                if (model.ProductInfo.Field10 != null) info.Field10 = model.ProductInfo.Field10;
+                if (model.ProductInfo.Field11 != null) info.Field11 = model.ProductInfo.Field11;
+                if (model.ProductInfo.Field12 != null) info.Field12 = model.ProductInfo.Field12;
+                //info
+                db.SaveChanges();
+                Response.Redirect("/yonetim/urunduzenle/"+prid);
             }
         }
     }

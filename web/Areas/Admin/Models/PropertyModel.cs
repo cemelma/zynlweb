@@ -12,4 +12,10 @@ namespace web.Areas.Admin.Models
         public ProductHeaders header { get; set; }
         public List <ProductInformation> ProductInfo { get; set; }
     }
+
+    public class PropertyUpdateModel
+    {
+        public ProductHeaders header { get; set; }
+        public ProductInformation ProductInfo { get; set; }
+    }
 }

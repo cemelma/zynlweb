@@ -1,0 +1,134 @@
+﻿@model web.Areas.Admin.Models.PropertyUpdateModel
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
+}
+
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.MultiFile.js"></script>
+<link href="~/Areas/Admin/Content/styles/nestedsortable.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/colpick.css" rel="stylesheet" />
+@Html.Partial("product_leftbar")
+
+<div id="page-content" class="container_12">
+    <div id="page-header">
+        <h2>ÜRÜN BİLGİLERİ</h2>
+    </div>
+    <section class="grid_12 form">
+
+         @using (Html.BeginForm("UrunOzelikDuzenle", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+           @Html.HiddenFor(x=>x.ProductInfo.ProductInformationId)
+        @Html.Hidden("prId", (object)@ViewBag.PrId)
+        @Html.Hidden("catId", (object)@ViewBag.CatId)
+        if (Model.header != null)
+        {
+            if (!string.IsNullOrEmpty(@Model.header.Header1))
+            {
+            <p>
+                <label>@Model.header.Header1</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field1)
+            </p>
+            }
+            if (!string.IsNullOrEmpty(@Model.header.Header2))
+            {
+            <p>
+                <label>@Model.header.Header2</label>
+                 @Html.TextBoxFor(x=>x.ProductInfo.Field2)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header3))
+            {
+            <p>
+                <label>@Model.header.Header3</label>
+                 @Html.TextBoxFor(x=>x.ProductInfo.Field3)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header4))
+            {
+            <p>
+                <label>@Model.header.Header4</label>
+                 @Html.TextBoxFor(x=>x.ProductInfo.Field4)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header5))
+            {
+            <p>
+                <label>@Model.header.Header5</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field5)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header6))
+            {
+            <p>
+                <label>@Model.header.Header6</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field6)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header7))
+            {
+            <p>
+                <label>@Model.header.Header7</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field7)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header8))
+            {
+            <p>
+                <label>@Model.header.Header8</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field8)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header9))
+            {
+            <p>
+                <label>@Model.header.Header9</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field9)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header10))
+            {
+            <p>
+                <label>@Model.header.Header10</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field10)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header11))
+            {
+            <p>
+                <label>@Model.header.Header11</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field11)
+            </p>
+            }
+
+            if (!string.IsNullOrEmpty(@Model.header.Header12))
+            {
+            <p>
+                <label>@Model.header.Header12</label>
+                @Html.TextBoxFor(x=>x.ProductInfo.Field12)
+            </p>
+            }
+    
+            <p>
+               
+                <input type="submit" value="Kaydet" id="btnsaveProp" />
+            </p>
+    
+            <p></p>
+        }
+        }
+
+    </section>
+</div>
+
